@@ -3,6 +3,24 @@
 //Task A: In this task you will be creating an extension to the Int type in Swift.  This extension will make use of an enum that will serve to characterize an Int as either odd or even.  This characterization will be either an “O” if the digit is odd or an “E” if the digit is event
 import UIKit
 // Part 1 - Create an extension to the Int type.  At this point your extension will be empty.
+extension Int{
+    enum Sign: String{
+        case Odd = "O", Even = "E"
+    }
+    var sign: Sign{
+        switch self{
+        case let x where x % 2 == 0:
+            return .Even
+        default:
+            return .Odd
+        }
+    }
+    func printSign(){
+            print(self.sign.rawValue)
+    }
+}
+
+10.printSign()
 
     // Part 2: Add an enumerated type called Sign to your extension.  This enum will have two cases, Odd and Even.  The rawValue of these two cases will be “O” and “E” respectively (see your reading on how to set the rawValue).
 
@@ -29,6 +47,4 @@ struct CustomIntArray : PrettyPrinter {
 }
 
 // Part 1: Delcare a variable of type CustomIntArray and initilize it with an array of 4 integers print out the custom array's stringRep property and its lengthRep property
-
-
 
