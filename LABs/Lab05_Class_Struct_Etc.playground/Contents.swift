@@ -48,11 +48,20 @@ protocol PrettyPrinter {
 struct CustomIntArray : PrettyPrinter {
     var data : [Int] = []
     var stringRep : String {        // you should fix the two computed properties so their implementation meets
-        return ""                   // output show in write up
+        var return_string = ""
+        for i in 0...(data.count - 1){
+            return_string += "["
+            return_string += String(i) + "]=" + String(data[i]) + " "
+        }
+        return return_string                   // output show in write up
     }
     var lengthRep : Int {
         return 0
+        //return data.lengthRep
     }
 }
 
 // Part 1: Delcare a variable of type CustomIntArray and initilize it with an array of 4 integers print out the custom array's stringRep property and its lengthRep property
+let myIntArray = CustomIntArray(data: [10, 20, 30, 40])
+print(myIntArray.stringRep)
+//print("The length of the string is \(myIntArray.lengthRep")
