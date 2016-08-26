@@ -1,7 +1,6 @@
 //Lab05 - Class, Struct, Etc...
 
 //Task A: In this task you will be creating an extension to the Int type in Swift.  This extension will make use of an enum that will serve to characterize an Int as either odd or even.  This characterization will be either an “O” if the digit is odd or an “E” if the digit is event
-import UIKit
 // Part 1 - Create an extension to the Int type.  At this point your extension will be empty.
 extension Int{
     enum Sign: String{
@@ -30,6 +29,16 @@ extension Int{
 
 // Part 5:  Initialize an integer array of 5 odd and even values using an [Int] literal and then loop over the contents of this array using your printSign() exenstion to Int to print the sign of each of the elements
 
+var myNewArray = [0, 3, 6, 23, 44]
+
+func printArraySigns(array: Array<Int>){
+    for i in 0...(array.count - 1){
+        array[i].printSign()
+    }
+}
+
+printArraySigns(array: myNewArray)
+
 // Task B: Modify the struct, CustomIntArray, to conform to the protocol prettyPrinter below.
 protocol PrettyPrinter {
     var stringRep : String {get}    // a computed property that is the string version of the Array
@@ -47,4 +56,3 @@ struct CustomIntArray : PrettyPrinter {
 }
 
 // Part 1: Delcare a variable of type CustomIntArray and initilize it with an array of 4 integers print out the custom array's stringRep property and its lengthRep property
-
