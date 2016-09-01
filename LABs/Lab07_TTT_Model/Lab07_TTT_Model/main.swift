@@ -46,24 +46,129 @@ struct TTTModel : CustomStringConvertible {
     mutating func makeMove(turn turn : TTT, location: (Int,Int)) throws {
         turnsTaken += 1
         //error checking
-        if(turnsTaken == 10) { throw tttErr.board_full }
+        if(turnsTaken >= 10) { throw tttErr.board_full }
         if(!(location.0 == 0 || location.0 == 1 || location.0 == 2 || location.1 == 0 || location.1 == 1 || location.1 == 2)){ throw tttErr.bad_location }
         if(gameBoard[location.0][location.1] != .empty){ throw tttErr.space_occupied }
-            
+        //populating the board and switching turns
         else { gameBoard[location.0][location.1] = turn }
         if(turn == .x){ self.whoTurn = .o }
-        else if(turn == .o){ self.whoTurn = .x }
+        else{ self.whoTurn = .x }
     }
     
     
-    // Task C:  Finish the makeMove() function so that it returns TTT.x when "X" wins and TTT.o when "O" wins.  If there is currently no winner it will return nil ... which is why this fuction returns an optional.
+    // Task C:  Finish the hasWon() function so that it returns TTT.x when "X" wins and TTT.o when "O" wins.  If there is currently no winner it will return nil ... which is why this fuction returns an optional.
     func hasWon() -> TTT? {
-        //To do this, keep track of c0, c1, c2, r0, r1, r2, d0, and d1 for one of the letters. They all start at 0, and when you reach -3 or +3, that means someone won. You have to make an array for this.
+        //To do this, keep track of c0, c1, c2, r0, r1, r2, d0, and d1 for one of the letters. They all start at 0, and when you reach -3, O won, or +3, X won. We have to make an array for this.
+        //The array is 8 numbers, where c0 is index 7 and d1 is index 0.
+        var winArray = Array(count: 8, repeatedValue: 0)
+        if(gameBoard[0][0] == .x){
+            winArray[7] += 1
+            winArray[4] += 1
+            winArray[1] += 1
+        }
+        else if(gameBoard[0][0] == .o){
+            winArray[7] -= 1
+            winArray[4] -= 1
+            winArray[1] -= 1
+        }
+        //8 more of these.
+        if(gameBoard[0][1] == .x){
+            winArray[6] += 1
+            winArray[4] += 1
+        }
+        else if(gameBoard[0][1] == .o){
+            winArray[6] -= 1
+            winArray[4] -= 1
+        }
+        if(gameBoard[0][2] == .x){
+            winArray[5] += 1
+            winArray[4] += 1
+            winArray[0] += 1
+        }
+        else if(gameBoard[0][2] == .o){
+            winArray[5] -= 1
+            winArray[4] -= 1
+            winArray[0] -= 1
+        }
+        if(gameBoard[1][0] == .x){
+            winArray[7] += 1
+            winArray[3] += 1
+        }
+        else if(gameBoard[1][0] == .o){
+            winArray[7] -= 1
+            winArray[3] -= 1
+        }
+        if(gameBoard[1][1] == .x){
+            winArray[6] += 1
+            winArray[3] += 1
+            winArray[0] += 1
+            winArray[1] += 1
+        }
+        else if(gameBoard[1][1] == .o){
+            winArray[6] -= 1
+            winArray[3] -= 1
+            winArray[0] -= 1
+            winArray[1] -= 1
+        }
+        if(gameBoard[1][2] == .x){
+            winArray[5] += 1
+            winArray[3] += 1
+        }
+        else if(gameBoard[1][2] == .o){
+            winArray[5] -= 1
+            winArray[3] -= 1
+        }
+        if(gameBoard[2][0] == .x){
+            winArray[7] += 1
+            winArray[0] += 1
+            winArray[2] += 1
+        }
+        else if(gameBoard[2][0] == .o){
+            winArray[7] -= 1
+            winArray[0] -= 1
+            winArray[2] -= 1
+        }
+        if(gameBoard[2][1] == .x){
+            winArray[6] += 1
+            winArray[2] += 1
+        }
+        else if(gameBoard[2][1] == .o){
+            winArray[6] -= 1
+            winArray[2] -= 1
+        }
+        if(gameBoard[2][2] == .x){
+            winArray[5] += 1
+            winArray[2] += 1
+            winArray[1] += 1
+        }
+        else if(gameBoard[2][2] == .o){
+            winArray[5] -= 1
+            winArray[2] -= 1
+            winArray[1] -= 1
+        }
+        
+        //going through the array looking for a winner
+        for num in winArray{
+            if(num == 3){
+                return TTT.x
+            }
+            else if(num == -3){
+                return TTT.o
+            }
+        }
         return nil
     }
     
     // Task D: Finish the reset() function so that it restores the properties of the TTTModel to their initial state.
     mutating func reset() {
+        //make the entire gameBoard empty
+        for row in 0...2{
+            for column in 0...2{
+                gameBoard[row][column] = .empty
+            }
+        }
+        self.turnsTaken = 0 //reset the turns taken to 0
+        self.whoTurn = .x //make X go first again
     }
     
 }
@@ -101,11 +206,11 @@ repeat {
         print("\nX wins!")
         gameIsOver = true
     case TTTModel.TTT.o?:
-        print("\nO wins")
+        print("\nO wins!")
         gameIsOver = true
     default:
         break
     }
 } while !gameIsOver
 
-print(myTTT.description)
+print(myTTT.description) //output the final game board
