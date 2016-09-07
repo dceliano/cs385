@@ -18,12 +18,13 @@ class ViewController: UIViewController {
         let prev_turn = myModel.whoTurn
         do{
             try myModel.makeMove(turn: myModel.whoTurn, location: (sender.row, sender.col))
+            sender.setTitle(prev_turn.rawValue, forState: .Normal)
             
         }
         catch{
             print("Failed to take turn.")
+            myModel.turnsTaken = myModel.turnsTaken - 1
         }
-        sender.setTitle(prev_turn.rawValue, forState: .Normal)
         switch myModel.hasWon() {
         case .x?:
             winLabel.text = "X Wins!"
