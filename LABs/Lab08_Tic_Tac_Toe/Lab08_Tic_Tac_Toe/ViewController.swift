@@ -12,19 +12,55 @@ class ViewController: UIViewController {
     
     var myModel = TTTModel()
     
+    @IBOutlet var allButtons: [TTTUIButton]!
+    @IBOutlet weak var winLabel: UILabel!
     @IBAction func takeTurn(sender: TTTUIButton){
-        print(myModel)
         let prev_turn = myModel.whoTurn
         do{
             try myModel.makeMove(turn: myModel.whoTurn, location: (sender.row, sender.col))
+            
         }
         catch{
             print("Failed to take turn.")
         }
         sender.setTitle(prev_turn.rawValue, forState: .Normal)
+        switch myModel.hasWon() {
+        case .x?:
+            winLabel.text = "X Wins!"
+            for button in allButtons{
+                button.enabled = false
+            }
+        case .o?:
+            winLabel.text = "O Wins!"
+            for button in allButtons{
+                button.enabled = false
+            }
+        case nil:
+            if(myModel.turnsTaken >= 9){
+                winLabel.text = "Draw!"
+            }
+            else{
+                if(myModel.whoTurn == .x){
+                    winLabel.text = "X's turn"
+                }
+                else{
+                    winLabel.text = "O's turn"
+                }
+            }
+        default:
+            break
+        }
+        print(myModel)
     }
     @IBAction func reset(sender: AnyObject) {
         myModel.reset()
+        for button in allButtons{
+            button.setTitle("", forState: .Normal)
+        }
+        for button in allButtons{
+            button.enabled = true
+        }
+        winLabel.text = "X's turn"
     }
     
     override func viewDidLoad() {

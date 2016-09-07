@@ -26,8 +26,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Tic-tac-toe.png" translatesAutoresizingMaskIntoConstraints="NO" id="Ptc-Yk-Jfo">
                                 <rect key="frame" x="0.0" y="110" width="375" height="353"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="X wins!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6qD-tI-2be">
-                                <rect key="frame" x="159" y="495" width="56" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="X's Turn" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6qD-tI-2be">
+                                <rect key="frame" x="124" y="493" width="127" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -196,10 +196,10 @@
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="row">
-                                        <integer key="value" value="0"/>
+                                        <integer key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="col">
-                                        <integer key="value" value="0"/>
+                                        <integer key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -210,6 +210,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="winLabel" destination="6qD-tI-2be" id="9QN-aA-HYi"/>
+                        <outletCollection property="allButtons" destination="RkS-CZ-TDc" collectionClass="NSMutableArray" id="Ue8-jR-SDh"/>
+                        <outletCollection property="allButtons" destination="Lkc-C1-P0Q" collectionClass="NSMutableArray" id="nmg-xT-mhd"/>
+                        <outletCollection property="allButtons" destination="9G4-ce-Pdg" collectionClass="NSMutableArray" id="vFe-rJ-I5Q"/>
+                        <outletCollection property="allButtons" destination="1Uo-tR-Vdc" collectionClass="NSMutableArray" id="b5D-13-yXp"/>
+                        <outletCollection property="allButtons" destination="kJd-xN-Fmt" collectionClass="NSMutableArray" id="ov2-dI-Td7"/>
+                        <outletCollection property="allButtons" destination="JbF-3p-HGY" collectionClass="NSMutableArray" id="lvn-eu-4UC"/>
+                        <outletCollection property="allButtons" destination="bLf-lX-hcM" collectionClass="NSMutableArray" id="e5K-KX-VIH"/>
+                        <outletCollection property="allButtons" destination="G1h-ay-tkb" collectionClass="NSMutableArray" id="trF-7E-hWn"/>
+                        <outletCollection property="allButtons" destination="UKN-6C-wPG" collectionClass="NSMutableArray" id="BrL-6C-gPN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
