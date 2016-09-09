@@ -24,6 +24,9 @@
                                 <state key="normal" title="9">
                                     <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="numberEntered:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ycv-oi-Xb7"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3SC-l4-cck">
                                 <rect key="frame" x="221" y="167" width="55" height="55"/>
@@ -104,6 +107,9 @@
                                 <state key="normal" title="/">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="operationEntered:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WrD-UM-TcH"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fGJ-LM-0Ie">
                                 <rect key="frame" x="347" y="104" width="55" height="55"/>
@@ -192,6 +198,9 @@
                                 <state key="normal" title="Enter">
                                     <color key="titleColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="enterHit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vX0-a3-FBf"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wpd-6E-jKy">
                                 <rect key="frame" x="158" y="356" width="55" height="55"/>
@@ -240,6 +249,10 @@
                         <keyCommand/>
                     </keyCommands>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="enterHit" destination="EHX-UH-DtP" id="T2K-qw-DJ6"/>
+                        <outlet property="updateDisplay" destination="Vy3-JI-fHZ" id="vwn-wU-yG4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
