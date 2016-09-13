@@ -5,6 +5,9 @@
 //  Created by Dom Celiano on 9/8/16.
 //  Copyright © 2016 Dom Celiano. All rights reserved.
 //
+/*Documentation: C1C Ryan Doucet showed me I can return an array's last element and remove it at the same time.
+ C1C Mitchell Thomas explained to me how the view controller worked in depth and how to explain different functions to connect the funtionality of the different types of buttons to my model. He also helped explain to me how throwing errors works, and fixing some SigABT errors I was getting.
+ */
 
 import UIKit
 
@@ -30,7 +33,6 @@ class ViewController: UIViewController {
         addToStack()
         userInput = ""
         calcDisplay.text = "0"
-        calcDisplay.text = userInput
     }
     @IBAction func opHit(sender: AnyObject){
         if(userInput != ""){
@@ -52,7 +54,7 @@ class ViewController: UIViewController {
             do{
                 try myModel.performOp(userInput)
                 calcDisplay.text = String(myModel.stack.last!)
-            }/*
+            }/* //would have finished this/got it working exactly correct if more time.
                     catch divideByZero{
                     calcDisplay.text = "You cannot divide by zero."
                     }
@@ -63,13 +65,14 @@ class ViewController: UIViewController {
                     calcDisplay.text = "Not enough operands on the stack."
             }*/
             catch{
-                calcDisplay.text = "Unknown error."
+                calcDisplay.text = "Error!"
             }
         }
         stackDisplay.text = String(myModel.stack)
 }
     
     @IBAction func trigFunction(sender:AnyObject){
+        calcDisplay.text = "0"
         do{
             try(myModel.performOp(sender.currentTitle!!))
         }
@@ -103,20 +106,30 @@ class ViewController: UIViewController {
         case "pi":
             userInput = String(M_PI)
             enterHit(sender)
+            calcDisplay.text = userInput
             break
         case "e":
             userInput = String(M_E)
             enterHit(sender)
+            calcDisplay.text = userInput
             break
         case "EE":
+            //got the code below from http://stackoverflow.com/questions/31934088/convert-double-to-scientific-notation-in-swift
+            let numberFormatter = NSNumberFormatter()
+            numberFormatter.numberStyle = NSNumberFormatterStyle.ScientificStyle
+            numberFormatter.positiveFormat = "0.###E+0"
+            numberFormatter.exponentSymbol = "e"
+            
+            if let stringFromNumber = numberFormatter.stringFromNumber(Double(userInput)!){
+                calcDisplay.text = stringFromNumber  // outputs the string in scientific notation
+            }
+            else{
+                calcDisplay.text = userInput
+            }
             break
         default:
             break
         }
-        calcDisplay.text = userInput
-    }
-    @IBAction func sciHit(sender: AnyObject){
-        
     }
     @IBAction func allClearHit(sender: AnyObject){
         clearHit(sender)

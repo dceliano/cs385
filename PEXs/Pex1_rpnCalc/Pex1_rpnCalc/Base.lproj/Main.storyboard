@@ -204,7 +204,7 @@
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="sciHit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vDG-tO-j3z"/>
+                                    <action selector="constHit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KkJ-0L-gp2"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EHX-UH-DtP">
@@ -253,17 +253,6 @@
                                 </state>
                                 <connections>
                                     <action selector="trigFunction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Cfo-HQ-ir2"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8cA-uk-OXi">
-                                <rect key="frame" x="473" y="293" width="55" height="55"/>
-                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="cos">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="trigFunction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AgL-T4-r2n"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Th-wz-Ncz">
@@ -403,6 +392,17 @@
                                 </state>
                                 <connections>
                                     <action selector="negativeHit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="GqQ-cg-uCL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8cA-uk-OXi">
+                                <rect key="frame" x="473" y="293" width="55" height="55"/>
+                                <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="cos">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="trigFunction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AgL-T4-r2n"/>
                                 </connections>
                             </button>
                         </subviews>
