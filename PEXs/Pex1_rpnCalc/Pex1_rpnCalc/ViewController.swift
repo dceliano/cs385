@@ -18,22 +18,49 @@ class ViewController: UIViewController {
     //these functions will call different parts of my model.
     
     @IBAction func numHit(sender: AnyObject){
-        userInput += sender.currentTitle!! //add the string to the value input
-        calcDisplay.text = userInput
+        if(userInput.characters.contains(".") && sender.currentTitle!! == "."){
+            return //make sure we aren't able to put in 2 decimal places
+        }
+        else{
+            userInput += sender.currentTitle!! //add the string to the value input
+            calcDisplay.text = userInput
+        }
     }
     @IBAction func enterHit(sender: AnyObject){
-        addToStack()
+        addToStack(sender)
         userInput = ""
+        calcDisplay.text = "0"
     }
     @IBAction func opHit(sender: AnyObject){
-        addToStack()
+        addToStack(sender)
+        calcDisplay.text = "0"
     }
-    func addToStack(){
+    func addToStack(sender: AnyObject){
+        //if the caller of this function is an operation, we will also push the result onto the stack.
         if let number = Double(userInput) {
-            myModel.push(number)
-            calcDisplay.text = userInput
+            if(sender.currentTitle!! != "sin" && sender.currentTitle!! != "cos" && sender.currentTitle!! != "tan"){
+                myModel.push(number)
+                calcDisplay.text = userInput
+            }
+            else{
+                userInput = ""
+            }
         } else {
-            print(myModel.performOp(userInput))
+            do{
+                try(myModel.performOp(userInput))
+            }/*
+            catch divideByZero{
+                calcDisplay.text = "You cannot divide by zero."
+            }
+            catch invalidOperator{
+                calcDisplay.text = "Invalid operator/syntax used."
+            }
+            catch notEnoughOperands{
+                calcDisplay.text = "Not enough operands on the stack."
+            }*/
+            catch{
+                calcDisplay.text = "Unknown error."
+            }
         }
         stackDisplay.text = String(myModel.stack)
         
@@ -42,17 +69,35 @@ class ViewController: UIViewController {
         userInput = ""
         calcDisplay.text = "0"
     }
-    @IBAction func trigFuncs(sender: AnyObject){
-        
-    }
     @IBAction func negativeHit(sender: AnyObject){
-        
+        if(userInput != ""){
+            userInput = String(-1*(Double(userInput)!))
+            calcDisplay.text = userInput
+        }
     }
     @IBAction func backspaceHit(sender: AnyObject){
-        
+        if(userInput != ""){
+            userInput = String(userInput.characters.dropLast())
+            calcDisplay.text = userInput
+            if(userInput == ""){
+                calcDisplay.text = "0"
+            }
+        }
     }
     @IBAction func constHit(sender: AnyObject){
-        
+        switch sender.currentTitle!!{
+        case "pi":
+            userInput = String(M_PI)
+            break
+        case "e":
+            userInput = String(M_E)
+            break
+        case "EE":
+            break
+        default:
+            break
+        }
+        calcDisplay.text = userInput
     }
     @IBAction func sciHit(sender: AnyObject){
         

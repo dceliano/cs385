@@ -75,7 +75,7 @@ struct CalcModel {
                 throw calcError.notEnoughOperands
             }
             else{
-                self.push(sin(self.stack.popLast()!))
+                self.push(Double(sin(self.stack.popLast()!)))
             }
             break
         case "cos":
@@ -83,7 +83,7 @@ struct CalcModel {
                 throw calcError.notEnoughOperands
             }
             else{
-                self.push(cos(self.stack.popLast()!))
+                self.push(Double(cos(self.stack.popLast()!)))
             }
             break
         case "tan":
@@ -91,7 +91,7 @@ struct CalcModel {
                 throw calcError.notEnoughOperands
             }
             else{
-                self.push(tan(self.stack.popLast()!))
+                self.push(Double(tan(self.stack.popLast()!)))
             }
             break
             
@@ -99,8 +99,6 @@ struct CalcModel {
             throw calcError.invalidOperator //something weird happened, so just return the invalid operator error.
         }
     }
-    //TO USE: str.characters.contains(".") --handle most of this stuff on the front end (i.e. don't let them put in 2 decimals or something crazy). He shouldn't be able to break it.
-    //throw the errors here (i.e. if divided by 0, throw), and then in the controller do{ try... i.e. try op} catch (error){}, and then have a catch{ anything} as a catchall
     
 }
 

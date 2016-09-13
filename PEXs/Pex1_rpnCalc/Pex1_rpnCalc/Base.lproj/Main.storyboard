@@ -241,7 +241,7 @@
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="trigFuncs:" destination="BYZ-38-t0r" eventType="touchUpInside" id="F6B-RV-ksZ"/>
+                                    <action selector="opHit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="aM0-Fb-bgm"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDE-Vk-8Bl">
@@ -252,7 +252,7 @@
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="trigFuncs:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NJb-kz-IMz"/>
+                                    <action selector="opHit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gIF-bJ-bvf"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8cA-uk-OXi">
@@ -263,7 +263,7 @@
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="trigFuncs:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c82-OA-EQh"/>
+                                    <action selector="opHit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Bki-q5-gsQ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Th-wz-Ncz">
