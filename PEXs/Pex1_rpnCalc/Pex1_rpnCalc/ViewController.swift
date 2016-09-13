@@ -10,13 +10,24 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var myModel = CalcModel()
+    var userInput : String?
+    
     //these functions will call different parts of my model.
-    @IBOutlet weak var updateDisplay: UILabel!
-    @IBAction func numberEntered(sender: AnyObject) {
+    @IBOutlet weak var calcDisplay: UILabel!
+    @IBAction func numberEntered(sender: CalcNumberButton) {
+        userInput?.append((Character(sender.val)))
+        calcDisplay.text = "%d",
     }
-    @IBAction func operationEntered(sender: AnyObject) {
+    
+    if let number = Double(userInput!) {
+        CalcModel.push(item: number)
+    } else {
+        try print(CalcModel.performOp(oper: userInput!))
     }
+    
     @IBAction func enterHit(sender: AnyObject) {
+        //CalcModel.push(sender.val)
     }
     
     override func viewDidLoad() {

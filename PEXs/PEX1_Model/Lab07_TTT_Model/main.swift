@@ -48,7 +48,7 @@ struct CalcModel {
             break
         case "tan":
             break
-        
+            
         default:
             //return the invalidOperator error
             break
@@ -58,20 +58,19 @@ struct CalcModel {
     }
     
 }
-/*
+
 var myModel = CalcModel()
 var userInput : String?
 repeat {
     print("Enter: ",terminator:"")
     userInput = readLine()!
     if let number = Double(userInput!) {
-        myModel.push(item: number)
+        myModel.push(number)
     } else {
-        try print(myModel.performOp(oper: userInput!))
+        print(myModel.performOp(userInput!))
     }
     print(myModel)
 } while true
-*/
 
 
 
