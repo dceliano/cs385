@@ -6,7 +6,9 @@
 //  Copyright © 2016 Dom Celiano. All rights reserved.
 //
 
-//C1C Ryan Doucet showed me I can return an array's last element and remove it at the same time.
+/*Documentation: C1C Ryan Doucet showed me I can return an array's last element and remove it at the same time.
+ C1C Mitchell Thomas explained to me how the view controller worked in depth and how to explain different functions to connect the funtionality of the different types of buttons to my model.
+ */
 
 import Foundation
 
