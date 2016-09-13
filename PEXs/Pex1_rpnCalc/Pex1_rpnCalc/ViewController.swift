@@ -27,44 +27,58 @@ class ViewController: UIViewController {
         }
     }
     @IBAction func enterHit(sender: AnyObject){
-        addToStack(sender)
+        addToStack()
         userInput = ""
         calcDisplay.text = "0"
+        calcDisplay.text = userInput
     }
     @IBAction func opHit(sender: AnyObject){
-        addToStack(sender)
-        calcDisplay.text = "0"
+        if(userInput != ""){
+            if let number = Double(userInput){ //if there is already a number in the text field, push it onto the stack before doing the operation
+                myModel.push(number)
+            }
+        }
+        userInput = sender.currentTitle!!
+        addToStack()
+        userInput = "" //reset the input
     }
-    func addToStack(sender: AnyObject){
+    func addToStack(){
         //if the caller of this function is an operation, we will also push the result onto the stack.
-        if let number = Double(userInput) {
-            if(sender.currentTitle!! != "sin" && sender.currentTitle!! != "cos" && sender.currentTitle!! != "tan"){
+        if let number = Double(userInput) { //if the input is just a number (i.e. we can convert it to a double
                 myModel.push(number)
                 calcDisplay.text = userInput
-            }
-            else{
-                userInput = ""
-            }
-        } else {
+        }
+        else{ //if it is an operation
             do{
-                try(myModel.performOp(userInput))
+                try myModel.performOp(userInput)
+                calcDisplay.text = String(myModel.stack.last!)
             }/*
-            catch divideByZero{
-                calcDisplay.text = "You cannot divide by zero."
-            }
-            catch invalidOperator{
-                calcDisplay.text = "Invalid operator/syntax used."
-            }
-            catch notEnoughOperands{
-                calcDisplay.text = "Not enough operands on the stack."
+                    catch divideByZero{
+                    calcDisplay.text = "You cannot divide by zero."
+                    }
+                    catch invalidOperator{
+                    calcDisplay.text = "Invalid operator/syntax used."
+                    }
+                    catch notEnoughOperands{
+                    calcDisplay.text = "Not enough operands on the stack."
             }*/
             catch{
                 calcDisplay.text = "Unknown error."
             }
         }
         stackDisplay.text = String(myModel.stack)
-        
+}
+    
+    @IBAction func trigFunction(sender:AnyObject){
+        do{
+            try(myModel.performOp(sender.currentTitle!!))
+        }
+        catch{ //trig functions should never run into an error.
+            calcDisplay.text = "Unknown error."
+        }
+        stackDisplay.text = String(myModel.stack)
     }
+    
     @IBAction func clearHit(sender: AnyObject){
         userInput = ""
         calcDisplay.text = "0"
@@ -88,9 +102,11 @@ class ViewController: UIViewController {
         switch sender.currentTitle!!{
         case "pi":
             userInput = String(M_PI)
+            enterHit(sender)
             break
         case "e":
             userInput = String(M_E)
+            enterHit(sender)
             break
         case "EE":
             break
