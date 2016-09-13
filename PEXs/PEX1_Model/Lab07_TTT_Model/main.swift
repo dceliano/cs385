@@ -26,34 +26,75 @@ struct CalcModel {
     mutating func push(item: Double){
         self.stack.append(item)
     }
-    mutating func performOp(oper: String){
+    mutating func performOp(oper: String) throws{
         // Pushes the result onto the stack, and also returns it to update the display.
         switch oper{
         case "+":
-            self.push(self.stack.popLast()! + self.stack.popLast()!) //pop 2 values, and then add them together
+            if(self.stack.count < 2){
+                throw calcError.notEnoughOperands
+            }
+            else{
+                self.push(self.stack.popLast()! + self.stack.popLast()!) //pop 2 values, and then add them together
+            }
             break
         case "-":
-            self.push(self.stack.popLast()! - self.stack.popLast()!)
+            if(self.stack.count < 2){
+                throw calcError.notEnoughOperands
+            }
+            else{
+                self.push(-(self.stack.popLast()! - self.stack.popLast()!)) //pop 2 values, and then add them together
+            }
             break
         case "*":
-            self.push(self.stack.popLast()! * self.stack.popLast()!)
+            if(self.stack.count < 2){
+                throw calcError.notEnoughOperands
+            }
+            else{
+                self.push(self.stack.popLast()! * self.stack.popLast()!) //pop 2 values, and then add them together
+            }
             break
         case "/":
-            self.push(self.stack.popLast()! / self.stack.popLast()!)
+            if(self.stack.count < 2){
+                throw calcError.notEnoughOperands
+            }
+            else{
+                let denominator = self.stack.popLast()! //hold these values in temporary values so we can do error checking
+                let numerator = self.stack.popLast()!
+                if(denominator == 0){
+                    throw calcError.divideByZero
+                }
+                else{
+                    self.push(numerator / denominator) //pop 2 values, and then add them together
+                }
+            }
             break
         case "sin":
-            self.push(sin(self.stack.popLast()!))
+            if(self.stack.count < 1){
+                throw calcError.notEnoughOperands
+            }
+            else{
+                self.push(sin(self.stack.popLast()!))
+            }
             break
         case "cos":
-            self.push(cos(self.stack.popLast()!))
+            if(self.stack.count < 1){
+                throw calcError.notEnoughOperands
+            }
+            else{
+                self.push(cos(self.stack.popLast()!))
+            }
             break
         case "tan":
-            self.push(tan(self.stack.popLast()!))
+            if(self.stack.count < 1){
+                throw calcError.notEnoughOperands
+            }
+            else{
+                self.push(tan(self.stack.popLast()!))
+            }
             break
             
         default:
-            //return the invalidOperator error
-            break
+            throw calcError.invalidOperator //something weird happened, so just return the invalid operator error.
         }
     }
     //TO USE: str.characters.contains(".") --handle most of this stuff on the front end (i.e. don't let them put in 2 decimals or something crazy). He shouldn't be able to break it.
@@ -69,7 +110,7 @@ repeat {
     if let number = Double(userInput!) {
         myModel.push(number)
     } else {
-        print(myModel.performOp(userInput!))
+        try print(myModel.performOp(userInput!))
     }
     print(myModel)
 } while true
