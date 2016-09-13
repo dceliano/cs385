@@ -15,7 +15,6 @@
 		F2A400CE1D820B3E00E28F8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2A400CC1D820B3E00E28F8A /* LaunchScreen.storyboard */; };
 		F2A400D91D820B3E00E28F8A /* Pex1_rpnCalcTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A400D81D820B3E00E28F8A /* Pex1_rpnCalcTests.swift */; };
 		F2A400E41D820B3E00E28F8A /* Pex1_rpnCalcUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A400E31D820B3E00E28F8A /* Pex1_rpnCalcUITests.swift */; };
-		F2A400F21D87822200E28F8A /* CalcUIButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A400F11D87822200E28F8A /* CalcUIButtons.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +49,6 @@
 		F2A400DF1D820B3E00E28F8A /* Pex1_rpnCalcUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Pex1_rpnCalcUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2A400E31D820B3E00E28F8A /* Pex1_rpnCalcUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pex1_rpnCalcUITests.swift; sourceTree = "<group>"; };
 		F2A400E51D820B3E00E28F8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F2A400F11D87822200E28F8A /* CalcUIButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalcUIButtons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +102,6 @@
 				F2A400C31D820B3E00E28F8A /* AppDelegate.swift */,
 				F2A400C51D820B3E00E28F8A /* ViewController.swift */,
 				F2A400C71D820B3E00E28F8A /* Main.storyboard */,
-				F2A400F11D87822200E28F8A /* CalcUIButtons.swift */,
 				70F235AA1D8346080068889F /* calcModel.swift */,
 				F2A400CA1D820B3E00E28F8A /* Assets.xcassets */,
 				F2A400CC1D820B3E00E28F8A /* LaunchScreen.storyboard */,
@@ -264,7 +261,6 @@
 			files = (
 				F2A400C61D820B3E00E28F8A /* ViewController.swift in Sources */,
 				F2A400C41D820B3E00E28F8A /* AppDelegate.swift in Sources */,
-				F2A400F21D87822200E28F8A /* CalcUIButtons.swift in Sources */,
 				70F235AB1D8346080068889F /* calcModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

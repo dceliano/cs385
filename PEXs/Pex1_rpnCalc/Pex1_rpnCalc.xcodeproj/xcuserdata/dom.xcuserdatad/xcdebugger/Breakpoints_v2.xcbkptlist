@@ -10,12 +10,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pex1_rpnCalc/ViewController.swift"
-            timestampString = "495420897.241127"
+            timestampString = "495426494.100937"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
-            landmarkName = "numberEntered(_:)"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
+            landmarkName = "clearHit(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Pex1_rpnCalc/ViewController.swift"
+            timestampString = "495426494.100937"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
+            landmarkName = "opHit(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -11,23 +11,56 @@ import UIKit
 class ViewController: UIViewController {
 
     var myModel = CalcModel()
-    var userInput : String?
+    var userInput = "" //initialize the input as empty
+    @IBOutlet weak var calcDisplay: UILabel!
+    @IBOutlet weak var stackDisplay: UILabel!
     
     //these functions will call different parts of my model.
-    @IBOutlet weak var calcDisplay: UILabel!
-    @IBAction func numberEntered(sender: CalcNumberButton) {
-        userInput?.append((Character(sender.val)))
-        calcDisplay.text = "%d",
-    }
     
-    if let number = Double(userInput!) {
-        CalcModel.push(item: number)
-    } else {
-        try print(CalcModel.performOp(oper: userInput!))
+    @IBAction func numHit(sender: AnyObject){
+        userInput += sender.currentTitle!! //add the string to the value input
+        calcDisplay.text = userInput
     }
-    
-    @IBAction func enterHit(sender: AnyObject) {
-        //CalcModel.push(sender.val)
+    @IBAction func enterHit(sender: AnyObject){
+        addToStack()
+        userInput = ""
+    }
+    @IBAction func opHit(sender: AnyObject){
+        addToStack()
+    }
+    func addToStack(){
+        if let number = Double(userInput) {
+            myModel.push(number)
+            calcDisplay.text = userInput
+        } else {
+            print(myModel.performOp(userInput))
+        }
+        stackDisplay.text = String(myModel.stack)
+        
+    }
+    @IBAction func clearHit(sender: AnyObject){
+        userInput = ""
+        calcDisplay.text = "0"
+    }
+    @IBAction func trigFuncs(sender: AnyObject){
+        
+    }
+    @IBAction func negativeHit(sender: AnyObject){
+        
+    }
+    @IBAction func backspaceHit(sender: AnyObject){
+        
+    }
+    @IBAction func constHit(sender: AnyObject){
+        
+    }
+    @IBAction func sciHit(sender: AnyObject){
+        
+    }
+    @IBAction func allClearHit(sender: AnyObject){
+        clearHit(sender)
+        myModel.stack.removeAll()
+        stackDisplay.text = String(myModel.stack)
     }
     
     override func viewDidLoad() {
