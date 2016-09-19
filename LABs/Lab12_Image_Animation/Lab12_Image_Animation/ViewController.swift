@@ -11,7 +11,11 @@ import UIKit
 class ViewController: UIViewController {
     
     var falconImageList: [UIImage] = []
+    let imageLayer = CALayer()
+    var oldTrans: CATransform3D = CATransform3DIdentity
     
+    
+    @IBOutlet weak var backGround: UIImageView!
     @IBOutlet weak var falcon1: UIImageView!
     @IBOutlet weak var falcon2: UIImageView!
     @IBOutlet weak var speedLabel: UILabel!
@@ -27,6 +31,12 @@ class ViewController: UIViewController {
         }
         falcon1.animationImages = falconImageList
         falcon1.animationDuration = Double(2.0 - speedSlider.value)
+        
+        let image = UIImage(named: "falcon-1.png")!
+        imageLayer.contents = image.CGImage
+        imageLayer.frame = CGRect(x: 132, y: 100, width: 150, height: 150)
+        backGround.layer.addSublayer(imageLayer)
+        oldTrans = imageLayer.transform //save the transform so we can restore its original state
     }
     @IBAction func flyLand(sender: UIButton) {
         if(!falcon1.isAnimating()){
@@ -57,6 +67,13 @@ class ViewController: UIViewController {
         falcon1.animationDuration = Double(2.0 - speedSlider.value)
         falcon1.startAnimating()
         falcon2.image = UIImage.animatedImageWithImages(falconImageList, duration: Double(2.0-speedSlider.value))
+    }
+    
+    @IBAction func spinBird(sender:AnyObject){
+        var t: CATransform3D = CATransform3DIdentity
+        
+        t = CATransform3DRotate(t, 1.5*CGFloat(M_PI), 0, 0, 1)
+        imageLayer.transform = t
     }
   
     override func didReceiveMemoryWarning() {

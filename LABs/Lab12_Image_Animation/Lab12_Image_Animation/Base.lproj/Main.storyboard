@@ -59,13 +59,21 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="falcon-1.png" translatesAutoresizingMaskIntoConstraints="NO" id="ylI-wt-vME" userLabel="falcon1">
                                 <rect key="frame" x="20" y="293" width="150" height="150"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NvJ-qM-Igg">
+                                <rect key="frame" x="62" y="618" width="31" height="30"/>
+                                <state key="normal" title="Spin"/>
+                                <connections>
+                                    <action selector="spinBird:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0SD-3k-QFq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
-                        <outlet property="falcon1" destination="ylI-wt-vME" id="iZ9-2b-OhE"/>
+                        <outlet property="backGround" destination="2cA-6Z-KqC" id="veD-uG-OSe"/>
+                        <outlet property="falcon1" destination="ylI-wt-vME" id="QQo-nJ-xiL"/>
                         <outlet property="falcon2" destination="AVu-bt-mqF" id="syq-U3-nsR"/>
                         <outlet property="flyButton" destination="Oda-h2-jX9" id="zyx-z9-R9T"/>
                         <outlet property="speedLabel" destination="LGN-US-vm1" id="dss-0G-tuv"/>
