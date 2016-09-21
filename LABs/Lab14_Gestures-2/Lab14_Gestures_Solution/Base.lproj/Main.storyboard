@@ -29,6 +29,9 @@
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="7kf-6b-gVr" appends="YES" id="k0x-yP-J5z"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dl0-M4-J9h" userLabel="PinchView">
                                 <rect key="frame" x="20" y="164" width="728" height="128"/>
@@ -42,6 +45,9 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.2156862745" green="0.50196078430000002" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Y3F-lH-Tcm" appends="YES" id="uw9-jo-sCM"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KYW-OE-p1W" userLabel="RotateView">
                                 <rect key="frame" x="20" y="731" width="728" height="128"/>
@@ -55,6 +61,9 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.2156862745" green="0.50196078430000002" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Ouj-ga-CXG" appends="YES" id="Qct-YB-vOj"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8zl-gj-iDV" userLabel="SwipeView">
                                 <rect key="frame" x="20" y="300" width="158" height="423"/>
@@ -68,6 +77,10 @@
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="qjy-t8-yAe" appends="YES" id="15r-C9-o1A"/>
+                                    <outletCollection property="gestureRecognizers" destination="pOB-yN-c03" appends="YES" id="yJo-5B-yw2"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pal-25-HFm" userLabel="PressView">
                                 <rect key="frame" x="590" y="300" width="158" height="423"/>
@@ -81,6 +94,9 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.2156862745" green="0.50196078430000002" blue="0.72941176470000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="afq-ho-9ca" appends="YES" id="IzD-x9-3cM"/>
+                                </connections>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FBs-Sh-REp" userLabel="PanView">
                                 <rect key="frame" x="20" y="867" width="728" height="128"/>
@@ -94,6 +110,9 @@
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="hyQ-rN-CMa" appends="YES" id="O9B-NI-nKi"/>
+                                </connections>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Falcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="slf-0Q-Bbk">
                                 <rect key="frame" x="186" y="300" width="396" height="365"/>
@@ -110,8 +129,47 @@
                     </view>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
+                    <connections>
+                        <outlet property="detectionLabel" destination="FM9-T8-OPD" id="11n-5K-48v"/>
+                        <outlet property="falconView" destination="slf-0Q-Bbk" id="pEv-hW-7H6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="7kf-6b-gVr">
+                    <connections>
+                        <action selector="tapDetected:" destination="BYZ-38-t0r" id="7zf-FO-UW4"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <rotationGestureRecognizer id="Ouj-ga-CXG">
+                    <connections>
+                        <action selector="rotationDetected:" destination="BYZ-38-t0r" id="WBg-0f-Z8y"/>
+                    </connections>
+                </rotationGestureRecognizer>
+                <swipeGestureRecognizer direction="up" id="qjy-t8-yAe">
+                    <connections>
+                        <action selector="swipeUpDetected:" destination="BYZ-38-t0r" id="MyE-YI-2NJ"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="pOB-yN-c03">
+                    <connections>
+                        <action selector="swipeRightDetected:" destination="BYZ-38-t0r" id="WWu-dZ-g2N"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="hyQ-rN-CMa">
+                    <connections>
+                        <action selector="panDetected:" destination="BYZ-38-t0r" id="DzN-ct-72D"/>
+                    </connections>
+                </panGestureRecognizer>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="afq-ho-9ca">
+                    <connections>
+                        <action selector="longPressDetected:" destination="BYZ-38-t0r" id="95j-RN-zqJ"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <pinchGestureRecognizer id="Y3F-lH-Tcm">
+                    <connections>
+                        <action selector="pinchDetected:" destination="BYZ-38-t0r" id="6tv-A4-hg6"/>
+                    </connections>
+                </pinchGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="508" y="88"/>
         </scene>
