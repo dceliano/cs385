@@ -13,6 +13,10 @@ class ViewController: UIViewController, PresentedVCDelegate {
     
     @IBOutlet weak var statusLabel: UILabel!
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        (segue.destinationViewController as! SegueViewController).message = "From Root View"
+    }
+    
     @IBAction func doUnwind(seg: UIStoryboardSegue!){
         
     }
