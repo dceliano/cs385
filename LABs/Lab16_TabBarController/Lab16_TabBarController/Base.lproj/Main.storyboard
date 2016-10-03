@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="owf-Lk-u9y">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Scene 2-->
+        <scene sceneID="yMP-XP-iXO">
+            <objects>
+                <viewController id="s3g-u7-jbv" customClass="GenericViewController" customModule="Lab16_TabBarController" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ze3-rY-hZb"/>
+                        <viewControllerLayoutGuide type="bottom" id="sH6-qR-DvI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vew-ge-bKh">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Uz-1Y-CPs">
+                                <rect key="frame" x="138" y="281" width="42" height="30"/>
+                                <state key="normal" title="Count"/>
+                                <connections>
+                                    <action selector="incrementSecondCount:" destination="s3g-u7-jbv" eventType="touchUpInside" id="Huw-bC-hZ7"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4H6-G2-L8e">
+                                <rect key="frame" x="139" y="158" width="122" height="86"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Scene 2" image="Two.png" id="iGm-MJ-rht"/>
+                    <connections>
+                        <outlet property="barItem" destination="iGm-MJ-rht" id="sau-5i-pNO"/>
+                        <outlet property="outputLabel" destination="4H6-G2-L8e" id="xPc-TB-vjy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DaB-qs-Mqg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1012" y="742"/>
+        </scene>
+        <!--Scene 3-->
+        <scene sceneID="8Qm-JH-C85">
+            <objects>
+                <viewController id="rgZ-J9-dms" customClass="GenericViewController" customModule="Lab16_TabBarController" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="MDn-nL-neD"/>
+                        <viewControllerLayoutGuide type="bottom" id="gRT-bM-nIv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CKV-Ov-2kl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JCg-Zb-xUF">
+                                <rect key="frame" x="139" y="166" width="100" height="96"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KGz-gh-XLd">
+                                <rect key="frame" x="137" y="289" width="42" height="30"/>
+                                <state key="normal" title="Count"/>
+                                <connections>
+                                    <action selector="incrementThirdCount:" destination="rgZ-J9-dms" eventType="touchUpInside" id="Oeh-UQ-c9e"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Scene 3" image="Three.png" id="cQb-Jb-5rZ"/>
+                    <connections>
+                        <outlet property="barItem" destination="cQb-Jb-5rZ" id="HZZ-qK-r7I"/>
+                        <outlet property="outputLabel" destination="JCg-Zb-xUF" id="udp-OH-cny"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xcd-wI-UhH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1007" y="1367"/>
+        </scene>
+        <!--Scene 1-->
+        <scene sceneID="4JD-MW-jLh">
+            <objects>
+                <viewController id="fgc-p8-vSo" customClass="GenericViewController" customModule="Lab16_TabBarController" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gpM-Ea-vBu"/>
+                        <viewControllerLayoutGuide type="bottom" id="rx4-m1-jhf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ve4-hE-O6x">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z73-8i-rFO">
+                                <rect key="frame" x="140" y="172" width="110" height="96"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jtc-Uu-wHm">
+                                <rect key="frame" x="138" y="295" width="42" height="30"/>
+                                <state key="normal" title="Count"/>
+                                <connections>
+                                    <action selector="incrementFirstCount:" destination="fgc-p8-vSo" eventType="touchUpInside" id="adg-Xk-q1X"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Scene 1" image="One.png" id="dCm-Vo-fYg"/>
+                    <connections>
+                        <outlet property="barItem" destination="dCm-Vo-fYg" id="pyv-aA-wzQ"/>
+                        <outlet property="outputLabel" destination="z73-8i-rFO" id="lst-wg-na4"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rTN-MX-bOX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1012" y="81"/>
+        </scene>
+        <!--Counting Tab Bar Controller-->
+        <scene sceneID="f1K-1X-aw9">
+            <objects>
+                <tabBarController id="owf-Lk-u9y" userLabel="Counting Tab Bar Controller" customClass="CountingTabBarController" customModule="Lab16_TabBarController" customModuleProvider="target" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="CaX-Zd-iCx">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="fgc-p8-vSo" kind="relationship" relationship="viewControllers" id="PIR-F8-gyw"/>
+                        <segue destination="s3g-u7-jbv" kind="relationship" relationship="viewControllers" id="9Le-IX-DR3"/>
+                        <segue destination="rgZ-J9-dms" kind="relationship" relationship="viewControllers" id="WKU-ms-kep"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SGt-hH-p9J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="438" y="416"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="One.png" width="32" height="32"/>
+        <image name="Three.png" width="32" height="32"/>
+        <image name="Two.png" width="32" height="32"/>
+    </resources>
+</document>
