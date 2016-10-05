@@ -7,6 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		70553C8D1DA599F90001D46E /* american_cemetery_normandy.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70553C751DA599F90001D46E /* american_cemetery_normandy.jpg */; };
+		70553C8E1DA599F90001D46E /* big_ben.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70553C761DA599F90001D46E /* big_ben.jpg */; };
+		70553C8F1DA599F90001D46E /* blue_domed_church.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70553C771DA599F90001D46E /* blue_domed_church.jpg */; };
+		70553C901DA599F90001D46E /* christ_the_redeemer.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70553C781DA599F90001D46E /* christ_the_redeemer.jpg */; };
+		70553C911DA599F90001D46E /* colloseum.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 70553C791DA599F90001D46E /* colloseum.jpeg */; };
+		70553C921DA599F90001D46E /* eiffel_tower.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70553C7A1DA599F90001D46E /* eiffel_tower.jpg */; };
+		70553C931DA599F90001D46E /* golden_gate_bridge.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70553C7B1DA599F90001D46E /* golden_gate_bridge.jpg */; };
+		70553C941DA599F90001D46E /* grand_canyon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70553C7C1DA599F90001D46E /* grand_canyon.jpg */; };
+		70553C951DA599F90001D46E /* great_mosque.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70553C7D1DA599F90001D46E /* great_mosque.jpg */; };
+		70553C961DA599F90001D46E /* great_wall.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70553C7E1DA599F90001D46E /* great_wall.jpg */; };
+		70553C971DA599F90001D46E /* loch_ness_scotland.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70553C7F1DA599F90001D46E /* loch_ness_scotland.jpg */; };
+		70553C981DA599F90001D46E /* machu_piccu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70553C801DA599F90001D46E /* machu_piccu.jpg */; };
+		70553C991DA599F90001D46E /* mount_rushmore.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70553C811DA599F90001D46E /* mount_rushmore.jpg */; };
+		70553C9A1DA599F90001D46E /* potala_palace.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70553C821DA599F90001D46E /* potala_palace.jpg */; };
+		70553C9B1DA599F90001D46E /* pyramids_of_giza.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70553C831DA599F90001D46E /* pyramids_of_giza.jpg */; };
+		70553C9C1DA599F90001D46E /* st_basils_moscow.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70553C841DA599F90001D46E /* st_basils_moscow.jpg */; };
+		70553C9D1DA599F90001D46E /* statue_of_liberty.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70553C851DA599F90001D46E /* statue_of_liberty.jpg */; };
+		70553C9E1DA599F90001D46E /* stonehenge.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70553C861DA599F90001D46E /* stonehenge.jpg */; };
+		70553C9F1DA599F90001D46E /* sydney_opera_house.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70553C871DA599F90001D46E /* sydney_opera_house.jpg */; };
+		70553CA01DA599F90001D46E /* taj_majal.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 70553C881DA599F90001D46E /* taj_majal.jpeg */; };
+		70553CA11DA599F90001D46E /* teotihuacan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70553C891DA599F90001D46E /* teotihuacan.jpg */; };
+		70553CA21DA599F90001D46E /* tower_of_pisa.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70553C8A1DA599F90001D46E /* tower_of_pisa.jpg */; };
+		70553CA31DA599F90001D46E /* wailing-wall.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70553C8B1DA599F90001D46E /* wailing-wall.jpg */; };
+		70553CA41DA599F90001D46E /* waterfalls-angel-falls.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 70553C8C1DA599F90001D46E /* waterfalls-angel-falls.jpg */; };
 		F277EFB01DA1D7580055741E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F277EFAF1DA1D7580055741E /* AppDelegate.swift */; };
 		F277EFB21DA1D7580055741E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F277EFB11DA1D7580055741E /* ViewController.swift */; };
 		F277EFB51DA1D7580055741E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F277EFB31DA1D7580055741E /* Main.storyboard */; };
@@ -34,6 +58,30 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		70553C751DA599F90001D46E /* american_cemetery_normandy.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = american_cemetery_normandy.jpg; sourceTree = "<group>"; };
+		70553C761DA599F90001D46E /* big_ben.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = big_ben.jpg; sourceTree = "<group>"; };
+		70553C771DA599F90001D46E /* blue_domed_church.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = blue_domed_church.jpg; sourceTree = "<group>"; };
+		70553C781DA599F90001D46E /* christ_the_redeemer.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = christ_the_redeemer.jpg; sourceTree = "<group>"; };
+		70553C791DA599F90001D46E /* colloseum.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = colloseum.jpeg; sourceTree = "<group>"; };
+		70553C7A1DA599F90001D46E /* eiffel_tower.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = eiffel_tower.jpg; sourceTree = "<group>"; };
+		70553C7B1DA599F90001D46E /* golden_gate_bridge.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = golden_gate_bridge.jpg; sourceTree = "<group>"; };
+		70553C7C1DA599F90001D46E /* grand_canyon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = grand_canyon.jpg; sourceTree = "<group>"; };
+		70553C7D1DA599F90001D46E /* great_mosque.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = great_mosque.jpg; sourceTree = "<group>"; };
+		70553C7E1DA599F90001D46E /* great_wall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = great_wall.jpg; sourceTree = "<group>"; };
+		70553C7F1DA599F90001D46E /* loch_ness_scotland.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = loch_ness_scotland.jpg; sourceTree = "<group>"; };
+		70553C801DA599F90001D46E /* machu_piccu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = machu_piccu.jpg; sourceTree = "<group>"; };
+		70553C811DA599F90001D46E /* mount_rushmore.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = mount_rushmore.jpg; sourceTree = "<group>"; };
+		70553C821DA599F90001D46E /* potala_palace.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = potala_palace.jpg; sourceTree = "<group>"; };
+		70553C831DA599F90001D46E /* pyramids_of_giza.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = pyramids_of_giza.jpg; sourceTree = "<group>"; };
+		70553C841DA599F90001D46E /* st_basils_moscow.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = st_basils_moscow.jpg; sourceTree = "<group>"; };
+		70553C851DA599F90001D46E /* statue_of_liberty.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = statue_of_liberty.jpg; sourceTree = "<group>"; };
+		70553C861DA599F90001D46E /* stonehenge.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = stonehenge.jpg; sourceTree = "<group>"; };
+		70553C871DA599F90001D46E /* sydney_opera_house.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = sydney_opera_house.jpg; sourceTree = "<group>"; };
+		70553C881DA599F90001D46E /* taj_majal.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = taj_majal.jpeg; sourceTree = "<group>"; };
+		70553C891DA599F90001D46E /* teotihuacan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = teotihuacan.jpg; sourceTree = "<group>"; };
+		70553C8A1DA599F90001D46E /* tower_of_pisa.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tower_of_pisa.jpg; sourceTree = "<group>"; };
+		70553C8B1DA599F90001D46E /* wailing-wall.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "wailing-wall.jpg"; sourceTree = "<group>"; };
+		70553C8C1DA599F90001D46E /* waterfalls-angel-falls.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "waterfalls-angel-falls.jpg"; sourceTree = "<group>"; };
 		F277EFAC1DA1D7580055741E /* Pex2_QuizGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pex2_QuizGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F277EFAF1DA1D7580055741E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F277EFB11DA1D7580055741E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +125,30 @@
 		F277EFA31DA1D7580055741E = {
 			isa = PBXGroup;
 			children = (
+				70553C751DA599F90001D46E /* american_cemetery_normandy.jpg */,
+				70553C761DA599F90001D46E /* big_ben.jpg */,
+				70553C771DA599F90001D46E /* blue_domed_church.jpg */,
+				70553C781DA599F90001D46E /* christ_the_redeemer.jpg */,
+				70553C791DA599F90001D46E /* colloseum.jpeg */,
+				70553C7A1DA599F90001D46E /* eiffel_tower.jpg */,
+				70553C7B1DA599F90001D46E /* golden_gate_bridge.jpg */,
+				70553C7C1DA599F90001D46E /* grand_canyon.jpg */,
+				70553C7D1DA599F90001D46E /* great_mosque.jpg */,
+				70553C7E1DA599F90001D46E /* great_wall.jpg */,
+				70553C7F1DA599F90001D46E /* loch_ness_scotland.jpg */,
+				70553C801DA599F90001D46E /* machu_piccu.jpg */,
+				70553C811DA599F90001D46E /* mount_rushmore.jpg */,
+				70553C821DA599F90001D46E /* potala_palace.jpg */,
+				70553C831DA599F90001D46E /* pyramids_of_giza.jpg */,
+				70553C841DA599F90001D46E /* st_basils_moscow.jpg */,
+				70553C851DA599F90001D46E /* statue_of_liberty.jpg */,
+				70553C861DA599F90001D46E /* stonehenge.jpg */,
+				70553C871DA599F90001D46E /* sydney_opera_house.jpg */,
+				70553C881DA599F90001D46E /* taj_majal.jpeg */,
+				70553C891DA599F90001D46E /* teotihuacan.jpg */,
+				70553C8A1DA599F90001D46E /* tower_of_pisa.jpg */,
+				70553C8B1DA599F90001D46E /* wailing-wall.jpg */,
+				70553C8C1DA599F90001D46E /* waterfalls-angel-falls.jpg */,
 				F277EFAE1DA1D7580055741E /* Pex2_QuizGame */,
 				F277EFC31DA1D7580055741E /* Pex2_QuizGameTests */,
 				F277EFCE1DA1D7580055741E /* Pex2_QuizGameUITests */,
@@ -229,9 +301,33 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				70553CA41DA599F90001D46E /* waterfalls-angel-falls.jpg in Resources */,
+				70553C9B1DA599F90001D46E /* pyramids_of_giza.jpg in Resources */,
+				70553C8F1DA599F90001D46E /* blue_domed_church.jpg in Resources */,
 				F277EFBA1DA1D7580055741E /* LaunchScreen.storyboard in Resources */,
+				70553CA11DA599F90001D46E /* teotihuacan.jpg in Resources */,
+				70553C9C1DA599F90001D46E /* st_basils_moscow.jpg in Resources */,
+				70553C931DA599F90001D46E /* golden_gate_bridge.jpg in Resources */,
+				70553C901DA599F90001D46E /* christ_the_redeemer.jpg in Resources */,
+				70553CA21DA599F90001D46E /* tower_of_pisa.jpg in Resources */,
+				70553C8D1DA599F90001D46E /* american_cemetery_normandy.jpg in Resources */,
+				70553C9E1DA599F90001D46E /* stonehenge.jpg in Resources */,
+				70553C941DA599F90001D46E /* grand_canyon.jpg in Resources */,
+				70553C9D1DA599F90001D46E /* statue_of_liberty.jpg in Resources */,
+				70553C971DA599F90001D46E /* loch_ness_scotland.jpg in Resources */,
+				70553C921DA599F90001D46E /* eiffel_tower.jpg in Resources */,
+				70553C991DA599F90001D46E /* mount_rushmore.jpg in Resources */,
+				70553C981DA599F90001D46E /* machu_piccu.jpg in Resources */,
+				70553C951DA599F90001D46E /* great_mosque.jpg in Resources */,
+				70553C8E1DA599F90001D46E /* big_ben.jpg in Resources */,
+				70553C9F1DA599F90001D46E /* sydney_opera_house.jpg in Resources */,
+				70553C911DA599F90001D46E /* colloseum.jpeg in Resources */,
 				F277EFB71DA1D7580055741E /* Assets.xcassets in Resources */,
+				70553CA01DA599F90001D46E /* taj_majal.jpeg in Resources */,
+				70553C9A1DA599F90001D46E /* potala_palace.jpg in Resources */,
 				F277EFB51DA1D7580055741E /* Main.storyboard in Resources */,
+				70553C961DA599F90001D46E /* great_wall.jpg in Resources */,
+				70553CA31DA599F90001D46E /* wailing-wall.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +578,7 @@
 				F277EFD61DA1D7580055741E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F277EFD71DA1D7580055741E /* Build configuration list for PBXNativeTarget "Pex2_QuizGameTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +587,7 @@
 				F277EFD91DA1D7580055741E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F277EFDA1DA1D7580055741E /* Build configuration list for PBXNativeTarget "Pex2_QuizGameUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +596,7 @@
 				F277EFDC1DA1D7580055741E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
