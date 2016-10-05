@@ -12,6 +12,7 @@
 		70553C671DA591440001D46E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70553C651DA591440001D46E /* Main.storyboard */; };
 		70553C691DA591440001D46E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70553C681DA591440001D46E /* Assets.xcassets */; };
 		70553C6C1DA591440001D46E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70553C6A1DA591440001D46E /* LaunchScreen.storyboard */; };
+		70553C741DA592540001D46E /* image.png in Resources */ = {isa = PBXBuildFile; fileRef = 70553C731DA592540001D46E /* image.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		70553C681DA591440001D46E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		70553C6B1DA591440001D46E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		70553C6D1DA591440001D46E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		70553C731DA592540001D46E /* image.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				70553C611DA591440001D46E /* AppDelegate.swift */,
 				70553C631DA591440001D46E /* ViewController.swift */,
 				70553C651DA591440001D46E /* Main.storyboard */,
+				70553C731DA592540001D46E /* image.png */,
 				70553C681DA591440001D46E /* Assets.xcassets */,
 				70553C6A1DA591440001D46E /* LaunchScreen.storyboard */,
 				70553C6D1DA591440001D46E /* Info.plist */,
@@ -125,6 +128,7 @@
 				70553C6C1DA591440001D46E /* LaunchScreen.storyboard in Resources */,
 				70553C691DA591440001D46E /* Assets.xcassets in Resources */,
 				70553C671DA591440001D46E /* Main.storyboard in Resources */,
+				70553C741DA592540001D46E /* image.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +257,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "dtc.Lab19-IB-ScrollView";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -264,6 +269,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "dtc.Lab19-IB-ScrollView";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
