@@ -24,4 +24,10 @@ class MovieTableViewController: UITableViewController {
         cell.movie = myMovies.data[indexPath.row] as MovieModel.Movie
         return cell
     }
+    
+    @IBAction func cancelToMovieViewController(segue:UIStoryboardSegue){
+    }
+    @IBAction func saveMovieDetail(segue:UIStoryboardSegue){
+    
+    }
 }

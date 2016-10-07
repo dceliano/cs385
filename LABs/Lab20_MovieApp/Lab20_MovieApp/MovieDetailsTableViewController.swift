@@ -9,6 +9,9 @@
 import UIKit
 
 class MovieDetailsTableViewController: UITableViewController {
-    
+    @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var directorTextField: UITextField!
+    @IBOutlet weak var yearTextField: UITextField!
+    @IBOutlet weak var studioTextField: UITextField!
     
 }
