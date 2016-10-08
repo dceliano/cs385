@@ -25,7 +25,7 @@
         <!--Quiz View-->
         <scene sceneID="Eiw-e0-a0W">
             <objects>
-                <viewController id="VAA-vL-jqG" userLabel="Quiz View" sceneMemberID="viewController">
+                <viewController id="VAA-vL-jqG" userLabel="Quiz View" customClass="QuizViewController" customModule="Pex2_QuizGame" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="va0-OC-gCR"/>
                         <viewControllerLayoutGuide type="bottom" id="shJ-9v-3L9"/>
@@ -43,7 +43,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please select the country where this landmark is located." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZQC-g7-55W">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please select the country where the landmark is located." lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZQC-g7-55W">
                                 <rect key="frame" x="18" y="546" width="337" height="52"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -58,25 +58,25 @@
                                 </segments>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="wMG-c1-MOJ">
-                                <rect key="frame" x="19" y="426" width="335" height="29"/>
+                                <rect key="frame" x="19" y="428" width="335" height="29"/>
                                 <segments>
-                                    <segment title="0,0"/>
-                                    <segment title="0,1"/>
-                                    <segment title="0,2"/>
+                                    <segment title="1,0"/>
+                                    <segment title="1,1"/>
+                                    <segment title="1,2"/>
                                 </segments>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bM0-n8-0J0">
                                 <rect key="frame" x="19" y="483" width="335" height="29"/>
                                 <segments>
-                                    <segment title="0,0"/>
-                                    <segment title="0,1"/>
-                                    <segment title="0,2"/>
+                                    <segment title="2,0"/>
+                                    <segment title="2,1"/>
+                                    <segment title="2,2"/>
                                 </segments>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7X-4F-l06">
                                 <rect key="frame" x="333" y="630" width="22" height="22"/>
                                 <connections>
-                                    <segue destination="NHC-oQ-EzK" kind="show" id="46l-tn-bZA"/>
+                                    <segue destination="NHC-oQ-EzK" kind="show" identifier="showSettings" id="46l-tn-bZA"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -92,7 +92,7 @@
         <!--Settings View-->
         <scene sceneID="3a4-pn-2D7">
             <objects>
-                <viewController id="NHC-oQ-EzK" userLabel="Settings View" sceneMemberID="viewController">
+                <viewController id="NHC-oQ-EzK" userLabel="Settings View" customClass="SettingsViewController" customModule="Pex2_QuizGame" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2xZ-ca-jYc"/>
                         <viewControllerLayoutGuide type="bottom" id="sCL-bK-t1n"/>
@@ -179,10 +179,25 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Quiz Settings" id="YGH-BQ-7mu">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="Ukg-NS-q8i"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="Ukg-NS-q8i">
+                            <connections>
+                                <segue destination="E05-Ip-uk4" kind="unwind" unwindAction="unwindToQuiz:" id="zal-bA-I1f"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="africaSwitch" destination="Al8-Fl-z2i" id="vWw-eC-sD9"/>
+                        <outlet property="asiaSwitch" destination="l0p-Kj-JM3" id="Gd4-LC-T52"/>
+                        <outlet property="eeuSwitch" destination="4OH-EH-HMR" id="e5i-AT-qB5"/>
+                        <outlet property="naSwitch" destination="uGt-Ed-N4Q" id="Cm0-f0-Zho"/>
+                        <outlet property="numChoicesBar" destination="F7W-91-IFI" id="COU-OB-B2Q"/>
+                        <outlet property="saSwitch" destination="4Bl-BC-dZ4" id="L3J-tu-rP3"/>
+                        <outlet property="saveButton" destination="Ukg-NS-q8i" id="SOu-eV-NhE"/>
+                        <outlet property="weuSwitch" destination="dsf-DO-NL7" id="dfz-8E-KOG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kru-oA-Nmg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="E05-Ip-uk4" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="490.5" y="261.5"/>
         </scene>
