@@ -81,6 +81,7 @@
                                     <outlet property="directorLabel" destination="AnZ-Br-33f" id="CyR-JZ-i0A"/>
                                     <outlet property="ratingImageView" destination="dB7-iI-5II" id="vwi-JM-UTg"/>
                                     <outlet property="titleLabel" destination="FKe-Ap-6rj" id="VpP-bH-JVW"/>
+                                    <segue destination="zlJ-zW-c0F" kind="presentation" identifier="EditSegue" id="fPj-OH-vak"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -92,7 +93,7 @@
                     <navigationItem key="navigationItem" title="Movies" id="Rq9-0F-77Z">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="5fs-Ap-qnC">
                             <connections>
-                                <segue destination="zlJ-zW-c0F" kind="presentation" id="oYp-6A-dfL"/>
+                                <segue destination="zlJ-zW-c0F" kind="presentation" identifier="AddSegue" id="oYp-6A-dfL"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -105,7 +106,7 @@
         <scene sceneID="tst-zi-s9d">
             <objects>
                 <tableViewController id="n5J-O3-L4V" customClass="MovieDetailsTableViewController" customModule="Lab20_MovieApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="gAq-eZ-tzl">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="gAq-eZ-tzl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -209,8 +210,14 @@
                                                     <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GEm-V1-9lT">
+                                                    <rect key="frame" x="72" y="6" width="109" height="32"/>
+                                                </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="GG3-SZ-nAF" kind="show" id="PZL-sH-FvF"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -228,12 +235,13 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="mSv-WV-mIP">
                             <connections>
-                                <segue destination="BW3-f4-woA" kind="unwind" unwindAction="saveMovieDetail:" id="Ytz-WE-1do"/>
+                                <segue destination="BW3-f4-woA" kind="unwind" identifier="SaveMovieDetail" unwindAction="saveMovieDetail:" id="Ytz-WE-1do"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="directorTextField" destination="YRM-2l-IlV" id="8Qz-Rs-N5M"/>
+                        <outlet property="imageView" destination="GEm-V1-9lT" id="dgc-nH-v0i"/>
                         <outlet property="studioTextField" destination="2uM-hZ-rhQ" id="RVv-xv-MOw"/>
                         <outlet property="titleTextField" destination="3D6-oE-oXY" id="1u5-Er-Vth"/>
                         <outlet property="yearTextField" destination="O0q-uw-X4m" id="LB9-ul-vvZ"/>
@@ -261,30 +269,45 @@
                                 <state key="normal" image="3Stars">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="a7y-7e-ige" kind="unwind" unwindAction="starSelected:" id="SpK-ab-EpO"/>
+                                </connections>
                             </button>
                             <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yu6-Mh-BSb">
                                 <rect key="frame" x="53" y="280" width="215" height="38"/>
                                 <state key="normal" image="4Stars">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="a7y-7e-ige" kind="unwind" unwindAction="starSelected:" id="JvZ-xr-m4R"/>
+                                </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yjI-en-cp8">
                                 <rect key="frame" x="114" y="142" width="93" height="38"/>
                                 <state key="normal" image="1Stars">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="a7y-7e-ige" kind="unwind" unwindAction="starSelected:" id="cXe-Ph-HAS"/>
+                                </connections>
                             </button>
                             <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PFg-3q-M23">
                                 <rect key="frame" x="53" y="326" width="215" height="38"/>
                                 <state key="normal" image="5Stars">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="a7y-7e-ige" kind="unwind" unwindAction="starSelected:" id="hS9-Th-jF4"/>
+                                </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i8M-Am-xMN">
                                 <rect key="frame" x="94" y="188" width="133" height="38"/>
                                 <state key="normal" image="2Stars">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="a7y-7e-ige" kind="unwind" unwindAction="starSelected:" id="eLV-Zq-gV2"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -292,8 +315,9 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YuX-iG-JTT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="a7y-7e-ige" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1044" y="662"/>
+            <point key="canvasLocation" x="2539" y="42"/>
         </scene>
         <!--Movies-->
         <scene sceneID="K5z-xd-E5e">
@@ -343,4 +367,7 @@
         <image name="drama" width="30" height="30"/>
         <image name="film-clap-board" width="29" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="oYp-6A-dfL"/>
+    </inferredMetricsTieBreakers>
 </document>

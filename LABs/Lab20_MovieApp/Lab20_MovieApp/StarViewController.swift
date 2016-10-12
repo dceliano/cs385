@@ -9,5 +9,9 @@
 import UIKit
 
 class StarViewController: UIViewController {
-
+    var rating = 1 //temporary
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        self.rating = sender!.tag
+    }
 }
