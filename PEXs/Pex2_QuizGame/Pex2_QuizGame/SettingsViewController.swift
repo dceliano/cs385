@@ -32,12 +32,12 @@ class SettingsViewController: UIViewController{
         //This is where we read the values on the switches and the UI Segmented Control
         newSettings.num_possibilities = ((numChoicesBar.selectedSegmentIndex + 1) * 3) //Index 0 = 3, Index 1 = 6, Index 2 = 9
         // read the switches below
-        newSettings.continents["africa"] = africaSwitch.on
-        newSettings.continents["asia"] = asiaSwitch.on
-        newSettings.continents["eeu"] = eeuSwitch.on
-        newSettings.continents["na"] = naSwitch.on
-        newSettings.continents["sa"] = saSwitch.on
-        newSettings.continents["weu"] = weuSwitch.on
+        newSettings.continents[0].1 = africaSwitch.on
+        newSettings.continents[1].1 = asiaSwitch.on
+        newSettings.continents[2].1 = eeuSwitch.on
+        newSettings.continents[3].1 = naSwitch.on
+        newSettings.continents[4].1 = saSwitch.on
+        newSettings.continents[5].1 = weuSwitch.on
         return newSettings
     }
     
@@ -45,12 +45,12 @@ class SettingsViewController: UIViewController{
         //This method is executed in the 'prepareForSegue(_:sender:)' method from the QuizViewController. It sets up all the attributes of the switches and the UI Segmented Control based on the Old Settings.
         numChoicesBar.selectedSegmentIndex = (settings.num_possibilities / 3) - 1 //backwards equation from saveQuizSettings() method
         // update the switches below
-        africaSwitch.on = settings.continents["africa"]!
-        asiaSwitch.on = settings.continents["asia"]!
-        eeuSwitch.on = settings.continents["eeu"]!
-        naSwitch.on = settings.continents["na"]!
-        saSwitch.on = settings.continents["sa"]!
-        weuSwitch.on = settings.continents["weu"]!
+        africaSwitch.on = settings.continents[0].1
+        asiaSwitch.on = settings.continents[1].1
+        eeuSwitch.on = settings.continents[2].1
+        naSwitch.on = settings.continents[3].1
+        saSwitch.on = settings.continents[4].1
+        weuSwitch.on = settings.continents[5].1
     }
     
     override func viewDidLoad() {

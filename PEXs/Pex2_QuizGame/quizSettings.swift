@@ -9,16 +9,16 @@
 import Foundation
 
 struct quizSettings{
-    var continents : [String: Bool]
+    var continents : [(String, Bool)]
     var num_possibilities : Int
     init(){
     continents = [ //the bool portion represents if we will use or not use that continent
-        "africa" : true,
-        "asia" : true,
-        "eeu": true,
-        "na": true,
-        "sa": true,
-        "weu": true
+        ("africa" , true),
+        ("asia", true),
+        ("eeu", true),
+        ("na", true),
+        ("sa", true),
+        ("weu", true)
     ]
     num_possibilities = 3
     }
