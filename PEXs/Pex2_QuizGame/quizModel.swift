@@ -14,5 +14,11 @@ struct quizModel{
     var num_correct = 0 //initialize all of these values to 0
     var num_questions = 0
     var num_guesses = 0
+    var quizToDisplay = quizViewSettings()
     
+    mutating func getNewQuestion() -> quizViewSettings{
+        self.quizToDisplay.image_name = "africa_Egypt.png"
+        self.quizToDisplay.choices = ["Africa", "North America", "Asia"]
+        return quizToDisplay
+    }
 }

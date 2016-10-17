@@ -37,6 +37,7 @@
 		F21B72D91DB4674D00750209 /* weu_Italy.png in Resources */ = {isa = PBXBuildFile; fileRef = F21B72BB1DB4674D00750209 /* weu_Italy.png */; };
 		F21B72DA1DB4674D00750209 /* weu_Scotland.png in Resources */ = {isa = PBXBuildFile; fileRef = F21B72BC1DB4674D00750209 /* weu_Scotland.png */; };
 		F21B72DB1DB4674D00750209 /* weu_Spain.png in Resources */ = {isa = PBXBuildFile; fileRef = F21B72BD1DB4674D00750209 /* weu_Spain.png */; };
+		F21B72DF1DB46F4800750209 /* quizViewSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F21B72DE1DB46F4800750209 /* quizViewSettings.swift */; };
 		F229916C1DA897CA00E938ED /* quizModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F229916B1DA897CA00E938ED /* quizModel.swift */; };
 		F229916E1DA8A6F200E938ED /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F229916D1DA8A6F200E938ED /* QuizViewController.swift */; };
 		F22991701DA8A70200E938ED /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F229916F1DA8A70200E938ED /* SettingsViewController.swift */; };
@@ -97,6 +98,7 @@
 		F21B72BB1DB4674D00750209 /* weu_Italy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weu_Italy.png; sourceTree = "<group>"; };
 		F21B72BC1DB4674D00750209 /* weu_Scotland.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weu_Scotland.png; sourceTree = "<group>"; };
 		F21B72BD1DB4674D00750209 /* weu_Spain.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weu_Spain.png; sourceTree = "<group>"; };
+		F21B72DE1DB46F4800750209 /* quizViewSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = quizViewSettings.swift; sourceTree = SOURCE_ROOT; };
 		F229916B1DA897CA00E938ED /* quizModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = quizModel.swift; path = ../quizModel.swift; sourceTree = "<group>"; };
 		F229916D1DA8A6F200E938ED /* QuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		F229916F1DA8A70200E938ED /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 			children = (
 				F229916B1DA897CA00E938ED /* quizModel.swift */,
 				F2B8F59E1DA970AE00AD6085 /* quizSettings.swift */,
+				F21B72DE1DB46F4800750209 /* quizViewSettings.swift */,
 				F277EFAF1DA1D7580055741E /* AppDelegate.swift */,
 				F229916D1DA8A6F200E938ED /* QuizViewController.swift */,
 				F229916F1DA8A70200E938ED /* SettingsViewController.swift */,
@@ -393,6 +396,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F21B72DF1DB46F4800750209 /* quizViewSettings.swift in Sources */,
 				F229916C1DA897CA00E938ED /* quizModel.swift in Sources */,
 				F277EFB01DA1D7580055741E /* AppDelegate.swift in Sources */,
 				F22991701DA8A70200E938ED /* SettingsViewController.swift in Sources */,

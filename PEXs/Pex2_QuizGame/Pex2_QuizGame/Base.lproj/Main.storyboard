@@ -84,6 +84,12 @@
                     </view>
                     <navigationItem key="navigationItem" title="Landmark Quiz" id="C4M-2w-rKa"/>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="bottomBar" destination="bM0-n8-0J0" id="OBn-VX-A9t"/>
+                        <outlet property="imageView" destination="TQt-pz-Dgo" id="YVH-cO-nNJ"/>
+                        <outlet property="middleBar" destination="wMG-c1-MOJ" id="EMv-ej-BwY"/>
+                        <outlet property="topBar" destination="H0O-TI-QPM" id="MAt-Zb-0K2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fEv-kp-Q7k" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
