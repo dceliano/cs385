@@ -21,6 +21,7 @@ struct quizModel{
     var imageArray : [(String,String,String)] = []
     var allFilesWithPath = NSBundle.mainBundle().URLsForResourcesWithExtension("png", subdirectory: nil, localization: nil)
     var image_index = 0 //this is updated whenever we make a new question
+    var correct_answer_index = 0
     
     mutating func loadImagesIntoArray(){
         for file in allFilesWithPath! {
@@ -51,13 +52,21 @@ struct quizModel{
     mutating func getAnswerPool(settings: quizSettings) -> quizViewSettings{
         //THIS IS ALL TEMPORARY BECAUSE IT DOESN'T USE THE CONTINENT CONSTRAINTS.
         self.questionToDisplay.image_name = imageArray[image_index].2
-        self.questionToDisplay.choices = [imageArray[image_index].1] //TEMPORARY: set the first image in the array to image #1
-        var used_indicies : Array<Int> = [image_index]
+        self.questionToDisplay.choices.removeAll()
+        correct_answer_index = Int(arc4random_uniform(UInt32(settings.num_possibilities))) //gives the index where the correct answer will be put, 0-8 inclusive
+        print(correct_answer_index)
+        var used_indicies : Array<Int> = []
         while(used_indicies.count != settings.num_possibilities){ //until the array is full
-            let new_index = Int(arc4random_uniform(30))
-            if(!used_indicies.contains(new_index)){
-                self.questionToDisplay.choices.append(imageArray[new_index].1)
-                used_indicies.append(new_index)
+            if(used_indicies.count == correct_answer_index){ //if this is the spot where we're supposed to put the answer
+                self.questionToDisplay.choices.append(imageArray[image_index].1)
+                used_indicies.append(image_index)
+            }
+            else{
+                let new_image_index = Int(arc4random_uniform(30))
+                if(!used_indicies.contains(new_image_index)){
+                    self.questionToDisplay.choices.append(imageArray[new_image_index].1)
+                    used_indicies.append(new_image_index)
+                }
             }
         }
         return questionToDisplay
