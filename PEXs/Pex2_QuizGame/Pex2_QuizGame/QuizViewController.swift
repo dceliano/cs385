@@ -19,25 +19,30 @@ class QuizViewController: UIViewController{
     @IBOutlet weak var middleBar: UISegmentedControl!
     @IBOutlet weak var bottomBar: UISegmentedControl!
     @IBAction func topBarPressed(sender: AnyObject) {
-        barPressed(0, offset: topBar.selectedSegmentIndex)
+        let done = barPressed(0, offset: topBar.selectedSegmentIndex)
+        if(!done){ topBar.setEnabled(false, forSegmentAtIndex: topBar.selectedSegmentIndex) }
     }
     
     @IBAction func middleBarPressed(sender: AnyObject) {
-        barPressed(3, offset: middleBar.selectedSegmentIndex)
+        let done = barPressed(3, offset: middleBar.selectedSegmentIndex)
+        if(!done){ middleBar.setEnabled(false, forSegmentAtIndex: middleBar.selectedSegmentIndex) }
     }
     @IBAction func bottomBarPressed(sender: AnyObject) {
-        barPressed(6, offset: bottomBar.selectedSegmentIndex)
+        let done = barPressed(6, offset: bottomBar.selectedSegmentIndex)
+        if(!done){ bottomBar.setEnabled(false, forSegmentAtIndex: bottomBar.selectedSegmentIndex) }
     }
-    func barPressed(barStartIndex: Int, offset: Int){
+    func barPressed(barStartIndex: Int, offset: Int) -> Bool{ //returns if the game is over or not
         guess_correct = self.myModel.makeGuess(barStartIndex + offset)
         if(guess_correct){
             statusLabel.text = "Correct!"
             CATransaction.flush()
             sleep(1)
             self.getNewQuestion()
+            return true
         }
         else{
             statusLabel.text = "You are wrong. Try again."
+            return false
         }
     }
     
@@ -45,6 +50,7 @@ class QuizViewController: UIViewController{
         questionToDisplay = myModel.getNewQuestion(settings)
         imageView.image = UIImage(named: questionToDisplay.image_name)
         self.updateChoiceBars()
+        statusLabel.text = "Please select the country where the landmark is located."
     }
     
     func updateChoiceBars(){

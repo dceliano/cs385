@@ -57,7 +57,7 @@
                                     <segment title="2"/>
                                 </segments>
                                 <connections>
-                                    <action selector="topBarPressed:" destination="VAA-vL-jqG" eventType="touchUpInside" id="FTX-0m-7e8"/>
+                                    <action selector="topBarPressed:" destination="VAA-vL-jqG" eventType="valueChanged" id="a6z-6h-4zH"/>
                                 </connections>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="wMG-c1-MOJ">
@@ -68,7 +68,7 @@
                                     <segment title="5"/>
                                 </segments>
                                 <connections>
-                                    <action selector="middleBarPressed:" destination="VAA-vL-jqG" eventType="touchUpInside" id="6aZ-N5-CpG"/>
+                                    <action selector="middleBarPressed:" destination="VAA-vL-jqG" eventType="valueChanged" id="vRm-Hy-hih"/>
                                 </connections>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bM0-n8-0J0">
@@ -79,7 +79,7 @@
                                     <segment title="8"/>
                                 </segments>
                                 <connections>
-                                    <action selector="bottomBarPressed:" destination="VAA-vL-jqG" eventType="touchUpInside" id="o7k-v9-t8p"/>
+                                    <action selector="bottomBarPressed:" destination="VAA-vL-jqG" eventType="valueChanged" id="Vcd-8b-jRg"/>
                                 </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7X-4F-l06">
