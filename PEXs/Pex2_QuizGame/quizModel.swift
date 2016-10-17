@@ -97,25 +97,24 @@ struct quizModel{
                 constraintsChanged = true
             }
         }
-        if(!constraintsChanged){
+        if(constraintsChanged){
+            continent_pool = []
+            for i in 0...5{
+                if(settings.continents[i].1 == true){ //if the category is enabled
+                    continent_pool.append(settings.continents[i].0)
+                }
+            }
             oldSettings = settings
-            return false
+            return true
         }
         else{
             if(oldSettings.num_possibilities != settings.num_possibilities){
                 //then, we know stuff changed and we have to update the possible answers because the answer pool has changed
                 //update the continent pool, but reset it first
-                continent_pool = []
-                for i in 0...5{
-                    if(settings.continents[i].1 == true){ //if the category is enabled
-                        continent_pool.append(settings.continents[i].0)
-                    }
-                }
-                print(continent_pool)
                 getAnswerPool(settings)
             }
             oldSettings = settings
-            return true
+            return false
         }
     }
 }
