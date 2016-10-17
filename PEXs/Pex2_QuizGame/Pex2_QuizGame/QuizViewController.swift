@@ -13,6 +13,7 @@ class QuizViewController: UIViewController{
     var questionToDisplay = quizViewSettings()
     var myModel = quizModel()
     var guess_correct = false
+    @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var topBar: UISegmentedControl!
     @IBOutlet weak var middleBar: UISegmentedControl!
@@ -20,6 +21,7 @@ class QuizViewController: UIViewController{
     @IBAction func topBarPressed(sender: AnyObject) {
         barPressed(0, offset: topBar.selectedSegmentIndex)
     }
+    
     @IBAction func middleBarPressed(sender: AnyObject) {
         barPressed(3, offset: middleBar.selectedSegmentIndex)
     }
@@ -29,6 +31,9 @@ class QuizViewController: UIViewController{
     func barPressed(barStartIndex: Int, offset: Int){
         guess_correct = self.myModel.makeGuess(barStartIndex + offset)
         if(guess_correct){
+            statusLabel.text = "Correct!"
+            CATransaction.flush()
+            sleep(1)
             self.getNewQuestion()
         }
     }

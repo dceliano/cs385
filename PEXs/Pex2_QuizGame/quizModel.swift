@@ -11,19 +11,38 @@
 import Foundation
 
 struct quizModel{
-    var num_correct = 0 //initialize all of these values to 0
+    //initialize all of these values to 0
+    var num_correct = 0
     var num_questions = 0
     var num_guesses = 0
+    var num_pictures = 30 //initially, there are 30 pictures to choose from
     var questionToDisplay = quizViewSettings()
     var oldSettings = quizSettings()
     
+//    var pictureArray : [(String,String,String)] = []
+//    var allFilesWithPath = NSBundle.mainBundle().URLsForResourcesWithExtension("png", subdirectory: nil, localization: nil)
+//    for file in allFilesWithPath! {
+//        var fileName = file.lastPathComponent //the last component of the URL is the filename
+//        var componentsWithExtension = fileName!.componentsSeparatedByString(".")
+//        var components = componentsWithExtension[0].componentsSeparatedByString("_")
+//        pictureArray.append((components[0],components[1], fileName!)) //is filled with ([continent], [country name], [full filename])
+//    }
+    
+    
     mutating func getNewQuestion() -> quizViewSettings{
         //TEMPORARY
-        self.questionToDisplay.image_name = "africa_Egypt.png"
-        self.questionToDisplay.choices = ["Africa", "North America", "Asia"]
+        if(num_questions == 10){
+            //the game is over
+        }
+        else{
+            self.questionToDisplay.image_name = "africa_Egypt.png"
+            self.questionToDisplay.choices = ["Africa", "North America", "Asia"]
+            num_questions += 1
+        }
         return questionToDisplay
     }
     mutating func makeGuess(guessIndex: Int) -> Bool{
+        //TEMPORARY
         return false
     }
     mutating func getAnswerPool(settings: quizSettings){
