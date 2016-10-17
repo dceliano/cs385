@@ -36,6 +36,9 @@ class QuizViewController: UIViewController{
             sleep(1)
             self.getNewQuestion()
         }
+        else{
+            statusLabel.text = "You are wrong. Try again."
+        }
     }
     
     func getNewQuestion(){
