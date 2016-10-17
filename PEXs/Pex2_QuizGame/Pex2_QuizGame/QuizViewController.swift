@@ -86,7 +86,8 @@ class QuizViewController: UIViewController{
         if let sourceViewController = sender.sourceViewController as? SettingsViewController{
             //the sourceViewController is downcast to where the segue is coming from (i.e. an unwind segue from SettingsViewController)
             self.settings = sourceViewController.settings
-            self.myModel.updateAnswerPool(self.settings) //we will only update the answer pool if any of the settings changed
+            let get_new_question = self.myModel.updateAnswerPool(self.settings)
+            if(get_new_question){ self.getNewQuestion() }
             self.updateChoiceBars()
         }
     }

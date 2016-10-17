@@ -18,27 +18,43 @@ struct quizModel{
     var questionToDisplay = quizViewSettings()
     var oldSettings = quizSettings()
     var imageArray : [(String,String,String)] = []
+    var rawImageArray : [(String,String,String)] = []
     var allFilesWithPath = NSBundle.mainBundle().URLsForResourcesWithExtension("png", subdirectory: nil, localization: nil)
     var image_index = 0 //this is updated whenever we make a new question
     var continent_pool = ["africa","asia","eeu","na","sa","weu"]
     var correct_answer_index = 0
     var num_images_in_pool = 30
+    var used_image_indicies : Array<Int> = []
     
     mutating func loadImagesIntoArray(){
         for file in allFilesWithPath! {
             let fileName = file.lastPathComponent //the last component of the URL is the filename
             var componentsWithExtension = fileName!.componentsSeparatedByString(".")
             var components = componentsWithExtension[0].componentsSeparatedByString("_")
-            self.imageArray.append((components[0],components[1], fileName!)) //is filled with ([continent (lowercase letters)], [country name], [full filename])
+            self.rawImageArray.append((components[0],components[1], fileName!)) //is filled with ([continent (lowercase letters)], [country name], [full filename])
         }
     }
     
     mutating func getNewQuestion(settings: quizSettings) -> quizViewSettings{
+        //make the imageArray based on the rawImageArray, which uses the continent constraints
+        //it's probably inefficient to do this every time we make a new question, but it works for now
+        imageArray = []
+        for i in 0...29{
+            if(continent_pool.contains(rawImageArray[i].0)){ //constraints are implemented here - FIX THIS
+                imageArray.append(rawImageArray[i])
+            }
+        }
+        num_images_in_pool = imageArray.count
         if(num_questions == 10){
+            used_image_indicies = [] //reset the images which were used
             //the game is over
         }
         else{
             image_index = Int(arc4random_uniform(UInt32(num_images_in_pool))) //generates a number 0-X inclusive
+            while(used_image_indicies.contains(image_index)){ //if the image index appears in the list of used indicies, get a new one
+                image_index = Int(arc4random_uniform(UInt32(num_images_in_pool)))
+            }
+            used_image_indicies.append(image_index)
             questionToDisplay = getAnswerPool(settings)
             num_questions += 1
         }
@@ -46,17 +62,16 @@ struct quizModel{
     }
     
     mutating func makeGuess(guessIndex: Int) -> Bool{
-        if(guessIndex == correct_answer_index){ return true } //the guess was correct
+        if(guessIndex == correct_answer_index){ //the guess was correct, so restart the game
+            return true
+        }
         else { return false }
     }
     
     mutating func getAnswerPool(settings: quizSettings) -> quizViewSettings{
-        //THIS IS ALL TEMPORARY BECAUSE IT DOESN'T USE THE CONTINENT CONSTRAINTS.
-        num_images_in_pool = 5 * continent_pool.count
         self.questionToDisplay.image_name = imageArray[image_index].2
         self.questionToDisplay.choices.removeAll()
         correct_answer_index = Int(arc4random_uniform(UInt32(settings.num_possibilities))) //gives the index where the correct answer will be put, 0-8 inclusive
-        print(correct_answer_index)
         var used_indicies : Array<Int> = []
         while(used_indicies.count != settings.num_possibilities){ //until the array is full
             if(used_indicies.count == correct_answer_index){ //if this is the spot where we're supposed to put the answer
@@ -73,7 +88,8 @@ struct quizModel{
         }
         return questionToDisplay
     }
-    mutating func updateAnswerPool(settings: quizSettings){
+    mutating func updateAnswerPool(settings: quizSettings) -> Bool{
+        //returns whether a new question should be gathered or not
         var constraintsChanged = false
         //check if any constraints were changed in the loop below
         for i in 0...(settings.continents.count-1){
@@ -81,17 +97,25 @@ struct quizModel{
                 constraintsChanged = true
             }
         }
-        if(constraintsChanged || (oldSettings.num_possibilities != settings.num_possibilities)){
-            //then, we know stuff changed and we have to update the possible answers because the answer pool has changed
-            //update the continent pool, but reset it first
-            continent_pool = []
-            for i in 0...5{
-                if(settings.continents[i].1 == true){ //if the category is enabled
-                    continent_pool.append(settings.continents[i].0)
-                }
-            }
-            getAnswerPool(settings)
+        if(!constraintsChanged){
+            oldSettings = settings
+            return false
         }
-        oldSettings = settings
+        else{
+            if(oldSettings.num_possibilities != settings.num_possibilities){
+                //then, we know stuff changed and we have to update the possible answers because the answer pool has changed
+                //update the continent pool, but reset it first
+                continent_pool = []
+                for i in 0...5{
+                    if(settings.continents[i].1 == true){ //if the category is enabled
+                        continent_pool.append(settings.continents[i].0)
+                    }
+                }
+                print(continent_pool)
+                getAnswerPool(settings)
+            }
+            oldSettings = settings
+            return true
+        }
     }
 }
