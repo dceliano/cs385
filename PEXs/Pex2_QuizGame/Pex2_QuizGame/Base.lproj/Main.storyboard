@@ -52,26 +52,35 @@
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="H0O-TI-QPM">
                                 <rect key="frame" x="20" y="373" width="335" height="29"/>
                                 <segments>
-                                    <segment title="0,0"/>
-                                    <segment title="0,1"/>
-                                    <segment title="0,2"/>
+                                    <segment title="0"/>
+                                    <segment title="1"/>
+                                    <segment title="2"/>
                                 </segments>
+                                <connections>
+                                    <action selector="topBarPressed:" destination="VAA-vL-jqG" eventType="touchUpInside" id="FTX-0m-7e8"/>
+                                </connections>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="wMG-c1-MOJ">
                                 <rect key="frame" x="19" y="428" width="335" height="29"/>
                                 <segments>
-                                    <segment title="1,0"/>
-                                    <segment title="1,1"/>
-                                    <segment title="1,2"/>
+                                    <segment title="3"/>
+                                    <segment title="4"/>
+                                    <segment title="5"/>
                                 </segments>
+                                <connections>
+                                    <action selector="middleBarPressed:" destination="VAA-vL-jqG" eventType="touchUpInside" id="6aZ-N5-CpG"/>
+                                </connections>
                             </segmentedControl>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="bM0-n8-0J0">
                                 <rect key="frame" x="19" y="483" width="335" height="29"/>
                                 <segments>
-                                    <segment title="2,0"/>
-                                    <segment title="2,1"/>
-                                    <segment title="2,2"/>
+                                    <segment title="6"/>
+                                    <segment title="7"/>
+                                    <segment title="8"/>
                                 </segments>
+                                <connections>
+                                    <action selector="bottomBarPressed:" destination="VAA-vL-jqG" eventType="touchUpInside" id="o7k-v9-t8p"/>
+                                </connections>
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F7X-4F-l06">
                                 <rect key="frame" x="333" y="630" width="22" height="22"/>

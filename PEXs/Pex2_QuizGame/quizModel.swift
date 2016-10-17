@@ -14,11 +14,30 @@ struct quizModel{
     var num_correct = 0 //initialize all of these values to 0
     var num_questions = 0
     var num_guesses = 0
-    var quizToDisplay = quizViewSettings()
+    var questionToDisplay = quizViewSettings()
+    var oldSettings = quizSettings()
     
     mutating func getNewQuestion() -> quizViewSettings{
-        self.quizToDisplay.image_name = "africa_Egypt.png"
-        self.quizToDisplay.choices = ["Africa", "North America", "Asia"]
-        return quizToDisplay
+        //TEMPORARY
+        self.questionToDisplay.image_name = "africa_Egypt.png"
+        self.questionToDisplay.choices = ["Africa", "North America", "Asia"]
+        return questionToDisplay
+    }
+    mutating func makeGuess(guessIndex: Int) -> Bool{
+        return false
+    }
+    mutating func getAnswerPool(settings: quizSettings){
+        //TEMPORARY
+        self.questionToDisplay.choices.append("South America")
+        self.questionToDisplay.choices.append("Eastern Europe")
+        self.questionToDisplay.choices.append("Western Europe")
+    }
+    mutating func updateAnswerPool(settings: quizSettings){
+        if((oldSettings.continents != settings.continents) || (oldSettings.num_possibilities != settings.num_possibilities)){
+            //then, we know stuff changed and we have to update the possible answers because the answer pool has changed
+            //UPDATE THE ANSWER POOL CONSTRAINTS HERE
+            getAnswerPool(settings)
+        }
+        oldSettings = settings
     }
 }
