@@ -46,7 +46,8 @@ struct quizModel{
     
     mutating func makeGuess(guessIndex: Int) -> Bool{
         //TEMPORARY
-        return false
+        if(guessIndex == correct_answer_index){ return true } //the guess was correct
+        else { return false }
     }
     
     mutating func getAnswerPool(settings: quizSettings) -> quizViewSettings{
