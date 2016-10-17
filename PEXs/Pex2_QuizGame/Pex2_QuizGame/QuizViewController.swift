@@ -39,7 +39,7 @@ class QuizViewController: UIViewController{
     }
     
     func getNewQuestion(){
-        questionToDisplay = myModel.getNewQuestion()
+        questionToDisplay = myModel.getNewQuestion(settings)
         imageView.image = UIImage(named: questionToDisplay.image_name)
         self.updateChoiceBars()
     }
@@ -85,7 +85,8 @@ class QuizViewController: UIViewController{
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.myModel.oldSettings = settings //as soon as we start the app, save the old setting so we know if we change anything
-        self.getNewQuestion() //start a game to get going
+        self.myModel.loadImagesIntoArray() //read all the image names into an array
+        self.getNewQuestion() //pop up a question to get going
     }
     
     override func didReceiveMemoryWarning() {
