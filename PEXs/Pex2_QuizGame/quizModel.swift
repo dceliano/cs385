@@ -39,17 +39,17 @@ struct quizModel{
         //make the imageArray based on the rawImageArray, which uses the continent constraints
         //it's probably inefficient to do this every time we make a new question, but it works for now
         imageArray = []
-        for i in 0...29{
-            if(continent_pool.contains(rawImageArray[i].0)){ //constraints are implemented here - FIX THIS
+        for i in 0...(rawImageArray.count - 1){
+            if(continent_pool.contains(rawImageArray[i].0)){ //constraints are implemented here
                 imageArray.append(rawImageArray[i])
             }
         }
         num_images_in_pool = imageArray.count
-        if(num_questions == 5){
+        if(num_questions == 10){
             //the game is over
             used_image_indicies = [] //reset the images which were used
             questionToDisplay.game_over = true
-            questionToDisplay.quiz_score = ((100 - 5 * (num_guesses - num_correct)))
+            questionToDisplay.quiz_score = ((100 - 3 * (num_guesses - num_correct)))
         }
         else{
             image_index = Int(arc4random_uniform(UInt32(num_images_in_pool))) //generates a number 0-X inclusive
