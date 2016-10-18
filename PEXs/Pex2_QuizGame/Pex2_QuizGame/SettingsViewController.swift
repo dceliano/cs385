@@ -54,7 +54,6 @@ class SettingsViewController: UIViewController{
             if (newSettings.continents[i].1) { num_switches_on += 1 }
         }
         if (num_switches_on == 0 || (newSettings.num_possibilities == 6 && num_switches_on <= 1) || (newSettings.num_possibilities == 9 && num_switches_on <= 2)){
-            print("done thrown an error")
             throw settingErrors.switchError
         }
         return newSettings

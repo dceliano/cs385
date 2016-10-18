@@ -6,7 +6,7 @@
 //  Copyright © 2016 Dom Celiano. All rights reserved.
 //
 
-//DOCUMENTATION: I used this resource quite a bit: https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Lesson8.html
+//DOCUMENTATION: I used this resource quite a bit: https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Lesson8.html I got help with the shuffle function from Lt Col Wiengart.
 
 import Foundation
 
@@ -33,12 +33,20 @@ struct quizModel{
             var components = componentsWithExtension[0].componentsSeparatedByString("_")
             self.rawImageArray.append((components[0],components[1], fileName!)) //is filled with ([continent (lowercase letters)], [country name], [full filename])
         }
+        shuffle() //shuffle the array so it's not the same for every game
+    }
+    
+    mutating func shuffle(){
+        for _ in 0..<10{
+            self.rawImageArray.sortInPlace{ (_,_) in arc4random() < arc4random()}
+        }
     }
     
     mutating func getNewQuestion(settings: quizSettings) -> quizViewSettings{
         //make the imageArray based on the rawImageArray, which uses the continent constraints
         //it's probably inefficient to do this every time we make a new question, but it works for now
         imageArray = []
+        shuffle()
         for i in 0...(rawImageArray.count - 1){
             if(continent_pool.contains(rawImageArray[i].0)){ //constraints are implemented here
                 imageArray.append(rawImageArray[i])
