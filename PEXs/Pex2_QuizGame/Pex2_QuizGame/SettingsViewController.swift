@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol PresentedVCDelegate: class{
+    //list the methods and properties which are required
+    func acceptNewSettings(newSettings : quizSettings)
+}
+
 class SettingsViewController: UIViewController{
     @IBOutlet weak var numChoicesBar: UISegmentedControl!
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -23,18 +28,19 @@ class SettingsViewController: UIViewController{
     var settings = quizSettings() //This value is either passed by `QuizViewController` in `prepareForSegue(_:sender:)' or constructed as part of saving the new settings in the SettingsViewController. I initialize it here to use it in the code.
     
     // MARK : Navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (sender as! UIBarButtonItem) == saveButton{
-            //save all the settings info in the quizSettings object to be passed back to the quiz after the unwind segue
-            do{
-                try settings = saveQuizSettings()
-            }
-            catch{
-                let ac = UIAlertController(title: "Error", message: "You did not turn enough switches on for the settings you chose. Please turn on more.", preferredStyle: UIAlertControllerStyle.Alert)
-                ac.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default,handler: nil))
-                self.presentViewController(ac, animated: true, completion: nil)
-            }
+    var delegate : PresentedVCDelegate?
+    
+    @IBAction func saveSettings(){
+        //save all the settings info in the quizSettings object to be passed back to the quiz
+        do{
+            try delegate?.acceptNewSettings(saveQuizSettings())
         }
+        catch{
+            let ac = UIAlertController(title: "Error", message: "You did not turn enough switches on for the settings you chose. Please turn on more.", preferredStyle: UIAlertControllerStyle.Alert)
+            ac.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default,handler: nil))
+            self.presentViewController(ac, animated: true, completion: nil)
+        }
+        self.navigationController?.popViewControllerAnimated(true) //dismiss the settings view controller
     }
     
     func saveQuizSettings() throws -> quizSettings {

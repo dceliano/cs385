@@ -197,7 +197,7 @@
                     <navigationItem key="navigationItem" title="Quiz Settings" id="YGH-BQ-7mu">
                         <barButtonItem key="rightBarButtonItem" title="Save" id="Ukg-NS-q8i">
                             <connections>
-                                <segue destination="E05-Ip-uk4" kind="unwind" unwindAction="unwindToQuiz:" id="zal-bA-I1f"/>
+                                <action selector="saveSettings" destination="NHC-oQ-EzK" id="RdY-gL-Idk"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -208,12 +208,10 @@
                         <outlet property="naSwitch" destination="uGt-Ed-N4Q" id="Cm0-f0-Zho"/>
                         <outlet property="numChoicesBar" destination="F7W-91-IFI" id="COU-OB-B2Q"/>
                         <outlet property="saSwitch" destination="4Bl-BC-dZ4" id="L3J-tu-rP3"/>
-                        <outlet property="saveButton" destination="Ukg-NS-q8i" id="SOu-eV-NhE"/>
                         <outlet property="weuSwitch" destination="dsf-DO-NL7" id="dfz-8E-KOG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kru-oA-Nmg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="E05-Ip-uk4" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="490.5" y="261.5"/>
         </scene>

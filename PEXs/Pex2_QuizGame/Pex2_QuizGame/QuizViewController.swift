@@ -94,14 +94,11 @@ class QuizViewController: UIViewController{
             destController.settings = settings //pass the old settings
         }
     }
-    @IBAction func unwindToQuiz(sender: UIStoryboardSegue){
-        if let sourceViewController = sender.sourceViewController as? SettingsViewController{
-            //the sourceViewController is downcast to where the segue is coming from (i.e. an unwind segue from SettingsViewController)
-            self.settings = sourceViewController.settings
-            let get_new_question = self.myModel.updateAnswerPool(self.settings)
-            if(get_new_question){ self.getNewQuestion() }
-            self.updateChoiceBars()
-        }
+    func acceptNewSettings(newSettings : quizSettings){
+        self.settings = newSettings
+        let get_new_question = self.myModel.updateAnswerPool(self.settings)
+        if(get_new_question){ self.getNewQuestion() }
+        self.updateChoiceBars()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
