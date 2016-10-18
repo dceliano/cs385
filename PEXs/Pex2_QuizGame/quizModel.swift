@@ -77,12 +77,15 @@ struct quizModel{
     mutating func resetGame(){
         questionToDisplay.game_over = false
         num_questions = 0
+        num_correct = 0
+        num_questions = 0
+        num_guesses = 0
     }
     
     mutating func getAnswerPool(settings: quizSettings) -> quizViewSettings{
         self.questionToDisplay.image_name = imageArray[image_index].2
         self.questionToDisplay.choices.removeAll()
-        correct_answer_index = Int(arc4random_uniform(UInt32(settings.num_possibilities))) //gives the index where the correct answer will be put, 0-8 inclusive
+        correct_answer_index = Int(arc4random_uniform(UInt32(settings.num_possibilities))) //gives the index where the correct answer will be put, 0-X inclusive
         var used_indicies : Array<Int> = []
         while(used_indicies.count != settings.num_possibilities){ //until the array is full
             if(used_indicies.count == correct_answer_index){ //if this is the spot where we're supposed to put the answer
@@ -91,7 +94,7 @@ struct quizModel{
             }
             else{
                 let new_image_index = Int(arc4random_uniform(UInt32(num_images_in_pool)))
-                if(!used_indicies.contains(new_image_index)){
+                if(!used_indicies.contains(new_image_index) && new_image_index != correct_answer_index){
                     self.questionToDisplay.choices.append(imageArray[new_image_index].1)
                     used_indicies.append(new_image_index)
                 }
