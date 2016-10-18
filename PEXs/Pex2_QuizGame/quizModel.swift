@@ -6,7 +6,7 @@
 //  Copyright © 2016 Dom Celiano. All rights reserved.
 //
 
-//DOCUMENTATION: I used this resource heavily: https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Lesson8.html
+//DOCUMENTATION: I used this resource quite a bit: https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Lesson8.html
 
 import Foundation
 
@@ -45,9 +45,11 @@ struct quizModel{
             }
         }
         num_images_in_pool = imageArray.count
-        if(num_questions == 10){
-            used_image_indicies = [] //reset the images which were used
+        if(num_questions == 5){
             //the game is over
+            used_image_indicies = [] //reset the images which were used
+            questionToDisplay.game_over = true
+            questionToDisplay.quiz_score = ((100 - 5 * (num_guesses - num_correct)))
         }
         else{
             image_index = Int(arc4random_uniform(UInt32(num_images_in_pool))) //generates a number 0-X inclusive
@@ -62,10 +64,19 @@ struct quizModel{
     }
     
     mutating func makeGuess(guessIndex: Int) -> Bool{
-        if(guessIndex == correct_answer_index){ //the guess was correct, so restart the game
+        num_guesses += 1
+        if(guessIndex == correct_answer_index){ //the guess was correct, so get a new question
+            num_correct += 1
             return true
         }
-        else { return false }
+        else {
+            return false
+        }
+    }
+    
+    mutating func resetGame(){
+        questionToDisplay.game_over = false
+        num_questions = 0
     }
     
     mutating func getAnswerPool(settings: quizSettings) -> quizViewSettings{

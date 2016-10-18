@@ -48,9 +48,21 @@ class QuizViewController: UIViewController{
     
     func getNewQuestion(){
         questionToDisplay = myModel.getNewQuestion(settings)
-        imageView.image = UIImage(named: questionToDisplay.image_name)
-        self.updateChoiceBars()
-        statusLabel.text = "Please select the country where the landmark is located."
+        if(questionToDisplay.game_over){
+            let alertController = UIAlertController(title: "Quiz Finished", message: "You scored a \(questionToDisplay.quiz_score)%", preferredStyle: UIAlertControllerStyle.Alert)
+            alertController.addAction(UIAlertAction(title: "New Quiz", style: UIAlertActionStyle.Default,handler: gameOverAlertHandler))
+            self.presentViewController(alertController, animated: true, completion: nil)
+        }
+        else{
+            imageView.image = UIImage(named: questionToDisplay.image_name)
+            self.updateChoiceBars()
+            statusLabel.text = "Please select the country where the landmark is located."
+        }
+    }
+    
+    func gameOverAlertHandler(alert: UIAlertAction!){
+        myModel.resetGame()
+        self.getNewQuestion()
     }
     
     func updateChoiceBars(){
