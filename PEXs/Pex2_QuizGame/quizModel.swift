@@ -109,7 +109,7 @@ struct quizModel{
         return questionToDisplay
     }
     mutating func updateAnswerPool(settings: quizSettings) -> Bool{
-        //returns whether a new question should be gathered or not
+        //this function returns whether a new question should be gathered or not
         var constraintsChanged = false
         //check if any constraints were changed in the loop below
         for i in 0...(settings.continents.count-1){

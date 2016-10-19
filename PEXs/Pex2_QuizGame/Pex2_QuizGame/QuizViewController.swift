@@ -51,7 +51,7 @@ class QuizViewController: UIViewController, PresentedVCDelegate{
     }
     
     func getNewQuestion(){
-        questionToDisplay = myModel.getNewQuestion(settings)
+        questionToDisplay = myModel.getNewQuestion(self.settings)
         if(questionToDisplay.game_over){
             let alertController = UIAlertController(title: "Quiz Finished", message: "You scored a \(questionToDisplay.quiz_score)%", preferredStyle: UIAlertControllerStyle.Alert)
             alertController.addAction(UIAlertAction(title: "New Quiz", style: UIAlertActionStyle.Default,handler: gameOverAlertHandler))
@@ -102,7 +102,7 @@ class QuizViewController: UIViewController, PresentedVCDelegate{
     func acceptNewSettings(newSettings : quizSettings){
         self.settings = newSettings
         let get_new_question = self.myModel.updateAnswerPool(self.settings)
-        if(get_new_question){ self.getNewQuestion() }
+        if(get_new_question){ self.gameOverAlertHandler(nil) } //if we should get a new question
         self.updateChoiceBars()
     }
     
