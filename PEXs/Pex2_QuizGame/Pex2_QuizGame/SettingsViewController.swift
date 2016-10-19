@@ -34,13 +34,13 @@ class SettingsViewController: UIViewController{
         //save all the settings info in the quizSettings object to be passed back to the quiz
         do{
             try delegate?.acceptNewSettings(saveQuizSettings())
+            self.navigationController?.popViewControllerAnimated(true) //dismiss the settings view controller
         }
         catch{
-            let ac = UIAlertController(title: "Error", message: "You did not turn enough switches on for the settings you chose. Please turn on more.", preferredStyle: UIAlertControllerStyle.Alert)
+            let ac = UIAlertController(title: "Error", message: "You did not turn enough switches. Please turn on more.", preferredStyle: UIAlertControllerStyle.Alert)
             ac.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default,handler: nil))
             self.presentViewController(ac, animated: true, completion: nil)
         }
-        self.navigationController?.popViewControllerAnimated(true) //dismiss the settings view controller
     }
     
     func saveQuizSettings() throws -> quizSettings {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class QuizViewController: UIViewController{
+class QuizViewController: UIViewController, PresentedVCDelegate{
     var settings = quizSettings()
     var questionToDisplay = quizViewSettings()
     var myModel = quizModel()
@@ -91,6 +91,7 @@ class QuizViewController: UIViewController{
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showSettings"{ //if we are about to segue to the SettingsViewController
             let destController = segue.destinationViewController as! SettingsViewController
+            destController.delegate = self
             destController.settings = settings //pass the old settings
         }
     }
