@@ -6,6 +6,10 @@
 //  Copyright © 2016 Dom Celiano. All rights reserved.
 //
 
+//DOCUMENTATION: I used this resource quite a bit: https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Lesson8.html
+//  I got help with the shuffle function from Lt Col Wiengart.
+//  Lt Col Weingart helped me understand how Lab 15 worked, which helped me get my protocol/delegate functionality working.
+
 import UIKit
 
 class QuizViewController: UIViewController, PresentedVCDelegate{
@@ -104,7 +108,7 @@ class QuizViewController: UIViewController, PresentedVCDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.myModel.oldSettings = settings //as soon as we start the app, save the old setting so we know if we change anything
+        self.myModel.oldSettings = settings //as soon as we start the app, save the old setting so we will know if we change anything
         self.myModel.loadImagesIntoArray() //read all the image names into an array
         self.getNewQuestion() //pop up a question to get going
     }

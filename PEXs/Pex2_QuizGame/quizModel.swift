@@ -6,8 +6,6 @@
 //  Copyright © 2016 Dom Celiano. All rights reserved.
 //
 
-//DOCUMENTATION: I used this resource quite a bit: https://developer.apple.com/library/content/referencelibrary/GettingStarted/DevelopiOSAppsSwift/Lesson8.html I got help with the shuffle function from Lt Col Wiengart.
-
 import Foundation
 
 struct quizModel{
