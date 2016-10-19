@@ -1,0 +1,364 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="en9-E4-Yh6">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Ratings-->
+        <scene sceneID="iBR-Ce-zMb">
+            <objects>
+                <viewController id="SQe-zK-Yhu" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="flD-jD-JZY"/>
+                        <viewControllerLayoutGuide type="bottom" id="c8i-DU-mpl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ggp-dy-GNq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Ratings" image="drama" id="DDp-6x-val"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8On-Ja-8T1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="712" y="662"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="ZbR-FG-t8z">
+            <objects>
+                <tabBarController id="en9-E4-Yh6" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="RMy-4h-7tC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="WTO-La-3ip" kind="relationship" relationship="viewControllers" id="KHs-xc-4WZ"/>
+                        <segue destination="SQe-zK-Yhu" kind="relationship" relationship="viewControllers" id="iem-G0-46b"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gQC-W3-vDg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="278" y="391"/>
+        </scene>
+        <!--Movies-->
+        <scene sceneID="fjz-jd-nKt">
+            <objects>
+                <tableViewController id="A3S-xa-rxd" customClass="MovieTableViewController" customModule="Lab20_MovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="agq-oA-pJQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="MovieCell" id="rlj-Uo-579" customClass="MovieTableViewCell" customModule="Lab20_MovieApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rlj-Uo-579" id="Cn0-ow-nRq">
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title of Movie" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FKe-Ap-6rj">
+                                            <rect key="frame" x="8" y="0.0" width="116" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Director" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AnZ-Br-33f">
+                                            <rect key="frame" x="8" y="22" width="116" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dB7-iI-5II">
+                                            <rect key="frame" x="132" y="0.0" width="201" height="35"/>
+                                        </imageView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="directorLabel" destination="AnZ-Br-33f" id="CyR-JZ-i0A"/>
+                                    <outlet property="ratingImageView" destination="dB7-iI-5II" id="vwi-JM-UTg"/>
+                                    <outlet property="titleLabel" destination="FKe-Ap-6rj" id="VpP-bH-JVW"/>
+                                    <segue destination="zlJ-zW-c0F" kind="presentation" identifier="EditSegue" id="fPj-OH-vak"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="A3S-xa-rxd" id="t9B-vh-SkM"/>
+                            <outlet property="delegate" destination="A3S-xa-rxd" id="Hzr-6j-Qw3"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Movies" id="Rq9-0F-77Z">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="5fs-Ap-qnC">
+                            <connections>
+                                <segue destination="zlJ-zW-c0F" kind="presentation" identifier="AddSegue" id="OnN-gK-ilo"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FlG-sn-rwO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1300.5" y="41.5"/>
+        </scene>
+        <!--Enter a New Movie-->
+        <scene sceneID="tst-zi-s9d">
+            <objects>
+                <tableViewController id="n5J-O3-L4V" customClass="MovieDetailsTableViewController" customModule="Lab20_MovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="gAq-eZ-tzl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <sections>
+                            <tableViewSection headerTitle="TITLE" id="ndZ-46-GYR">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="lAK-eZ-Ncp">
+                                        <rect key="frame" x="0.0" y="114" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lAK-eZ-Ncp" id="Xft-je-jH9">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3D6-oE-oXY">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="DIRECTOR" id="AVB-bi-40j">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="l4L-zv-d4o">
+                                        <rect key="frame" x="0.0" y="209" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="l4L-zv-d4o" id="ejN-jb-0Ea">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YRM-2l-IlV">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="YEAR" id="ivD-jk-3Bl">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="BxU-Ld-wjQ">
+                                        <rect key="frame" x="0.0" y="304" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BxU-Ld-wjQ" id="kDu-a6-D36">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="O0q-uw-X4m">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="STUDIO" id="b8v-E5-AwE">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Z9v-bD-cdx">
+                                        <rect key="frame" x="0.0" y="399" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z9v-bD-cdx" id="QB0-ja-meK">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2uM-hZ-rhQ">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="L4j-KJ-5Oo">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="10M-tz-aiI" detailTextLabel="c8w-r2-M2C" style="IBUITableViewCellStyleValue1" id="1Zj-Qf-ccP">
+                                        <rect key="frame" x="0.0" y="479" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1Zj-Qf-ccP" id="HmM-Ip-Dgj">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="10M-tz-aiI">
+                                                    <rect key="frame" x="15" y="12" width="47" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Set Rating" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="c8w-r2-M2C">
+                                                    <rect key="frame" x="265" y="12" width="75" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GEm-V1-9lT">
+                                                    <rect key="frame" x="72" y="6" width="109" height="32"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="GG3-SZ-nAF" kind="show" id="PZL-sH-FvF"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="n5J-O3-L4V" id="V8d-Yl-siJ"/>
+                            <outlet property="delegate" destination="n5J-O3-L4V" id="eul-iG-YrR"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Enter a New Movie" id="QAu-Hg-64y">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="dg1-kq-2mx"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="ZtY-dM-sPy"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="directorTextField" destination="YRM-2l-IlV" id="8Qz-Rs-N5M"/>
+                        <outlet property="imageView" destination="GEm-V1-9lT" id="dgc-nH-v0i"/>
+                        <outlet property="studioTextField" destination="2uM-hZ-rhQ" id="RVv-xv-MOw"/>
+                        <outlet property="titleTextField" destination="3D6-oE-oXY" id="1u5-Er-Vth"/>
+                        <outlet property="yearTextField" destination="O0q-uw-X4m" id="LB9-ul-vvZ"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u95-o7-bNn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2175.5" y="41.5"/>
+        </scene>
+        <!--Star View Controller-->
+        <scene sceneID="Xak-9F-pV4">
+            <objects>
+                <viewController storyboardIdentifier="ratingsViewController" id="GG3-SZ-nAF" customClass="StarViewController" customModule="Lab20_MovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3yL-23-zWK"/>
+                        <viewControllerLayoutGuide type="bottom" id="oj9-12-bZ2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bET-eF-XbV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bps-sF-PQi">
+                                <rect key="frame" x="73" y="234" width="174" height="38"/>
+                                <state key="normal" image="3Stars">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="a7y-7e-ige" kind="unwind" unwindAction="starSelected:" id="SpK-ab-EpO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="4" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yu6-Mh-BSb">
+                                <rect key="frame" x="53" y="280" width="215" height="38"/>
+                                <state key="normal" image="4Stars">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="a7y-7e-ige" kind="unwind" unwindAction="starSelected:" id="JvZ-xr-m4R"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yjI-en-cp8">
+                                <rect key="frame" x="114" y="142" width="93" height="38"/>
+                                <state key="normal" image="1Stars">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="a7y-7e-ige" kind="unwind" unwindAction="starSelected:" id="cXe-Ph-HAS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="5" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PFg-3q-M23">
+                                <rect key="frame" x="53" y="326" width="215" height="38"/>
+                                <state key="normal" image="5Stars">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="a7y-7e-ige" kind="unwind" unwindAction="starSelected:" id="hS9-Th-jF4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i8M-Am-xMN">
+                                <rect key="frame" x="94" y="188" width="133" height="38"/>
+                                <state key="normal" image="2Stars">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="a7y-7e-ige" kind="unwind" unwindAction="starSelected:" id="eLV-Zq-gV2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YuX-iG-JTT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="a7y-7e-ige" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2539" y="42"/>
+        </scene>
+        <!--Movies-->
+        <scene sceneID="K5z-xd-E5e">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WTO-La-3ip" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Movies" image="film-clap-board" id="xmG-pH-k7H"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="WgY-8B-b8s">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="A3S-xa-rxd" kind="relationship" relationship="rootViewController" id="G5h-Dx-HAy"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Bpt-Ss-EW9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="791.5" y="41.5"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="8hZ-Rx-uGY">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="zlJ-zW-c0F" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="YgY-g6-uod">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="n5J-O3-L4V" kind="relationship" relationship="rootViewController" id="lX9-3c-HZl"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yP8-tD-01i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1721.5" y="41.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="1Stars" width="81" height="15"/>
+        <image name="2Stars" width="81" height="15"/>
+        <image name="3Stars" width="81" height="15"/>
+        <image name="4Stars" width="81" height="15"/>
+        <image name="5Stars" width="81" height="15"/>
+        <image name="drama" width="30" height="30"/>
+        <image name="film-clap-board" width="29" height="30"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="OnN-gK-ilo"/>
+    </inferredMetricsTieBreakers>
+</document>
