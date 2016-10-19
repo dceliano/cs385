@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "quizModel.swift"
-            timestampString = "498452038.83189"
+            timestampString = "498536170.747503"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "34"
+            endingLineNumber = "34"
             landmarkName = "loadImagesIntoArray()"
             landmarkType = "5">
          </BreakpointContent>

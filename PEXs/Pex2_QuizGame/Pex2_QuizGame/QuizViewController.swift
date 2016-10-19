@@ -105,12 +105,13 @@ class QuizViewController: UIViewController, PresentedVCDelegate{
         if(get_new_question){ self.getNewQuestion() }
         self.updateChoiceBars()
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        self.myModel.oldSettings = settings //as soon as we start the app, save the old setting so we will know if we change anything
+        self.myModel.oldSettings = settings //as soon as we start the app, initialize the old setting so we will know if we change anything
         self.myModel.loadImagesIntoArray() //read all the image names into an array
-        self.getNewQuestion() //pop up a question to get going
+        self.gameOverAlertHandler(nil) //display a question to get going
     }
     
     override func didReceiveMemoryWarning() {

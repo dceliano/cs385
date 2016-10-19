@@ -37,7 +37,7 @@ class SettingsViewController: UIViewController{
             self.navigationController?.popViewControllerAnimated(true) //dismiss the settings view controller
         }
         catch{
-            let ac = UIAlertController(title: "Error", message: "You did not turn enough switches. Please turn on more.", preferredStyle: UIAlertControllerStyle.Alert)
+            let ac = UIAlertController(title: "Error", message: "You did not turn on enough switches. Please turn on more.", preferredStyle: UIAlertControllerStyle.Alert)
             ac.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default,handler: nil))
             self.presentViewController(ac, animated: true, completion: nil)
         }
@@ -59,7 +59,7 @@ class SettingsViewController: UIViewController{
         for i in 0...(newSettings.continents.count - 1){
             if (newSettings.continents[i].1) { num_switches_on += 1 }
         }
-        if (num_switches_on == 0 || (newSettings.num_possibilities == 6 && num_switches_on <= 1) || (newSettings.num_possibilities == 9 && num_switches_on <= 2)){
+        if (num_switches_on == 0 || (newSettings.num_possibilities >= 6 && num_switches_on <= 1)){
             throw settingErrors.switchError
         }
         return newSettings
