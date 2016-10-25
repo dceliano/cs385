@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="3NQ-ZO-VPe">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--datePicker-->
+        <scene sceneID="fZW-ni-ede">
+            <objects>
+                <viewController id="Ws6-I5-6Kl" customClass="DateViewController" customModule="Lab25_PickerViews" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Rwi-xG-biR"/>
+                        <viewControllerLayoutGuide type="bottom" id="eUu-LZ-95D"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Z5z-3D-qHf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="4aM-Jr-02U">
+                                <rect key="frame" x="0.0" y="176" width="320" height="216"/>
+                                <date key="date" timeIntervalSinceReferenceDate="499118056.02609199">
+                                    <!--2016-10-25 19:54:16 +0000-->
+                                </date>
+                                <connections>
+                                    <action selector="dateChanged:" destination="Ws6-I5-6Kl" eventType="valueChanged" id="ZFy-CZ-8J6"/>
+                                </connections>
+                            </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2h6-jy-B7I">
+                                <rect key="frame" x="0.0" y="80" width="320" height="21"/>
+                                <accessibility key="accessibilityConfiguration" label=" "/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="datePicker" id="XG9-OR-JqC"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="dateLabel" destination="2h6-jy-B7I" id="AUg-rI-Uyr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bBq-5W-ovq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-217" y="204"/>
+        </scene>
+        <!--sPicker-->
+        <scene sceneID="RMW-sE-lHj">
+            <objects>
+                <viewController id="YGO-SG-YWb" customClass="SingleViewController" customModule="Lab25_PickerViews" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Xz8-go-Ool"/>
+                        <viewControllerLayoutGuide type="bottom" id="CW4-3K-Aor"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="vo3-0l-GeO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="m1P-3O-SRD">
+                                <rect key="frame" x="0.0" y="176" width="320" height="216"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="YGO-SG-YWb" id="bO9-0X-15Y"/>
+                                    <outlet property="delegate" destination="YGO-SG-YWb" id="Vhy-2q-HWL"/>
+                                </connections>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="sPicker" id="0x5-tf-0xr"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="pickerView" destination="m1P-3O-SRD" id="oNH-a6-Dq5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N0a-yc-8ZL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-217" y="-415"/>
+        </scene>
+        <!--mPicker-->
+        <scene sceneID="iDX-Na-0a1">
+            <objects>
+                <viewController id="gLq-wJ-7F7" customClass="MultiViewController" customModule="Lab25_PickerViews" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ndk-CT-ieX"/>
+                        <viewControllerLayoutGuide type="bottom" id="I0U-Ey-bgc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="m9g-jB-9Tl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gqn-ku-5lF">
+                                <rect key="frame" x="0.0" y="176" width="320" height="216"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="gLq-wJ-7F7" id="LKq-bu-ZWl"/>
+                                    <outlet property="delegate" destination="gLq-wJ-7F7" id="RdQ-xp-gPB"/>
+                                </connections>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="mPicker" id="XJJ-fi-4fo"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="pickerView" destination="Gqn-ku-5lF" id="bfg-Tj-E3l"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ucx-E5-KGk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="111" y="-415"/>
+        </scene>
+        <!--CurrentVals-->
+        <scene sceneID="JnT-Gv-UFJ">
+            <objects>
+                <viewController id="VTW-Cg-KPX" customClass="CurValuesViewController" customModule="Lab25_PickerViews" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cd9-qc-qkH"/>
+                        <viewControllerLayoutGuide type="bottom" id="q6h-lE-7DB"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zTn-st-VlJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="for-WF-DFb">
+                                <rect key="frame" x="0.0" y="147" width="320" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uCz-UC-1hs">
+                                <rect key="frame" x="0.0" y="204" width="320" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQo-zA-9O9">
+                                <rect key="frame" x="0.0" y="254" width="320" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="CurrentVals" id="DWV-Ak-6zb"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="dateLabel" destination="iQo-zA-9O9" id="Ytx-88-pNi"/>
+                        <outlet property="mLabel" destination="uCz-UC-1hs" id="J6S-lj-NKC"/>
+                        <outlet property="sLabel" destination="for-WF-DFb" id="m0s-fI-rRF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LFx-ld-6WU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="111" y="204"/>
+        </scene>
+        <!--My Tab Bar Controller-->
+        <scene sceneID="gf0-Ow-nIH">
+            <objects>
+                <tabBarController id="3NQ-ZO-VPe" customClass="MyTabBarController" customModule="Lab25_PickerViews" customModuleProvider="target" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="d2q-Uj-QK5">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="YGO-SG-YWb" kind="relationship" relationship="viewControllers" id="lfI-5u-WhE"/>
+                        <segue destination="gLq-wJ-7F7" kind="relationship" relationship="viewControllers" id="l4m-kS-yvv"/>
+                        <segue destination="Ws6-I5-6Kl" kind="relationship" relationship="viewControllers" id="7IX-Pq-f2k"/>
+                        <segue destination="VTW-Cg-KPX" kind="relationship" relationship="viewControllers" id="m0H-Vr-qyj"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sga-6x-6ks" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-647" y="-92"/>
+        </scene>
+    </scenes>
+</document>
