@@ -12,6 +12,7 @@
 		70B4E9631DCA774C00C7D1FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70B4E9611DCA774C00C7D1FC /* Main.storyboard */; };
 		70B4E9651DCA774C00C7D1FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 70B4E9641DCA774C00C7D1FC /* Assets.xcassets */; };
 		70B4E9681DCA774C00C7D1FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 70B4E9661DCA774C00C7D1FC /* LaunchScreen.storyboard */; };
+		70B4E9701DCA790700C7D1FC /* SettingsPopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70B4E96F1DCA790700C7D1FC /* SettingsPopOverViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		70B4E9641DCA774C00C7D1FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		70B4E9671DCA774C00C7D1FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		70B4E9691DCA774C00C7D1FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		70B4E96F1DCA790700C7D1FC /* SettingsPopOverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPopOverViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				70B4E95D1DCA774C00C7D1FC /* AppDelegate.swift */,
 				70B4E95F1DCA774C00C7D1FC /* ViewController.swift */,
 				70B4E9611DCA774C00C7D1FC /* Main.storyboard */,
+				70B4E96F1DCA790700C7D1FC /* SettingsPopOverViewController.swift */,
 				70B4E9641DCA774C00C7D1FC /* Assets.xcassets */,
 				70B4E9661DCA774C00C7D1FC /* LaunchScreen.storyboard */,
 				70B4E9691DCA774C00C7D1FC /* Info.plist */,
@@ -136,6 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				70B4E9601DCA774C00C7D1FC /* ViewController.swift in Sources */,
+				70B4E9701DCA790700C7D1FC /* SettingsPopOverViewController.swift in Sources */,
 				70B4E95E1DCA774C00C7D1FC /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
