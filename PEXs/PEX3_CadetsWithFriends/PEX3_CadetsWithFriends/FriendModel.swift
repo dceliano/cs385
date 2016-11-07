@@ -53,7 +53,7 @@ struct FriendModel : CustomStringConvertible {
     }
     
     var data = [
-        Friend(firstname: "Dominic", lastname: "Celiano", squadron: 16, rank: "1-8", birthday: "1994-07-07", notes: "Me!"),
+        Friend(firstname: "Dominic", lastname: "Celiano", squadron: 16, rank: "C/1st Lt", birthday: "1994-07-07", notes: "Me!"),
         Friend(firstname: "Jane", lastname: "Doe", squadron: 37, rank: "2-5", birthday: "1989-04-04", notes: "Who is this person?")
     ]
     

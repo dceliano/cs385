@@ -31,8 +31,7 @@ class FriendDetailsTableViewController: UITableViewController {
             friend.lastname = lastnameTextField.text
             friend.notes = notesTextField.text
             friend.squadron = (navigationController as! NewFriendNavigationController).squadronSelected
-            friend.rank = (navigationController as! NewFriendNavigationController).rankData //CHANGE THE WAY THIS GETS LOADED IN
-            //save other details here
+            friend.rank = (navigationController as! NewFriendNavigationController).rankData
         }
     }
     
