@@ -286,7 +286,7 @@
         <!--Friend Details View Controller-->
         <scene sceneID="F0A-Z4-DSO">
             <objects>
-                <tableViewController id="hZc-dj-2BD" userLabel="Friend Details View Controller" customClass="FriendsDetailsTableViewController" customModule="PEX3_CadetsWithFriends" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="hZc-dj-2BD" userLabel="Friend Details View Controller" customClass="FriendDetailsTableViewController" customModule="PEX3_CadetsWithFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="x3k-cr-0RI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -301,7 +301,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vfc-Qf-WJe" userLabel="Firstname Text Field">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="    First Name" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vfc-Qf-WJe" userLabel="Firstname Text Field">
                                                     <rect key="frame" x="8" y="0.0" width="359" height="43"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -316,7 +316,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iqB-mb-qSZ" userLabel="Surname Text Field">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="    Last Name" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iqB-mb-qSZ" userLabel="Surname Text Field">
                                                     <rect key="frame" x="8" y="0.0" width="359" height="43"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -416,7 +416,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Any Notes About Your Friend" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uqq-iC-TPA" userLabel="Notes Text Field">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="    Enter Any Notes About Your Friend" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Uqq-iC-TPA" userLabel="Notes Text Field">
                                                     <rect key="frame" x="8" y="0.0" width="359" height="43"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -429,11 +429,25 @@
                         </sections>
                     </tableView>
                     <navigationItem key="navigationItem" title="New Friend Info" id="fNK-Ap-Ee1">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="R8d-Ag-DkY"/>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="HOv-jv-Lgm" userLabel="Save"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="R8d-Ag-DkY">
+                            <connections>
+                                <segue destination="XmQ-AS-hFa" kind="unwind" identifier="cancelNewFriend" unwindAction="cancelToFriendTableViewController:" id="Xir-UV-mYh"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="HOv-jv-Lgm" userLabel="Save">
+                            <connections>
+                                <segue destination="XmQ-AS-hFa" kind="unwind" identifier="saveFriendDetail" unwindAction="saveFriendDetail:" id="tcg-MD-CFF"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="firstnameTextField" destination="vfc-Qf-WJe" id="ASK-Vf-lbE"/>
+                        <outlet property="lastnameTextField" destination="iqB-mb-qSZ" id="Vxx-Nd-GX3"/>
+                        <outlet property="notesTextField" destination="Uqq-iC-TPA" id="GWu-q5-wE8"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sUZ-65-TpQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="XmQ-AS-hFa" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1579.5" y="-86.5"/>
         </scene>
