@@ -8,21 +8,13 @@
 
 import UIKit
 
-class BirthdayPickerViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
-    @IBOutlet weak var datePickerView: UIDatePicker!
-    
-    var pickerDataSource = ["White", "Red", "Green", "Blue"]
-    
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
-        return 1
+class BirthdayPickerViewController: UIViewController {
+    @IBAction func dateChanged(sender: AnyObject) {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy"
+        let strDate = dateFormatter.stringFromDate(sender.date)
+        (navigationController as! NewFriendNavigationController).date = "\(strDate)"
     }
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return self.pickerDataSource.count
-    }
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerDataSource[row]
-    }
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

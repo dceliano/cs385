@@ -20,7 +20,6 @@ class DateViewController: UIViewController {
         dateLabel.text = strDate
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
