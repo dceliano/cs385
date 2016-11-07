@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		057996781DC0FAC500601046 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057996771DC0FAC500601046 /* AppDelegate.swift */; };
-		0579967A1DC0FAC500601046 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 057996791DC0FAC500601046 /* ViewController.swift */; };
 		0579967D1DC0FAC500601046 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0579967B1DC0FAC500601046 /* Main.storyboard */; };
 		0579967F1DC0FAC500601046 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0579967E1DC0FAC500601046 /* Assets.xcassets */; };
 		057996821DC0FAC500601046 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 057996801DC0FAC500601046 /* LaunchScreen.storyboard */; };
@@ -74,12 +73,20 @@
 		0579977F1DC0FD4A00601046 /* rank 3-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 057997421DC0FD4A00601046 /* rank 3-1.jpg */; };
 		057997801DC0FD4A00601046 /* rank 4-0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 057997431DC0FD4A00601046 /* rank 4-0.jpg */; };
 		0579978A1DC1A2C500601046 /* 1.gif in Resources */ = {isa = PBXBuildFile; fileRef = 057997891DC1A2C500601046 /* 1.gif */; };
+		F29C471F1DD037AB00664029 /* FriendsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29C471E1DD037AB00664029 /* FriendsTableViewController.swift */; };
+		F29C47211DD037F900664029 /* BirthdayTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29C47201DD037F900664029 /* BirthdayTableViewController.swift */; };
+		F29C47231DD038C800664029 /* FriendDetailsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29C47221DD038C800664029 /* FriendDetailsTableViewController.swift */; };
+		F29C47251DD03AEF00664029 /* SquadronPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29C47241DD03AEF00664029 /* SquadronPickerViewController.swift */; };
+		F29C47271DD03B2400664029 /* BirthdayPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29C47261DD03B2400664029 /* BirthdayPickerViewController.swift */; };
+		F29C47291DD03B4D00664029 /* RankPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29C47281DD03B4D00664029 /* RankPickerViewController.swift */; };
+		F29C472B1DD03B7900664029 /* SquadronDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29C472A1DD03B7900664029 /* SquadronDetailsViewController.swift */; };
+		F29C472F1DD03D5900664029 /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29C472E1DD03D5900664029 /* FriendTableViewCell.swift */; };
+		F29C47311DD0570700664029 /* FriendModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29C47301DD0570700664029 /* FriendModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		057996741DC0FAC500601046 /* PEX3_CadetsWithFriends.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PEX3_CadetsWithFriends.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		057996771DC0FAC500601046 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		057996791DC0FAC500601046 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0579967C1DC0FAC500601046 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0579967E1DC0FAC500601046 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		057996811DC0FAC500601046 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -146,6 +153,15 @@
 		057997421DC0FD4A00601046 /* rank 3-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "rank 3-1.jpg"; sourceTree = "<group>"; };
 		057997431DC0FD4A00601046 /* rank 4-0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "rank 4-0.jpg"; sourceTree = "<group>"; };
 		057997891DC1A2C500601046 /* 1.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 1.gif; sourceTree = "<group>"; };
+		F29C471E1DD037AB00664029 /* FriendsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendsTableViewController.swift; sourceTree = "<group>"; };
+		F29C47201DD037F900664029 /* BirthdayTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BirthdayTableViewController.swift; sourceTree = "<group>"; };
+		F29C47221DD038C800664029 /* FriendDetailsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendDetailsTableViewController.swift; sourceTree = "<group>"; };
+		F29C47241DD03AEF00664029 /* SquadronPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquadronPickerViewController.swift; sourceTree = "<group>"; };
+		F29C47261DD03B2400664029 /* BirthdayPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BirthdayPickerViewController.swift; sourceTree = "<group>"; };
+		F29C47281DD03B4D00664029 /* RankPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RankPickerViewController.swift; sourceTree = "<group>"; };
+		F29C472A1DD03B7900664029 /* SquadronDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SquadronDetailsViewController.swift; sourceTree = "<group>"; };
+		F29C472E1DD03D5900664029 /* FriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FriendTableViewCell.swift; path = ../FriendTableViewCell.swift; sourceTree = "<group>"; };
+		F29C47301DD0570700664029 /* FriendModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,7 +196,15 @@
 			children = (
 				057997061DC0FD3000601046 /* Images */,
 				057996771DC0FAC500601046 /* AppDelegate.swift */,
-				057996791DC0FAC500601046 /* ViewController.swift */,
+				F29C47301DD0570700664029 /* FriendModel.swift */,
+				F29C471E1DD037AB00664029 /* FriendsTableViewController.swift */,
+				F29C47221DD038C800664029 /* FriendDetailsTableViewController.swift */,
+				F29C47241DD03AEF00664029 /* SquadronPickerViewController.swift */,
+				F29C47261DD03B2400664029 /* BirthdayPickerViewController.swift */,
+				F29C47281DD03B4D00664029 /* RankPickerViewController.swift */,
+				F29C472A1DD03B7900664029 /* SquadronDetailsViewController.swift */,
+				F29C47201DD037F900664029 /* BirthdayTableViewController.swift */,
+				F29C472E1DD03D5900664029 /* FriendTableViewCell.swift */,
 				0579967B1DC0FAC500601046 /* Main.storyboard */,
 				0579967E1DC0FAC500601046 /* Assets.xcassets */,
 				057996801DC0FAC500601046 /* LaunchScreen.storyboard */,
@@ -391,8 +415,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0579967A1DC0FAC500601046 /* ViewController.swift in Sources */,
+				F29C472F1DD03D5900664029 /* FriendTableViewCell.swift in Sources */,
+				F29C47231DD038C800664029 /* FriendDetailsTableViewController.swift in Sources */,
+				F29C472B1DD03B7900664029 /* SquadronDetailsViewController.swift in Sources */,
+				F29C47291DD03B4D00664029 /* RankPickerViewController.swift in Sources */,
+				F29C47271DD03B2400664029 /* BirthdayPickerViewController.swift in Sources */,
+				F29C47311DD0570700664029 /* FriendModel.swift in Sources */,
 				057996781DC0FAC500601046 /* AppDelegate.swift in Sources */,
+				F29C47251DD03AEF00664029 /* SquadronPickerViewController.swift in Sources */,
+				F29C47211DD037F900664029 /* BirthdayTableViewController.swift in Sources */,
+				F29C471F1DD037AB00664029 /* FriendsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
