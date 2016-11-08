@@ -6,6 +6,8 @@
 //  Copyright © 2016 Troy Weingart. All rights reserved.
 //
 
+//DOCUMENTATION: No help from received, although I used Google/Stack Overflow to troubleshoot many errors and I heavily referenced the movie app lab solution by Lt Col Weingart (Lab 23).
+
 import UIKit
 
 class FriendsNavController: UINavigationController {

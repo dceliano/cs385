@@ -10,9 +10,9 @@ import UIKit
 
 class RankPickerViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     @IBOutlet weak var pickerView: UIPickerView!
-    let firstieRanks = ["C/Wing CC", "C/Wing VC", "C/Col", "C/Sq CC", "C/Lt Col", "C/Maj", "C/Flt CC", "C/Capt", "C/1st Lt", "C/ 2d Lt", "Unranked"] //rank 0 is highest, up to 10
-    let twoDigRanks = ["C/CMSgt", "C/Group Supt", "C/Squad Supt", "C/SMSgt", "C/First Sgt", "C/MSgt", "C/TSgt", "Unranked"] //up to 7
-    let threeDigRanks = ["C/SSgt", "Unranked"] //up to 1
+    let firstieRanks = ["C/Wing CC", "C/Wing VC", "C/Col", "C/Sq CC", "C/Lt Col", "C/Maj", "C/Flt CC", "C/Capt", "C/1st Lt", "C/ 2d Lt", "Unranked1"] //rank 0 is highest, up to 10
+    let twoDigRanks = ["C/CMSgt", "C/Group Supt", "C/Squad Supt", "C/SMSgt", "C/First Sgt", "C/MSgt", "C/TSgt", "Unranked2"] //up to 7
+    let threeDigRanks = ["C/SSgt", "Unranked3"] //up to 1
     let fourDigRanks = ["C/Amn"] //only 1 rank
     var pickerDataSource = [["1","2","3","4"],["temp"]]
     
