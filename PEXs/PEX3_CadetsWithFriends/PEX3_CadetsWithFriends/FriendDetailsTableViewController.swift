@@ -42,6 +42,24 @@ class FriendDetailsTableViewController: UITableViewController {
         super.viewDidLoad()
     }
     
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        //these conditions get checked automatically when we try to segue
+        if(identifier == "saveFriendDetail"){
+            if (firstnameTextField.text == "" || lastnameTextField.text == "" || (navigationController as! NewFriendNavigationController).date == "" || (navigationController as! NewFriendNavigationController).squadronSelected == 0 || (navigationController as! NewFriendNavigationController).rankData == ""){
+                let ac = UIAlertController(title: "Error", message: "You did not fill out all the fields. Please note that the notes field is optional.", preferredStyle: UIAlertControllerStyle.Alert)
+                ac.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default,handler: nil))
+                self.presentViewController(ac, animated: true, completion: nil)
+                return false //we should not perform this segue
+            }
+            else{
+                return true
+            }
+        }
+        else{
+            return true
+        }
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "saveFriendDetail" { //get the details from the text fields right before we save our settings
             friend.firstname = firstnameTextField.text

@@ -11,7 +11,7 @@ import UIKit
 class NewFriendNavigationController: UINavigationController {
 
     var rankData = ""
-    var squadronSelected = 1
+    var squadronSelected = 0
     var date = ""
     
     override func viewDidLoad() {
