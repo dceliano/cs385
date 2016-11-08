@@ -8,9 +8,9 @@
 
 import UIKit
 
-struct FriendModel : CustomStringConvertible {
+struct FriendModel : CustomStringConvertible{
     class Friend : NSObject, NSCoding {
-        
+
         var firstname: String?
         var lastname: String?
         var squadron: Int
@@ -29,7 +29,7 @@ struct FriendModel : CustomStringConvertible {
             self.rank = rank
             self.birthday = birthday
             self.notes = notes
-            super.init()
+            //super.init()
         }
         
         func encodeWithCoder(coder: NSCoder) {
@@ -54,8 +54,7 @@ struct FriendModel : CustomStringConvertible {
     
     var data = [
         Friend(firstname: "Dominic", lastname: "Celiano", squadron: 16, rank: "C/1st Lt", birthday: "1994-07-07", notes: "Me!"),
-        Friend(firstname: "Jane", lastname: "Doe", squadron: 37, rank: "2-5", birthday: "1989-04-04", notes: "Who is this person?")
-    ]
+        Friend(firstname: "Jane", lastname: "Doe", squadron: 37, rank: "C/2d Lt", birthday: "1989-04-04", notes: "Who is this person?")]
     
     var description: String {
         var str = ""
@@ -96,6 +95,5 @@ struct FriendModel : CustomStringConvertible {
     mutating func readData() {
         let persondata = NSData(contentsOfURL: myDataFile!)!
         data = NSKeyedUnarchiver.unarchiveObjectWithData(persondata) as! [Friend]
-        
     }
 }

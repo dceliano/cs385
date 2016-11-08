@@ -27,7 +27,7 @@
         <!--Friends Nav Controller-->
         <scene sceneID="Ddq-FZ-egF">
             <objects>
-                <navigationController title="Friends Nav Controller" automaticallyAdjustsScrollViewInsets="NO" id="U0E-ha-dDu" sceneMemberID="viewController">
+                <navigationController title="Friends Nav Controller" automaticallyAdjustsScrollViewInsets="NO" id="U0E-ha-dDu" customClass="FriendsNavController" customModule="PEX3_CadetsWithFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Friends" image="people_family" id="RJz-av-S0X"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="10q-Ix-Uga">
@@ -52,7 +52,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="Cwd-kj-UCA" customClass="FriendTableViewCell" customModule="PEX3_CadetsWithFriends" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="FriendCell" id="Cwd-kj-UCA" customClass="FriendTableViewCell" customModule="PEX3_CadetsWithFriends" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cwd-kj-UCA" id="B5w-I6-gzk">
@@ -77,11 +77,12 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8w5-8V-OjK">
                                             <rect key="frame" x="267" y="0.0" width="43" height="43"/>
                                         </imageView>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zd9-h0-cmD">
-                                            <rect key="frame" x="258" y="0.0" width="43" height="43"/>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zd9-h0-cmD" customClass="SquadronPickerButton" customModule="PEX3_CadetsWithFriends" customModuleProvider="target">
+                                            <rect key="frame" x="276" y="0.0" width="43" height="43"/>
                                             <state key="normal" title="Button"/>
                                             <connections>
-                                                <action selector="squadronButtonPressed:" destination="Cwd-kj-UCA" eventType="touchUpInside" id="JMs-he-Khg"/>
+                                                <action selector="squadronImageButtonPressed:" destination="Cwd-kj-UCA" eventType="touchUpInside" id="IDu-hf-gju"/>
+                                                <segue destination="9m9-fj-QmU" kind="presentation" identifier="showSquadronDetails" id="fSR-tV-hXC"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -95,9 +96,8 @@
                                     <outlet property="birthdayLabel" destination="o0P-Lj-Qc6" id="qDj-rp-M7Q"/>
                                     <outlet property="nameLabel" destination="qYF-3a-wc9" id="uVM-fW-4qD"/>
                                     <outlet property="rankImageView" destination="x9i-Ej-ujV" id="QdH-a0-nCu"/>
-                                    <outlet property="squadronImageButton" destination="zd9-h0-cmD" id="aar-XS-7N6"/>
-                                    <outlet property="squadronImageView" destination="8w5-8V-OjK" id="FYi-yt-o8l"/>
-                                    <segue destination="csA-9L-JKe" kind="show" identifier="viewSquadronDetails" id="rYf-ul-2fg"/>
+                                    <outlet property="squadronImageButton" destination="zd9-h0-cmD" id="T32-1S-vek"/>
+                                    <segue destination="Z5s-eJ-g6z" kind="presentation" identifier="editSegue" id="ys2-br-nOh"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -105,7 +105,7 @@
                     <navigationItem key="navigationItem" title="All of My Friends" id="PdZ-TI-pTV">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="S8u-Vt-J3n">
                             <connections>
-                                <segue destination="Z5s-eJ-g6z" kind="presentation" identifier="enterNewFriend" id="hgz-S8-tac"/>
+                                <segue destination="Z5s-eJ-g6z" kind="presentation" identifier="addSegue" id="hgz-S8-tac"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -150,6 +150,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="z1M-4H-ALR">
+                        <barButtonItem key="leftBarButtonItem" title="Done" id="ICB-os-8oE">
+                            <connections>
+                                <segue destination="y2T-w3-gsa" kind="unwind" unwindAction="cancelToFriendTableViewController:" id="zfK-wy-JHf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="aocPhoneLabel" destination="xVc-rd-g3J" id="T3S-se-iVa"/>
@@ -159,8 +166,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fPr-Sz-uNc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="y2T-w3-gsa" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="625.5" y="-868.5"/>
+            <point key="canvasLocation" x="1137.5" y="-869.5"/>
         </scene>
         <!--Squadron Picker View Controller-->
         <scene sceneID="XqP-nf-fyV">
@@ -193,7 +201,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="afX-ys-1IN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2201.5" y="-869.5"/>
+            <point key="canvasLocation" x="3013.5" y="-869.5"/>
         </scene>
         <!--Birthdays Nav Controller-->
         <scene sceneID="499-Yl-BJ3">
@@ -537,9 +545,31 @@
             </objects>
             <point key="canvasLocation" x="625.5" y="652.5"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hzH-Zn-73c">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="9m9-fj-QmU" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="KRP-An-ovq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="csA-9L-JKe" kind="relationship" relationship="rootViewController" id="jSv-sx-tUU"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UcD-1j-Lg1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="625" y="-869"/>
+        </scene>
     </scenes>
     <resources>
         <image name="alarm" width="26" height="26"/>
         <image name="people_family" width="26" height="26"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="hgz-S8-tac"/>
+    </inferredMetricsTieBreakers>
 </document>

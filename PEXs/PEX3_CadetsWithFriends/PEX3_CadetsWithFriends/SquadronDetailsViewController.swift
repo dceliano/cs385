@@ -15,9 +15,23 @@ class SquadronDetailsViewController: UIViewController {
     @IBOutlet weak var cqPhoneLabel: UILabel!
     @IBOutlet weak var aocPhoneLabel: UILabel!
     
+    var squadron = 1
+    var cqPhoneNumber = "333-3444"
+    var aocPhoneNumber = "333-1303"
+    
+    let squadronNames = ["Mach One", "Deuce", "Dogs of War", "Fightin' Fourth", "Wolfpack", "Bull Six", "Shadow Seven", "Eagle Eight", "Viking Nine", "Tiger Ten", "Rebeleven", "Dirty Dozen", "Bulldawgs", "Cobras", "Warhawks", "Chickenhawks", "Stalag", "Nightriders", "Wolverines", "Trolls", "Blackjacks", "Raptors", "Barnstormers", "Phantoms", "Redeye", "Barons", "Thunderbirds", "Blackbirds", "Black Panthers", "Knights of Thirty", "Grim Reapers", "Road Runners", "King Ratz", "Loose Hawgs", "Wild Weasels", "Pink Panthers", "Animalistic Skyraiders", "All-Stars", "Campus Rads", "Warhawks"]
+    
+    func setupView(){
+        cqPhoneLabel.text = self.cqPhoneNumber
+        aocPhoneLabel.text = self.aocPhoneNumber
+        let squadImage = UIImage(named: "\(String(self.squadron)).gif")
+        squadronImageView.image = squadImage
+        squadronNameLabel.text = squadronNames[self.squadron - 1]
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.setupView()
         // Do any additional setup after loading the view.
     }
 
@@ -26,15 +40,5 @@ class SquadronDetailsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

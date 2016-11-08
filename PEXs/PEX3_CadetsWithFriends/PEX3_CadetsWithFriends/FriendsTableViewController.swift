@@ -31,6 +31,22 @@ class FriendsTableViewController: UITableViewController {
         return cell
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let nav = segue.destinationViewController as! UINavigationController
+        if segue.identifier == "EditSegue" {
+            (nav.topViewController as! FriendDetailsTableViewController).mode = .edit
+            (nav.topViewController as! FriendDetailsTableViewController).friend = (sender as!FriendTableViewCell).friend
+            selectedRow = (tableView.indexPathForSelectedRow?.row)!
+        }
+        else if segue.identifier == "showSquadronDetails"{
+            //(nav.topViewController as! SquadronDetailsViewController).squadron = (navigationController as! FriendsNavController).squadronDetailsToView
+            (nav.topViewController as! SquadronDetailsViewController).squadron = 7
+        }
+        else { // AddMode
+            (nav.topViewController as! FriendDetailsTableViewController).mode = .add
+        }
+    }
+    
     @IBAction func saveFriendDetail(segue:UIStoryboardSegue) {
         if let refTo = segue.sourceViewController as? FriendDetailsTableViewController {
             if refTo.mode == .add {
@@ -39,18 +55,9 @@ class FriendsTableViewController: UITableViewController {
                 myFriends.data[selectedRow] = refTo.friend
             }
             tableView.reloadData()
-            myFriends.writeData()
+            //myFriends.writeData()
         }
     }
     @IBAction func cancelToFriendTableViewController(segue:UIStoryboardSegue) {
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 }

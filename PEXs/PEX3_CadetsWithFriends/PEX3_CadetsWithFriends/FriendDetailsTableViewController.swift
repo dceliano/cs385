@@ -14,7 +14,7 @@ class FriendDetailsTableViewController: UITableViewController {
     @IBOutlet weak var lastnameTextField: UITextField!
     
     var friend = FriendModel.Friend(firstname: "", lastname: "", squadron: 01, rank: "", birthday: "", notes: "")
-    var mode : FriendsTableViewController.mode? //are we editing an entry?
+    var mode : FriendsTableViewController.mode? //check if we are editing an entry
     
     override func viewDidLoad() {
         if self.mode == .edit {
