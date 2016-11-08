@@ -14,6 +14,8 @@ class BirthdayPickerViewController: UIViewController {
         dateFormatter.dateFormat = "MM-dd-yyyy"
         let strDate = dateFormatter.stringFromDate(sender.date)
         (navigationController as! NewFriendNavigationController).date = "\(strDate)"
+        let nav = navigationController as! NewFriendNavigationController
+        (nav.viewControllers.first as! FriendDetailsTableViewController).updateBirthdayLabel()
     }
     
     override func viewDidLoad() {

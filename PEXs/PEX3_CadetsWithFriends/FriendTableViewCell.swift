@@ -19,6 +19,7 @@ class FriendTableViewCell: UITableViewCell {
         
     }
     
+    
     var friend: FriendModel.Friend! {
         didSet {
             self.nameLabel.text = "\(friend.firstname) \(friend.lastname)"

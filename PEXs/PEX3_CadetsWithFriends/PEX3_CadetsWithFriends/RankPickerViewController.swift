@@ -45,6 +45,8 @@ class RankPickerViewController: UIViewController, UIPickerViewDataSource, UIPick
         pickerView.dataSource = self //reload the picker
         let rank_row = pickerView.selectedRowInComponent(1)
         (navigationController as! NewFriendNavigationController).rankData = pickerDataSource[1][rank_row]
+        let nav = navigationController as! NewFriendNavigationController
+        (nav.viewControllers.first as! FriendDetailsTableViewController).updateRankLabel()
     }
     
     override func viewDidLoad() {

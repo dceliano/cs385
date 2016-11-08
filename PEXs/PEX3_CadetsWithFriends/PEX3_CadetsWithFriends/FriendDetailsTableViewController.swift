@@ -12,15 +12,31 @@ class FriendDetailsTableViewController: UITableViewController {
     @IBOutlet weak var firstnameTextField: UITextField!
     @IBOutlet weak var notesTextField: UITextField!
     @IBOutlet weak var lastnameTextField: UITextField!
+    @IBOutlet weak var birthdayLabel: UILabel!
+    @IBOutlet weak var squadronLabel: UILabel!
+    @IBOutlet weak var rankLabel: UILabel!
     
     var friend = FriendModel.Friend(firstname: "", lastname: "", squadron: 01, rank: "", birthday: "", notes: "")
     var mode : FriendsTableViewController.mode? //check if we are editing an entry
+    
+    func updateBirthdayLabel(){
+        birthdayLabel.text = (navigationController as! NewFriendNavigationController).date
+    }
+    func updateRankLabel(){
+        rankLabel.text = (navigationController as! NewFriendNavigationController).rankData
+    }
+    func updateSquadronLabel(){
+        squadronLabel.text = String((navigationController as! NewFriendNavigationController).squadronSelected)
+    }
     
     override func viewDidLoad() {
         if self.mode == .edit {
             firstnameTextField.text = friend.firstname
             lastnameTextField.text = friend.lastname
-            self.title = "Add Friend Info"
+            notesTextField.text = friend.notes
+            squadronLabel.text = String(friend.squadron)
+            rankLabel.text = friend.rank
+            birthdayLabel.text = friend.birthday
         }
         super.viewDidLoad()
     }
@@ -32,6 +48,7 @@ class FriendDetailsTableViewController: UITableViewController {
             friend.notes = notesTextField.text
             friend.squadron = (navigationController as! NewFriendNavigationController).squadronSelected
             friend.rank = (navigationController as! NewFriendNavigationController).rankData
+            self.viewDidLoad()
         }
     }
     

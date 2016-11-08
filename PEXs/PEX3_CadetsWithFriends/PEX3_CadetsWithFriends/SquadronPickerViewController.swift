@@ -25,6 +25,8 @@ class SquadronPickerViewController: UIViewController, UIPickerViewDataSource, UI
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         (navigationController as! NewFriendNavigationController).squadronSelected = Int(String(String(pickerDataSource[row]).characters.prefix(2)))! //stupidly complicated
+        let nav = navigationController as! NewFriendNavigationController
+        (nav.viewControllers.first as! FriendDetailsTableViewController).updateSquadronLabel()
     }
     
     
