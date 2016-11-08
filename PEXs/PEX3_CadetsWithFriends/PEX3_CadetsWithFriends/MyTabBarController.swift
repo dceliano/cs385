@@ -6,7 +6,7 @@
 //  Copyright © 2016 Troy Weingart. All rights reserved.
 //
 
-//DOCUMENTATION: No help was received, although I used Google/Stack Overflow to troubleshoot many errors and I heavily referenced the movie app lab solution by Lt Col Weingart (Lab 23).
+//DOCUMENTATION: No help was received, although I used Google/Stack Overflow to troubleshoot many errors and I heavily referenced the movie app lab solution by Lt Col Weingart (Lab 23). Also, Lt Col Weingart and Lt Col Christman helped me pass my squadron number to the details view controller.
 
 import UIKit
 

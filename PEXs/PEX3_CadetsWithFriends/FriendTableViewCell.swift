@@ -14,10 +14,6 @@ class FriendTableViewCell: UITableViewCell {
     @IBOutlet weak var rankImageView: UIImageView!
     
     @IBOutlet weak var squadronImageButton: SquadronPickerButton!
-    
-    @IBAction func squadronImageButtonPressed(sender: AnyObject) {
-        
-    }
 
     var friend: FriendModel.Friend! {
         didSet {

@@ -27,7 +27,7 @@
         <!--Friends Nav Controller-->
         <scene sceneID="Ddq-FZ-egF">
             <objects>
-                <navigationController title="Friends Nav Controller" automaticallyAdjustsScrollViewInsets="NO" id="U0E-ha-dDu" customClass="FriendsNavController" customModule="PEX3_CadetsWithFriends" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController title="Friends Nav Controller" automaticallyAdjustsScrollViewInsets="NO" id="U0E-ha-dDu" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Friends" image="people_family" id="RJz-av-S0X"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="10q-Ix-Uga">
@@ -81,7 +81,6 @@
                                             <rect key="frame" x="281" y="0.0" width="43" height="43"/>
                                             <state key="normal" title="Button"/>
                                             <connections>
-                                                <action selector="squadronImageButtonPressed:" destination="Cwd-kj-UCA" eventType="touchUpInside" id="IDu-hf-gju"/>
                                                 <segue destination="9m9-fj-QmU" kind="presentation" identifier="showSquadronDetails" id="fSR-tV-hXC"/>
                                             </connections>
                                         </button>
@@ -206,6 +205,7 @@
         <!--Birthdays Nav Controller-->
         <scene sceneID="499-Yl-BJ3">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fUl-4f-pXJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController title="Birthdays Nav Controller" automaticallyAdjustsScrollViewInsets="NO" id="pvp-LC-Olh" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Birthdays" image="alarm" id="xgJ-vy-14J"/>
                     <toolbarItems/>
@@ -218,7 +218,6 @@
                         <segue destination="ozA-gR-MTB" kind="relationship" relationship="rootViewController" id="zli-Op-FXx"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fUl-4f-pXJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="188.5" y="652.5"/>
         </scene>
@@ -510,11 +509,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="FriendCell" id="pIY-uk-7Pb" customClass="FriendTableViewCell" customModule="PEX3_CadetsWithFriends" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FriendCell" id="pIY-uk-7Pb" customClass="FriendTableViewCell" customModule="PEX3_CadetsWithFriends" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pIY-uk-7Pb" id="rjX-8p-gLR">
-                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cadet Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dds-l1-kPJ">
@@ -536,11 +535,10 @@
                                             <rect key="frame" x="267" y="0.0" width="43" height="43"/>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7C-7Q-2zE">
-                                            <rect key="frame" x="268" y="0.0" width="43" height="43"/>
+                                            <rect key="frame" x="277" y="0.0" width="43" height="43"/>
                                             <state key="normal" title="Button"/>
                                             <connections>
                                                 <action selector="squadronImageButtonPressed:" destination="pIY-uk-7Pb" eventType="touchUpInside" id="ySJ-ER-SaL"/>
-                                                <segue destination="9m9-fj-QmU" kind="presentation" identifier="showSquadronDetails" id="VHg-4T-U0U"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -555,18 +553,11 @@
                                     <outlet property="nameLabel" destination="dds-l1-kPJ" id="tV2-ch-4aY"/>
                                     <outlet property="rankImageView" destination="Nss-Pu-uOg" id="TDl-p5-Vjc"/>
                                     <outlet property="squadronImageButton" destination="l7C-7Q-2zE" id="XPb-bb-4LK"/>
-                                    <segue destination="Z5s-eJ-g6z" kind="presentation" identifier="editSegue" trigger="accessoryAction" id="OTs-cl-55Q"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="All of My Friends" id="sFC-b2-nYq">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="MXk-Lk-afD">
-                            <connections>
-                                <segue destination="Z5s-eJ-g6z" kind="presentation" identifier="addSegue" id="yBK-ZK-HZh"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Friends Sorted by Age (Oldest First)" id="sFC-b2-nYq"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lST-RB-qwn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -598,7 +589,6 @@
         <image name="people_family" width="26" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="VHg-4T-U0U"/>
-        <segue reference="OTs-cl-55Q"/>
+        <segue reference="ys2-br-nOh"/>
     </inferredMetricsTieBreakers>
 </document>

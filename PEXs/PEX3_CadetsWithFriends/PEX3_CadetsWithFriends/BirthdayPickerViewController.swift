@@ -10,6 +10,7 @@ import UIKit
 
 class BirthdayPickerViewController: UIViewController {
     @IBAction func dateChanged(sender: AnyObject) {
+        //get the date info working
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "MM-dd-yyyy"
         let strDate = dateFormatter.stringFromDate(sender.date)

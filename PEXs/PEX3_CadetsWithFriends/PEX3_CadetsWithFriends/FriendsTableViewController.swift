@@ -16,6 +16,7 @@ class FriendsTableViewController: UITableViewController {
     
     var myFriends = FriendModel()
     var selectedRow = 0
+    var squadronButtonPressed = 1
     
     //These 3 functions below are part of the table view.
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -27,6 +28,7 @@ class FriendsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("FriendCell", forIndexPath: indexPath) as! FriendTableViewCell
         cell.friend = myFriends.data[indexPath.row] as FriendModel.Friend
+        cell.squadronImageButton.squadron = cell.friend.squadron
         return cell
     }
     
@@ -34,12 +36,11 @@ class FriendsTableViewController: UITableViewController {
         let nav = segue.destinationViewController as! UINavigationController
         if segue.identifier == "editSegue" {
             (nav.topViewController as! FriendDetailsTableViewController).mode = .edit
-            (nav.topViewController as! FriendDetailsTableViewController).friend = (sender as!FriendTableViewCell).friend
+            (nav.topViewController as! FriendDetailsTableViewController).friend = (sender as! FriendTableViewCell).friend
             selectedRow = (tableView.indexPathForSelectedRow?.row)!
         }
-        else if segue.identifier == "showSquadronDetails"{
-            //(nav.topViewController as! SquadronDetailsViewController).squadron = (navigationController as! FriendsNavController).squadronDetailsToView //THIS SHOULD BE FIXED
-            (nav.topViewController as! SquadronDetailsViewController).squadron = 7
+        else if segue.identifier == "showSquadronDetails"{ //show squadron details mode
+            (nav.topViewController as! SquadronDetailsViewController).squadron = (sender as! SquadronPickerButton).squadron
         }
         else { // AddMode
             (nav.topViewController as! FriendDetailsTableViewController).mode = .add

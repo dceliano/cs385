@@ -24,26 +24,20 @@ class BirthdayTableViewController: UITableViewController {
         return cell
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let nav = segue.destinationViewController as! UINavigationController
-        if segue.identifier == "editSegue" {
-            (nav.topViewController as! FriendDetailsTableViewController).mode = .edit
-            (nav.topViewController as! FriendDetailsTableViewController).friend = (sender as!FriendTableViewCell).friend
-            selectedRow = (tableView.indexPathForSelectedRow?.row)!
-        }
-        else if segue.identifier == "showSquadronDetails"{
-            //(nav.topViewController as! SquadronDetailsViewController).squadron = (navigationController as! FriendsNavController).squadronDetailsToView //THIS SHOULD BE FIXED
-            (nav.topViewController as! SquadronDetailsViewController).squadron = 7
-        }
-        else { // AddMode
-            (nav.topViewController as! FriendDetailsTableViewController).mode = .add
-        }
+    func sortFriends(){
+        myFriends = (tabBarController as! MyTabBarController).myFriends //load the friend data
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy"
+        myFriends.data.sortInPlace{ dateFormatter.dateFromString($0.birthday!)!.compare(dateFormatter.dateFromString($1.birthday!)!) == .OrderedAscending } //will compare NSDates and sort dates in ascending order (oldest person first)
     }
     
     override func viewDidLoad() {
-        myFriends = (tabBarController as! MyTabBarController).myFriends //load the friend data
-        myFriends.data.sortInPlace{$0.birthday < $1.birthday} //will sort dates in ascending order (oldest person first)
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.sortFriends()
+        tableView.reloadData()
     }
     
     override func didReceiveMemoryWarning() {
