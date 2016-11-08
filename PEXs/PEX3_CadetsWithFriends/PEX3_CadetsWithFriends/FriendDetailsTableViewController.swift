@@ -16,8 +16,8 @@ class FriendDetailsTableViewController: UITableViewController {
     @IBOutlet weak var squadronLabel: UILabel!
     @IBOutlet weak var rankLabel: UILabel!
     
-    var friend = FriendModel.Friend(firstname: "", lastname: "", squadron: 01, rank: "", birthday: "", notes: "")
-    var mode : FriendsTableViewController.mode? //check if we are editing an entry
+    var friend = FriendModel.Friend(firstname: "", lastname: "", squadron: 01, rank: "", birthday: "", notes: "") //initialize a blank friend
+    var mode : FriendsTableViewController.mode? //check if we are editing an entry or adding a new entry
     
     func updateBirthdayLabel(){
         birthdayLabel.text = (navigationController as! NewFriendNavigationController).date

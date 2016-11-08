@@ -16,8 +16,9 @@ class SquadronDetailsViewController: UIViewController {
     @IBOutlet weak var aocPhoneLabel: UILabel!
     
     var squadron = 1
-    var cqPhoneNumber = "333-3444"
-    var aocPhoneNumber = "333-1303"
+    //these are the same for every squadron
+    var cqPhoneNumber = "CQ Phone: 333-3444"
+    var aocPhoneNumber = "AOC Phone: 333-1303"
     
     let squadronNames = ["Mach One", "Deuce", "Dogs of War", "Fightin' Fourth", "Wolfpack", "Bull Six", "Shadow Seven", "Eagle Eight", "Viking Nine", "Tiger Ten", "Rebeleven", "Dirty Dozen", "Bulldawgs", "Cobras", "Warhawks", "Chickenhawks", "Stalag", "Nightriders", "Wolverines", "Trolls", "Blackjacks", "Raptors", "Barnstormers", "Phantoms", "Redeye", "Barons", "Thunderbirds", "Blackbirds", "Black Panthers", "Knights of Thirty", "Grim Reapers", "Road Runners", "King Ratz", "Loose Hawgs", "Wild Weasels", "Pink Panthers", "Animalistic Skyraiders", "All-Stars", "Campus Rads", "Warhawks"]
     

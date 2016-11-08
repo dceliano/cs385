@@ -34,7 +34,7 @@ class FriendsTableViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let nav = segue.destinationViewController as! UINavigationController
-        if segue.identifier == "editSegue" {
+        if segue.identifier == "editSegue" { //if we are editing a friend entry
             (nav.topViewController as! FriendDetailsTableViewController).mode = .edit
             (nav.topViewController as! FriendDetailsTableViewController).friend = (sender as! FriendTableViewCell).friend
             selectedRow = (tableView.indexPathForSelectedRow?.row)!

@@ -9,8 +9,7 @@
 import UIKit
 
 class SquadronPickerButton: UIButton {
-    var squadron: Int
-    
+    var squadron: Int //this is sent to the squadron details view controller
     required init?(coder aDecoder: NSCoder) {
         // set myValue before super.init is called
         self.squadron = 1

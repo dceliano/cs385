@@ -10,7 +10,7 @@ import UIKit
 
 struct FriendModel : CustomStringConvertible{
     class Friend : NSObject, NSCoding {
-
+        //variables of the friend class
         var firstname: String?
         var lastname: String?
         var squadron: Int
@@ -18,10 +18,12 @@ struct FriendModel : CustomStringConvertible{
         var birthday : String?
         var notes : String?
         
+        //this is what will get stored in the NSData file
         override var description: String {
             return "firstname: \(self.firstname!)\nlastname: \(self.lastname!)\nsquadron: \(self.squadron)\nrank: \(self.rank)\nbirthday: \(self.birthday)\nnotes: \(self.notes)"
         }
         
+        //allow the varibales to be initialized
         init(firstname: String?, lastname: String?, squadron: Int, rank: String?, birthday: String?, notes: String?) {
             self.firstname = firstname
             self.lastname = lastname
@@ -32,6 +34,7 @@ struct FriendModel : CustomStringConvertible{
             super.init()
         }
         
+        //encoded into NSData file
         func encodeWithCoder(coder: NSCoder) {
             coder.encodeObject(self.firstname, forKey:"firstname")
             coder.encodeObject(self.lastname, forKey:"lastname")
@@ -41,6 +44,7 @@ struct FriendModel : CustomStringConvertible{
             coder.encodeObject(self.notes, forKey:"notes")
         }
         
+        //decoded from NSData file
         required init(coder : NSCoder) {
             self.firstname = (coder.decodeObjectForKey("firstname") as! String)
             self.lastname = (coder.decodeObjectForKey("lastname") as! String)
@@ -52,20 +56,23 @@ struct FriendModel : CustomStringConvertible{
         }
     }
     
+    //Example data to get us started
     var data = [
         Friend(firstname: "Dominic", lastname: "Celiano", squadron: 16, rank: "C/1st Lt", birthday: "07-07-1994", notes: "Me!"),
         Friend(firstname: "Jane", lastname: "Doe", squadron: 37, rank: "C/2d Lt", birthday: "04-04-1989", notes: "Who is this person?")]
     
+    //make the total description the descriptions of reach friend
     var description: String {
         var str = ""
-        var mNum = 0
+        var fNum = 0
         for friend in data {
-            str += "\(mNum) \(friend.description) \n"
-            mNum += 1
+            str += "\(fNum) \(friend.description) \n"
+            fNum += 1
         }
         return str
     }
     
+    //get the file information for NSData persistence
     var docsURL : NSURL?
     let fm = NSFileHandle?.self
     var myDataFile : NSURL?
@@ -86,12 +93,15 @@ struct FriendModel : CustomStringConvertible{
         
     }
     
+    //write the data to the file
     mutating func writeData() {
         let myPerData = NSKeyedArchiver.archivedDataWithRootObject(data)
         myDataFile = docsURL!.URLByAppendingPathComponent("data5.txt")
         myPerData.writeToURL(myDataFile!, atomically: true)
         
     }
+    
+    //read the data from the file
     mutating func readData() {
         let persondata = NSData(contentsOfURL: myDataFile!)!
         data = NSKeyedUnarchiver.unarchiveObjectWithData(persondata) as! [Friend]
