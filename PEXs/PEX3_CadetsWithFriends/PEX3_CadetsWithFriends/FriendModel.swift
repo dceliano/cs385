@@ -19,7 +19,7 @@ struct FriendModel : CustomStringConvertible{
         var notes : String?
         
         override var description: String {
-            return "firstname: \(self.firstname!)\nlastname: \(self.lastname!)\nsquadron:\(self.squadron)\nrank:\(self.rank)\nbirthday:\(self.birthday)\nnotes:\(self.notes)"
+            return "firstname: \(self.firstname!)\nlastname: \(self.lastname!)\nsquadron: \(self.squadron)\nrank: \(self.rank)\nbirthday: \(self.birthday)\nnotes: \(self.notes)"
         }
         
         init(firstname: String?, lastname: String?, squadron: Int, rank: String?, birthday: String?, notes: String?) {
@@ -29,7 +29,7 @@ struct FriendModel : CustomStringConvertible{
             self.rank = rank
             self.birthday = birthday
             self.notes = notes
-            //super.init()
+            super.init()
         }
         
         func encodeWithCoder(coder: NSCoder) {
@@ -76,7 +76,7 @@ struct FriendModel : CustomStringConvertible{
             docsURL = try fm.URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: false)
         } catch {
         }
-        myDataFile = docsURL!.URLByAppendingPathComponent("data2.txt")
+        myDataFile = docsURL!.URLByAppendingPathComponent("data3.txt")
         if myDataFile!.checkResourceIsReachableAndReturnError(nil) {
             readData()
         } else {
@@ -88,7 +88,7 @@ struct FriendModel : CustomStringConvertible{
     
     mutating func writeData() {
         let myPerData = NSKeyedArchiver.archivedDataWithRootObject(data)
-        myDataFile = docsURL!.URLByAppendingPathComponent("data2.txt")
+        myDataFile = docsURL!.URLByAppendingPathComponent("data3.txt")
         myPerData.writeToURL(myDataFile!, atomically: true)
         
     }

@@ -37,18 +37,19 @@ class FriendDetailsTableViewController: UITableViewController {
             squadronLabel.text = String(friend.squadron)
             rankLabel.text = friend.rank
             birthdayLabel.text = friend.birthday
+            self.title = "Edit Friend Info"
         }
         super.viewDidLoad()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "SaveFriendDetail" {
+        if segue.identifier == "saveFriendDetail" { //get the details from the text fields right before we save our settings
             friend.firstname = firstnameTextField.text
             friend.lastname = lastnameTextField.text
             friend.notes = notesTextField.text
+            friend.birthday = (navigationController as! NewFriendNavigationController).date
             friend.squadron = (navigationController as! NewFriendNavigationController).squadronSelected
             friend.rank = (navigationController as! NewFriendNavigationController).rankData
-            self.viewDidLoad()
         }
     }
     

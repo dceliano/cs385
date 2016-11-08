@@ -17,14 +17,13 @@ class FriendsTableViewController: UITableViewController {
     var myFriends = FriendModel()
     var selectedRow = 0
     
+    //These 3 functions below are part of the table view.
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
-    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return myFriends.data.count
     }
-    
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("FriendCell", forIndexPath: indexPath) as! FriendTableViewCell
         cell.friend = myFriends.data[indexPath.row] as FriendModel.Friend
@@ -33,13 +32,13 @@ class FriendsTableViewController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let nav = segue.destinationViewController as! UINavigationController
-        if segue.identifier == "EditSegue" {
+        if segue.identifier == "editSegue" {
             (nav.topViewController as! FriendDetailsTableViewController).mode = .edit
             (nav.topViewController as! FriendDetailsTableViewController).friend = (sender as!FriendTableViewCell).friend
             selectedRow = (tableView.indexPathForSelectedRow?.row)!
         }
         else if segue.identifier == "showSquadronDetails"{
-            //(nav.topViewController as! SquadronDetailsViewController).squadron = (navigationController as! FriendsNavController).squadronDetailsToView
+            //(nav.topViewController as! SquadronDetailsViewController).squadron = (navigationController as! FriendsNavController).squadronDetailsToView //THIS SHOULD BE FIXED
             (nav.topViewController as! SquadronDetailsViewController).squadron = 7
         }
         else { // AddMode
@@ -48,14 +47,14 @@ class FriendsTableViewController: UITableViewController {
     }
     
     @IBAction func saveFriendDetail(segue:UIStoryboardSegue) {
-        if let refTo = segue.sourceViewController as? FriendDetailsTableViewController {
+        if let refTo = segue.sourceViewController as? FriendDetailsTableViewController { //if we are seguing from a FriendDetailsTableViewController
             if refTo.mode == .add {
                 myFriends.data.append(refTo.friend)
             } else {
                 myFriends.data[selectedRow] = refTo.friend
             }
             tableView.reloadData()
-            //myFriends.writeData()
+            myFriends.writeData()
         }
     }
     @IBAction func cancelToFriendTableViewController(segue:UIStoryboardSegue) {
