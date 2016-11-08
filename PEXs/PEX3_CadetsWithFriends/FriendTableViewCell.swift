@@ -73,7 +73,6 @@ class FriendTableViewCell: UITableViewCell {
             default:
                 final_image_name = "rank 1-1.jpg"
             }
-            "rank 1-1.jpg"
             self.rankImageView.image = UIImage(named: final_image_name)
             let squadImage = UIImage(named: "\(String(friend.squadron)).gif")
             self.squadronImageButton.setImage(squadImage, forState: UIControlState.Normal)

@@ -53,8 +53,8 @@ struct FriendModel : CustomStringConvertible{
     }
     
     var data = [
-        Friend(firstname: "Dominic", lastname: "Celiano", squadron: 16, rank: "C/1st Lt", birthday: "1994-07-07", notes: "Me!"),
-        Friend(firstname: "Jane", lastname: "Doe", squadron: 37, rank: "C/2d Lt", birthday: "1989-04-04", notes: "Who is this person?")]
+        Friend(firstname: "Dominic", lastname: "Celiano", squadron: 16, rank: "C/1st Lt", birthday: "07-07-1994", notes: "Me!"),
+        Friend(firstname: "Jane", lastname: "Doe", squadron: 37, rank: "C/2d Lt", birthday: "04-04-1989", notes: "Who is this person?")]
     
     var description: String {
         var str = ""
@@ -76,7 +76,7 @@ struct FriendModel : CustomStringConvertible{
             docsURL = try fm.URLForDirectory(.DocumentDirectory, inDomain: .UserDomainMask, appropriateForURL: nil, create: false)
         } catch {
         }
-        myDataFile = docsURL!.URLByAppendingPathComponent("data3.txt")
+        myDataFile = docsURL!.URLByAppendingPathComponent("data4.txt")
         if myDataFile!.checkResourceIsReachableAndReturnError(nil) {
             readData()
         } else {
@@ -88,7 +88,7 @@ struct FriendModel : CustomStringConvertible{
     
     mutating func writeData() {
         let myPerData = NSKeyedArchiver.archivedDataWithRootObject(data)
-        myDataFile = docsURL!.URLByAppendingPathComponent("data3.txt")
+        myDataFile = docsURL!.URLByAppendingPathComponent("data4.txt")
         myPerData.writeToURL(myDataFile!, atomically: true)
         
     }

@@ -46,6 +46,10 @@ class FriendsTableViewController: UITableViewController {
         }
     }
     
+    override func viewDidLoad() {
+        (tabBarController as! MyTabBarController).myFriends = myFriends //pass all of the friends back to the root controller
+    }
+    
     @IBAction func saveFriendDetail(segue:UIStoryboardSegue) {
         if let refTo = segue.sourceViewController as? FriendDetailsTableViewController { //if we are seguing from a FriendDetailsTableViewController
             if refTo.mode == .add {
@@ -55,6 +59,7 @@ class FriendsTableViewController: UITableViewController {
             }
             tableView.reloadData()
             myFriends.writeData()
+            (tabBarController as! MyTabBarController).myFriends = myFriends
         }
     }
     @IBAction func cancelToFriendTableViewController(segue:UIStoryboardSegue) {

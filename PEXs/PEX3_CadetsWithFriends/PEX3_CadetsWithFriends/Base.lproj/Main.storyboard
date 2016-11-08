@@ -5,10 +5,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
+        <!--My Tab Bar Controller-->
         <scene sceneID="jpy-pK-Bfo">
             <objects>
-                <tabBarController id="PPU-A5-wzv" sceneMemberID="viewController">
+                <tabBarController id="PPU-A5-wzv" customClass="MyTabBarController" customModule="PEX3_CadetsWithFriends" customModuleProvider="target" sceneMemberID="viewController">
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="oH9-2t-Xvl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -78,7 +78,7 @@
                                             <rect key="frame" x="267" y="0.0" width="43" height="43"/>
                                         </imageView>
                                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zd9-h0-cmD" customClass="SquadronPickerButton" customModule="PEX3_CadetsWithFriends" customModuleProvider="target">
-                                            <rect key="frame" x="276" y="0.0" width="43" height="43"/>
+                                            <rect key="frame" x="281" y="0.0" width="43" height="43"/>
                                             <state key="normal" title="Button"/>
                                             <connections>
                                                 <action selector="squadronImageButtonPressed:" destination="Cwd-kj-UCA" eventType="touchUpInside" id="IDu-hf-gju"/>
@@ -510,7 +510,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="pIY-uk-7Pb" customClass="FriendTableViewCell" customModule="PEX3_CadetsWithFriends" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="FriendCell" id="pIY-uk-7Pb" customClass="FriendTableViewCell" customModule="PEX3_CadetsWithFriends" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pIY-uk-7Pb" id="rjX-8p-gLR">
@@ -535,11 +535,12 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vo9-FJ-kev">
                                             <rect key="frame" x="267" y="0.0" width="43" height="43"/>
                                         </imageView>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7C-7Q-2zE">
-                                            <rect key="frame" x="258" y="0.0" width="43" height="43"/>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7C-7Q-2zE">
+                                            <rect key="frame" x="268" y="0.0" width="43" height="43"/>
                                             <state key="normal" title="Button"/>
                                             <connections>
-                                                <action selector="squadronButtonPressed:" destination="pIY-uk-7Pb" eventType="touchUpInside" id="wCj-Oz-th5"/>
+                                                <action selector="squadronImageButtonPressed:" destination="pIY-uk-7Pb" eventType="touchUpInside" id="ySJ-ER-SaL"/>
+                                                <segue destination="9m9-fj-QmU" kind="presentation" identifier="showSquadronDetails" id="VHg-4T-U0U"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -554,13 +555,17 @@
                                     <outlet property="nameLabel" destination="dds-l1-kPJ" id="tV2-ch-4aY"/>
                                     <outlet property="rankImageView" destination="Nss-Pu-uOg" id="TDl-p5-Vjc"/>
                                     <outlet property="squadronImageButton" destination="l7C-7Q-2zE" id="XPb-bb-4LK"/>
-                                    <outlet property="squadronImageView" destination="Vo9-FJ-kev" id="haz-FA-ibl"/>
+                                    <segue destination="Z5s-eJ-g6z" kind="presentation" identifier="editSegue" trigger="accessoryAction" id="OTs-cl-55Q"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
                     <navigationItem key="navigationItem" title="All of My Friends" id="sFC-b2-nYq">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="MXk-Lk-afD"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="MXk-Lk-afD">
+                            <connections>
+                                <segue destination="Z5s-eJ-g6z" kind="presentation" identifier="addSegue" id="yBK-ZK-HZh"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </tableViewController>
@@ -593,6 +598,7 @@
         <image name="people_family" width="26" height="26"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hgz-S8-tac"/>
+        <segue reference="VHg-4T-U0U"/>
+        <segue reference="OTs-cl-55Q"/>
     </inferredMetricsTieBreakers>
 </document>

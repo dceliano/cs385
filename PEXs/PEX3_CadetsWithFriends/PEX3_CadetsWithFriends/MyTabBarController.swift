@@ -1,8 +1,8 @@
 //
-//  FriendsNavController.swift
+//  MyTabBarController.swift
 //  PEX3_CadetsWithFriends
 //
-//  Created by Dom Celiano on 11/7/16.
+//  Created by Dom Celiano on 11/8/16.
 //  Copyright © 2016 Troy Weingart. All rights reserved.
 //
 
@@ -10,13 +10,13 @@
 
 import UIKit
 
-class FriendsNavController: UINavigationController {
+class MyTabBarController: UITabBarController {
 
-    var squadronDetailsToView = 1
+    var myFriends = FriendModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Do any additional setup after loading the view.
     }
 
@@ -24,5 +24,6 @@ class FriendsNavController: UINavigationController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
 
 }
