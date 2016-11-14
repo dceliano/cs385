@@ -14,8 +14,22 @@ class ViewController: UIViewController {
     @IBOutlet weak var noteTextView: UITextView!
     
     @IBAction func showShareOptions(sender: UIBarButtonItem) {
+        let actionSheet = UIAlertController(title: "", message: "Share your Note", preferredStyle: UIAlertControllerStyle.ActionSheet)
+        let facebookPostAction = UIAlertAction(title: "Share on Facebook", style: UIAlertActionStyle.Default) { (action) -> Void in
+            if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook){
+                let facebookComposeVC = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+                facebookComposeVC.setInitialText("\(self.noteTextView.text)")
+                self.presentViewController(facebookComposeVC, animated: true, completion: nil)
+            }
+            else{
+                self.showAlertMessage("Sign into facebook in settings")
+            }
+        }
+        let dismissAction = UIAlertAction(title: "Close", style: UIAlertActionStyle.Cancel, handler: nil)
+        actionSheet.addAction(facebookPostAction)
+        actionSheet.addAction(dismissAction)
         
-    
+        presentViewController(actionSheet, animated: true, completion: nil)
     }
     
     func showAlertMessage(message: String!) {
