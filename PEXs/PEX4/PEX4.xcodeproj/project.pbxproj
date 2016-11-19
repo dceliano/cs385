@@ -17,6 +17,15 @@
 		F2B791741DE0B8B300EA5641 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2B791721DE0B8B300EA5641 /* LaunchScreen.storyboard */; };
 		F2B7917F1DE0B8B300EA5641 /* PEX4Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B7917E1DE0B8B300EA5641 /* PEX4Tests.swift */; };
 		F2B7918A1DE0B8B300EA5641 /* PEX4UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B791891DE0B8B300EA5641 /* PEX4UITests.swift */; };
+		F2B7919A1DE0CCFC00EA5641 /* Tiles.sks in Resources */ = {isa = PBXBuildFile; fileRef = F2B791991DE0CCFC00EA5641 /* Tiles.sks */; };
+		F2B791A51DE0CD5A00EA5641 /* terrazo.png in Resources */ = {isa = PBXBuildFile; fileRef = F2B7919D1DE0CD5A00EA5641 /* terrazo.png */; };
+		F2B791A61DE0CD5A00EA5641 /* marble1.png in Resources */ = {isa = PBXBuildFile; fileRef = F2B7919E1DE0CD5A00EA5641 /* marble1.png */; };
+		F2B791A71DE0CD5A00EA5641 /* marble2.png in Resources */ = {isa = PBXBuildFile; fileRef = F2B7919F1DE0CD5A00EA5641 /* marble2.png */; };
+		F2B791A81DE0CD5A00EA5641 /* marble3.png in Resources */ = {isa = PBXBuildFile; fileRef = F2B791A01DE0CD5A00EA5641 /* marble3.png */; };
+		F2B791A91DE0CD5A00EA5641 /* marble4.png in Resources */ = {isa = PBXBuildFile; fileRef = F2B791A11DE0CD5A00EA5641 /* marble4.png */; };
+		F2B791AA1DE0CD5A00EA5641 /* marble5.png in Resources */ = {isa = PBXBuildFile; fileRef = F2B791A21DE0CD5A00EA5641 /* marble5.png */; };
+		F2B791AB1DE0CD5A00EA5641 /* building.png in Resources */ = {isa = PBXBuildFile; fileRef = F2B791A31DE0CD5A00EA5641 /* building.png */; };
+		F2B791AC1DE0CD5A00EA5641 /* marble6.png in Resources */ = {isa = PBXBuildFile; fileRef = F2B791A41DE0CD5A00EA5641 /* marble6.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +62,15 @@
 		F2B791851DE0B8B300EA5641 /* PEX4UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PEX4UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2B791891DE0B8B300EA5641 /* PEX4UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PEX4UITests.swift; sourceTree = "<group>"; };
 		F2B7918B1DE0B8B300EA5641 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F2B791991DE0CCFC00EA5641 /* Tiles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Tiles.sks; sourceTree = "<group>"; };
+		F2B7919D1DE0CD5A00EA5641 /* terrazo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = terrazo.png; sourceTree = "<group>"; };
+		F2B7919E1DE0CD5A00EA5641 /* marble1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marble1.png; sourceTree = "<group>"; };
+		F2B7919F1DE0CD5A00EA5641 /* marble2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marble2.png; sourceTree = "<group>"; };
+		F2B791A01DE0CD5A00EA5641 /* marble3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marble3.png; sourceTree = "<group>"; };
+		F2B791A11DE0CD5A00EA5641 /* marble4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marble4.png; sourceTree = "<group>"; };
+		F2B791A21DE0CD5A00EA5641 /* marble5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marble5.png; sourceTree = "<group>"; };
+		F2B791A31DE0CD5A00EA5641 /* building.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = building.png; sourceTree = "<group>"; };
+		F2B791A41DE0CD5A00EA5641 /* marble6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marble6.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +121,9 @@
 		F2B791621DE0B8B300EA5641 /* PEX4 */ = {
 			isa = PBXGroup;
 			children = (
+				F2B7919B1DE0CD3900EA5641 /* Assets */,
 				F2B791631DE0B8B300EA5641 /* AppDelegate.swift */,
+				F2B791991DE0CCFC00EA5641 /* Tiles.sks */,
 				F2B791651DE0B8B300EA5641 /* GameScene.sks */,
 				F2B791671DE0B8B300EA5641 /* Actions.sks */,
 				F2B791691DE0B8B300EA5641 /* GameScene.swift */,
@@ -132,6 +152,29 @@
 				F2B7918B1DE0B8B300EA5641 /* Info.plist */,
 			);
 			path = PEX4UITests;
+			sourceTree = "<group>";
+		};
+		F2B7919B1DE0CD3900EA5641 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				F2B7919C1DE0CD4700EA5641 /* Textures */,
+			);
+			name = Assets;
+			sourceTree = "<group>";
+		};
+		F2B7919C1DE0CD4700EA5641 /* Textures */ = {
+			isa = PBXGroup;
+			children = (
+				F2B7919D1DE0CD5A00EA5641 /* terrazo.png */,
+				F2B7919E1DE0CD5A00EA5641 /* marble1.png */,
+				F2B7919F1DE0CD5A00EA5641 /* marble2.png */,
+				F2B791A01DE0CD5A00EA5641 /* marble3.png */,
+				F2B791A11DE0CD5A00EA5641 /* marble4.png */,
+				F2B791A21DE0CD5A00EA5641 /* marble5.png */,
+				F2B791A41DE0CD5A00EA5641 /* marble6.png */,
+				F2B791A31DE0CD5A00EA5641 /* building.png */,
+			);
+			name = Textures;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,6 +245,7 @@
 				TargetAttributes = {
 					F2B7915F1DE0B8B300EA5641 = {
 						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = 62G92J3776;
 						ProvisioningStyle = Automatic;
 					};
 					F2B791791DE0B8B300EA5641 = {
@@ -241,11 +285,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2B791AB1DE0CD5A00EA5641 /* building.png in Resources */,
 				F2B7916F1DE0B8B300EA5641 /* Main.storyboard in Resources */,
 				F2B791661DE0B8B300EA5641 /* GameScene.sks in Resources */,
+				F2B791AC1DE0CD5A00EA5641 /* marble6.png in Resources */,
+				F2B791AA1DE0CD5A00EA5641 /* marble5.png in Resources */,
+				F2B791A91DE0CD5A00EA5641 /* marble4.png in Resources */,
+				F2B791A61DE0CD5A00EA5641 /* marble1.png in Resources */,
 				F2B791711DE0B8B300EA5641 /* Assets.xcassets in Resources */,
+				F2B791A81DE0CD5A00EA5641 /* marble3.png in Resources */,
+				F2B7919A1DE0CCFC00EA5641 /* Tiles.sks in Resources */,
+				F2B791A71DE0CD5A00EA5641 /* marble2.png in Resources */,
 				F2B791741DE0B8B300EA5641 /* LaunchScreen.storyboard in Resources */,
 				F2B791681DE0B8B300EA5641 /* Actions.sks in Resources */,
+				F2B791A51DE0CD5A00EA5641 /* terrazo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +475,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 62G92J3776;
 				INFOPLIST_FILE = PEX4/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = USAFA.PEX4;
@@ -434,6 +488,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 62G92J3776;
 				INFOPLIST_FILE = PEX4/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = USAFA.PEX4;
@@ -515,6 +570,7 @@
 				F2B791901DE0B8B300EA5641 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F2B791911DE0B8B300EA5641 /* Build configuration list for PBXNativeTarget "PEX4Tests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +579,7 @@
 				F2B791931DE0B8B300EA5641 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F2B791941DE0B8B300EA5641 /* Build configuration list for PBXNativeTarget "PEX4UITests" */ = {
 			isa = XCConfigurationList;
@@ -531,6 +588,7 @@
 				F2B791961DE0B8B300EA5641 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
