@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F29FAE731DE10BEB005DA056 /* blacktop.png in Resources */ = {isa = PBXBuildFile; fileRef = F29FAE701DE10BEB005DA056 /* blacktop.png */; };
+		F29FAE741DE10BEB005DA056 /* concrete.png in Resources */ = {isa = PBXBuildFile; fileRef = F29FAE711DE10BEB005DA056 /* concrete.png */; };
+		F29FAE751DE10BEB005DA056 /* grass.png in Resources */ = {isa = PBXBuildFile; fileRef = F29FAE721DE10BEB005DA056 /* grass.png */; };
+		F29FAE771DE10E74005DA056 /* water.png in Resources */ = {isa = PBXBuildFile; fileRef = F29FAE761DE10E74005DA056 /* water.png */; };
 		F2B791641DE0B8B300EA5641 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B791631DE0B8B300EA5641 /* AppDelegate.swift */; };
 		F2B791661DE0B8B300EA5641 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F2B791651DE0B8B300EA5641 /* GameScene.sks */; };
 		F2B791681DE0B8B300EA5641 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = F2B791671DE0B8B300EA5641 /* Actions.sks */; };
@@ -46,6 +50,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F29FAE701DE10BEB005DA056 /* blacktop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blacktop.png; sourceTree = "<group>"; };
+		F29FAE711DE10BEB005DA056 /* concrete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = concrete.png; sourceTree = "<group>"; };
+		F29FAE721DE10BEB005DA056 /* grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass.png; sourceTree = "<group>"; };
+		F29FAE761DE10E74005DA056 /* water.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = water.png; sourceTree = "<group>"; };
 		F2B791601DE0B8B300EA5641 /* PEX4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PEX4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2B791631DE0B8B300EA5641 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2B791651DE0B8B300EA5641 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -165,6 +173,9 @@
 		F2B7919C1DE0CD4700EA5641 /* Textures */ = {
 			isa = PBXGroup;
 			children = (
+				F29FAE701DE10BEB005DA056 /* blacktop.png */,
+				F29FAE711DE10BEB005DA056 /* concrete.png */,
+				F29FAE721DE10BEB005DA056 /* grass.png */,
 				F2B7919D1DE0CD5A00EA5641 /* terrazo.png */,
 				F2B7919E1DE0CD5A00EA5641 /* marble1.png */,
 				F2B7919F1DE0CD5A00EA5641 /* marble2.png */,
@@ -172,6 +183,7 @@
 				F2B791A11DE0CD5A00EA5641 /* marble4.png */,
 				F2B791A21DE0CD5A00EA5641 /* marble5.png */,
 				F2B791A41DE0CD5A00EA5641 /* marble6.png */,
+				F29FAE761DE10E74005DA056 /* water.png */,
 				F2B791A31DE0CD5A00EA5641 /* building.png */,
 			);
 			name = Textures;
@@ -287,6 +299,7 @@
 			files = (
 				F2B791AB1DE0CD5A00EA5641 /* building.png in Resources */,
 				F2B7916F1DE0B8B300EA5641 /* Main.storyboard in Resources */,
+				F29FAE741DE10BEB005DA056 /* concrete.png in Resources */,
 				F2B791661DE0B8B300EA5641 /* GameScene.sks in Resources */,
 				F2B791AC1DE0CD5A00EA5641 /* marble6.png in Resources */,
 				F2B791AA1DE0CD5A00EA5641 /* marble5.png in Resources */,
@@ -295,9 +308,12 @@
 				F2B791711DE0B8B300EA5641 /* Assets.xcassets in Resources */,
 				F2B791A81DE0CD5A00EA5641 /* marble3.png in Resources */,
 				F2B7919A1DE0CCFC00EA5641 /* Tiles.sks in Resources */,
+				F29FAE771DE10E74005DA056 /* water.png in Resources */,
 				F2B791A71DE0CD5A00EA5641 /* marble2.png in Resources */,
+				F29FAE751DE10BEB005DA056 /* grass.png in Resources */,
 				F2B791741DE0B8B300EA5641 /* LaunchScreen.storyboard in Resources */,
 				F2B791681DE0B8B300EA5641 /* Actions.sks in Resources */,
+				F29FAE731DE10BEB005DA056 /* blacktop.png in Resources */,
 				F2B791A51DE0CD5A00EA5641 /* terrazo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
