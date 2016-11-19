@@ -13,29 +13,29 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var noteTextView: UITextView!
     
-    @IBAction func showShareOptions(sender: UIBarButtonItem) {
-        let actionSheet = UIAlertController(title: "", message: "Share your Note", preferredStyle: UIAlertControllerStyle.ActionSheet)
-        let facebookPostAction = UIAlertAction(title: "Share on Facebook", style: UIAlertActionStyle.Default) { (action) -> Void in
-            if SLComposeViewController.isAvailableForServiceType(SLServiceTypeFacebook){
+    @IBAction func showShareOptions(_ sender: UIBarButtonItem) {
+        let actionSheet = UIAlertController(title: "", message: "Share your Note", preferredStyle: UIAlertControllerStyle.actionSheet)
+        let facebookPostAction = UIAlertAction(title: "Share on Facebook", style: UIAlertActionStyle.default) { (action) -> Void in
+            if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook){
                 let facebookComposeVC = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
-                facebookComposeVC.setInitialText("\(self.noteTextView.text)")
-                self.presentViewController(facebookComposeVC, animated: true, completion: nil)
+                facebookComposeVC?.setInitialText("\(self.noteTextView.text)")
+                self.present(facebookComposeVC!, animated: true, completion: nil)
             }
             else{
                 self.showAlertMessage("Sign into facebook in settings")
             }
         }
-        let dismissAction = UIAlertAction(title: "Close", style: UIAlertActionStyle.Cancel, handler: nil)
+        let dismissAction = UIAlertAction(title: "Close", style: UIAlertActionStyle.cancel, handler: nil)
         actionSheet.addAction(facebookPostAction)
         actionSheet.addAction(dismissAction)
         
-        presentViewController(actionSheet, animated: true, completion: nil)
+        present(actionSheet, animated: true, completion: nil)
     }
     
-    func showAlertMessage(message: String!) {
-        let alertController = UIAlertController(title: "Lab32_SocialFrameworks", message: message, preferredStyle: UIAlertControllerStyle.Alert)
-        alertController.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.Default, handler: nil))
-        presentViewController(alertController, animated: true, completion: nil)
+    func showAlertMessage(_ message: String!) {
+        let alertController = UIAlertController(title: "Lab32_SocialFrameworks", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+        present(alertController, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
