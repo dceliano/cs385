@@ -11,6 +11,7 @@
 		F29FAE741DE10BEB005DA056 /* concrete.png in Resources */ = {isa = PBXBuildFile; fileRef = F29FAE711DE10BEB005DA056 /* concrete.png */; };
 		F29FAE751DE10BEB005DA056 /* grass.png in Resources */ = {isa = PBXBuildFile; fileRef = F29FAE721DE10BEB005DA056 /* grass.png */; };
 		F29FAE771DE10E74005DA056 /* water.png in Resources */ = {isa = PBXBuildFile; fileRef = F29FAE761DE10E74005DA056 /* water.png */; };
+		F29FAE7A1DE1132F005DA056 /* testchar.png in Resources */ = {isa = PBXBuildFile; fileRef = F29FAE791DE1132F005DA056 /* testchar.png */; };
 		F2B791641DE0B8B300EA5641 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B791631DE0B8B300EA5641 /* AppDelegate.swift */; };
 		F2B791661DE0B8B300EA5641 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F2B791651DE0B8B300EA5641 /* GameScene.sks */; };
 		F2B791681DE0B8B300EA5641 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = F2B791671DE0B8B300EA5641 /* Actions.sks */; };
@@ -54,6 +55,7 @@
 		F29FAE711DE10BEB005DA056 /* concrete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = concrete.png; sourceTree = "<group>"; };
 		F29FAE721DE10BEB005DA056 /* grass.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grass.png; sourceTree = "<group>"; };
 		F29FAE761DE10E74005DA056 /* water.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = water.png; sourceTree = "<group>"; };
+		F29FAE791DE1132F005DA056 /* testchar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = testchar.png; sourceTree = "<group>"; };
 		F2B791601DE0B8B300EA5641 /* PEX4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PEX4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2B791631DE0B8B300EA5641 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2B791651DE0B8B300EA5641 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -106,6 +108,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F29FAE781DE11324005DA056 /* Character */ = {
+			isa = PBXGroup;
+			children = (
+				F29FAE791DE1132F005DA056 /* testchar.png */,
+			);
+			name = Character;
+			sourceTree = "<group>";
+		};
 		F2B791571DE0B8B300EA5641 = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +175,7 @@
 		F2B7919B1DE0CD3900EA5641 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				F29FAE781DE11324005DA056 /* Character */,
 				F2B7919C1DE0CD4700EA5641 /* Textures */,
 			);
 			name = Assets;
@@ -311,6 +322,7 @@
 				F29FAE771DE10E74005DA056 /* water.png in Resources */,
 				F2B791A71DE0CD5A00EA5641 /* marble2.png in Resources */,
 				F29FAE751DE10BEB005DA056 /* grass.png in Resources */,
+				F29FAE7A1DE1132F005DA056 /* testchar.png in Resources */,
 				F2B791741DE0B8B300EA5641 /* LaunchScreen.storyboard in Resources */,
 				F2B791681DE0B8B300EA5641 /* Actions.sks in Resources */,
 				F29FAE731DE10BEB005DA056 /* blacktop.png in Resources */,
