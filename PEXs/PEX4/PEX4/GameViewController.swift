@@ -47,12 +47,14 @@ class GameViewController: UIViewController {
         mainScene.goForward()
     }
     @IBAction func turnRightButtonPressed(_ sender: Any) {
+        mainScene.turnRight()
     }
     @IBAction func turnLeftButtonPressed(_ sender: Any) {
+        mainScene.turnLeft()
     }
-    @IBAction func executeButtonPressed(_ sender: Any) {
+    @IBAction func haltButtonPressed(_ sender: Any) {
+        mainScene.halt()
     }
-    
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .phone {
             return .allButUpsideDown

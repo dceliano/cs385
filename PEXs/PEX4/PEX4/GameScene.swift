@@ -44,13 +44,13 @@ class GameScene: SKScene {
             animateCadet = SKAction.animate(with: self.cadetUpSprites, timePerFrame: 0.2)
         }
         else if (dir == "down"){
-            animateCadet = SKAction.animate(with: self.cadetUpSprites, timePerFrame: 0.2)
+            animateCadet = SKAction.animate(with: self.cadetDownSprites, timePerFrame: 0.2)
         }
         else if (dir == "right"){
-            animateCadet = SKAction.animate(with: self.cadetUpSprites, timePerFrame: 0.2)
+            animateCadet = SKAction.animate(with: self.cadetRightSprites, timePerFrame: 0.2)
         }
-        else{
-            animateCadet = SKAction.animate(with: self.cadetUpSprites, timePerFrame: 0.2)
+        else{ //left
+            animateCadet = SKAction.animate(with: self.cadetLeftSprites, timePerFrame: 0.2)
         }
         repeatAction = SKAction.repeatForever(animateCadet)
         return repeatAction
@@ -93,7 +93,6 @@ class GameScene: SKScene {
             self.cadet?.removeAction(forKey: "animation1")
         }
         else{ //if we're moving
-            self.cadet?.run(getWalkAction(dir: direction), withKey: "animation1")
             if direction == "up"{
                 cadet!.position.y += cadetSpeed
             }
@@ -112,13 +111,22 @@ class GameScene: SKScene {
     
     func halt(){
         cadetSpeed = 0.0
+        self.cadet?.removeAction(forKey: "animation1") //stop the animation
+        //set image[1] (the standstill image) to be the one that is displayed.
+        if direction == "up" {cadet?.texture = cadetUpSprites[1]}
+        if direction == "down" {cadet?.texture = cadetDownSprites[1]}
+        if direction == "right" {cadet?.texture = cadetRightSprites[1]}
+        if direction == "left" {cadet?.texture = cadetLeftSprites[1]}
     }
     
     func goForward(){
         cadetSpeed = 1.0
+        self.cadet?.removeAction(forKey: "animation1")
+        self.cadet?.run(getWalkAction(dir: direction), withKey: "animation1")
     }
     
     func turnLeft(){
+        cadetSpeed = 1.0
         if direction == "up"{
             direction = "left"
         }
@@ -131,9 +139,12 @@ class GameScene: SKScene {
         else{ //left
             direction = "down"
         }
+        self.cadet?.removeAction(forKey: "animation1")
+        self.cadet?.run(getWalkAction(dir: direction), withKey: "animation1")
     }
     
     func turnRight(){
+        cadetSpeed = 1.0
         if direction == "up"{
             direction = "right"
         }
@@ -146,6 +157,8 @@ class GameScene: SKScene {
         else{ //left
             direction = "up"
         }
+        self.cadet?.removeAction(forKey: "animation1")
+        self.cadet?.run(getWalkAction(dir: direction), withKey: "animation1")
     }
     
     func updateCamera() {
