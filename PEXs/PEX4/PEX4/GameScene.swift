@@ -32,9 +32,11 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         setupAtlasArrays()
         //setup the cadet
-        for i in 0...numCadets{
+        for i in 0...numCadets - 1{
             let cadet = cadetNode(inputtexture: cadetUpSprites[1], direction: "up")
-            cadet.position = CGPoint(x: self.frame.midX + 175 + CGFloat(i*5), y: self.frame.midY)
+            let xoffset = (i % 4) * 5 // side-to-side spacing
+            let yoffset = floor(Double(i / 4)) * 5 // back-to-front spacing
+            cadet.position = CGPoint(x: 450 + xoffset, y: 750 + Int(yoffset))
             cadet.size.width = (cadet.size.width) / 5
             cadet.size.height = (cadet.size.height) / 5
             cadetSpeed = 0.0 //make the cadet still at the beginning
