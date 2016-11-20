@@ -13,7 +13,9 @@ import GameplayKit
 class GameScene: SKScene {
     
     var cadetSpeed: CGFloat = 1.0
-    var cadet: SKSpriteNode?
+    let numCadets = 24
+    var cadetArray: Array<SKSpriteNode> = []
+    var formationCenter = CGPoint(x: 0, y: 0)
     var direction: String = "up" //start as moving up
     let cadetUpAtlas = SKTextureAtlas(named:"CadetWalkUp.atlas")
     let cadetDownAtlas = SKTextureAtlas(named:"CadetWalkDown.atlas")
@@ -26,15 +28,24 @@ class GameScene: SKScene {
     
     var lastTouch: CGPoint? = nil
     
+    
     override func didMove(to view: SKView) {
         setupAtlasArrays()
         //setup the cadet
-        cadet = SKSpriteNode(texture: cadetUpSprites[1])
-        cadet?.position = CGPoint(x: self.frame.midX + 175, y: self.frame.midY)
-        cadet?.size.width = (cadet?.size.width)! / 5
-        cadet?.size.height = (cadet?.size.height)! / 5
-        cadetSpeed = 0.0 //make the cadet still at the beginning
-        addChild(self.cadet!)
+        for i in 0...numCadets{
+            if (i == numCadets / 2){ //the center of the formation is where the middle cadet is
+                formationCenter = CGPoint(x: self.frame.midX + 175, y: self.frame.midY)
+            }
+            let cadet = SKSpriteNode(texture: cadetUpSprites[1])
+            cadet.position = CGPoint(x: self.frame.midX + 175 + CGFloat(i), y: self.frame.midY)
+            cadet.size.width = (cadet.size.width) / 5
+            cadet.size.height = (cadet.size.height) / 5
+            cadetSpeed = 0.0 //make the cadet still at the beginning
+            cadetArray.append(cadet)
+        }
+        for cadet in cadetArray{
+            addChild(cadet)
+        }
     }
     
     func getWalkAction(dir: String) -> SKAction{
@@ -81,29 +92,34 @@ class GameScene: SKScene {
     //MARK: Updates
     
     override func didSimulatePhysics() {
-        if let _ = cadet {
-            updateCadet()
-        }
+        updateCadets()
     }
     
     
     // Updates the cadet's position depending on which direction we're moving in
-    func updateCadet() {
-        if cadetSpeed <= 0{
-            self.cadet?.removeAction(forKey: "animation1")
-        }
-        else{ //if we're moving
-            if direction == "up"{
-                cadet!.position.y += cadetSpeed
+    func updateCadets() {
+        var i = 0
+        for cadet in cadetArray{
+            i += 1
+            if cadetSpeed <= 0{
+                cadet.removeAction(forKey: "animation1")
             }
-            else if direction == "down"{
-                cadet!.position.y -= cadetSpeed
+            else{ //if we're moving
+                if direction == "up"{
+                    cadet.position.y += cadetSpeed
+                }
+                else if direction == "down"{
+                    cadet.position.y -= cadetSpeed
+                }
+                else if direction == "right"{
+                    cadet.position.x += cadetSpeed
+                }
+                else{ //left
+                    cadet.position.x -= cadetSpeed
+                }
             }
-            else if direction == "right"{
-                cadet!.position.x += cadetSpeed
-            }
-            else{ //left
-                cadet!.position.x -= cadetSpeed
+            if (i == numCadets / 2){ //the center of the formation is where the middle cadet is
+                formationCenter = CGPoint(x: cadet.position.x, y: cadet.position.y)
             }
         }
         updateCamera()
@@ -111,59 +127,67 @@ class GameScene: SKScene {
     
     func halt(){
         cadetSpeed = 0.0
-        self.cadet?.removeAction(forKey: "animation1") //stop the animation
-        //set image[1] (the standstill image) to be the one that is displayed.
-        if direction == "up" {cadet?.texture = cadetUpSprites[1]}
-        if direction == "down" {cadet?.texture = cadetDownSprites[1]}
-        if direction == "right" {cadet?.texture = cadetRightSprites[1]}
-        if direction == "left" {cadet?.texture = cadetLeftSprites[1]}
+        for cadet in cadetArray{
+            cadet.removeAction(forKey: "animation1") //stop the animation
+            //set image[1] (the standstill image) to be the one that is displayed.
+            if direction == "up" {cadet.texture = cadetUpSprites[1]}
+            if direction == "down" {cadet.texture = cadetDownSprites[1]}
+            if direction == "right" {cadet.texture = cadetRightSprites[1]}
+            if direction == "left" {cadet.texture = cadetLeftSprites[1]}
+        }
     }
     
     func goForward(){
         cadetSpeed = 1.0
-        self.cadet?.removeAction(forKey: "animation1")
-        self.cadet?.run(getWalkAction(dir: direction), withKey: "animation1")
+        for cadet in cadetArray{
+            cadet.removeAction(forKey: "animation1")
+            cadet.run(getWalkAction(dir: direction), withKey: "animation1")
+        }
     }
     
     func turnLeft(){
         cadetSpeed = 1.0
-        if direction == "up"{
-            direction = "left"
+        for cadet in cadetArray{
+            if direction == "up"{
+                direction = "left"
+            }
+            else if direction == "down"{
+                direction = "right"
+            }
+            else if direction == "right"{
+                direction = "up"
+            }
+            else{ //left
+                direction = "down"
+            }
+            cadet.removeAction(forKey: "animation1")
+            cadet.run(getWalkAction(dir: direction), withKey: "animation1")
         }
-        else if direction == "down"{
-            direction = "right"
-        }
-        else if direction == "right"{
-            direction = "up"
-        }
-        else{ //left
-            direction = "down"
-        }
-        self.cadet?.removeAction(forKey: "animation1")
-        self.cadet?.run(getWalkAction(dir: direction), withKey: "animation1")
     }
     
     func turnRight(){
         cadetSpeed = 1.0
-        if direction == "up"{
-            direction = "right"
+        for cadet in cadetArray{
+            if direction == "up"{
+                direction = "right"
+            }
+            else if direction == "down"{
+                direction = "left"
+            }
+            else if direction == "right"{
+                direction = "down"
+            }
+            else{ //left
+                direction = "up"
+            }
+            cadet.removeAction(forKey: "animation1")
+            cadet.run(getWalkAction(dir: direction), withKey: "animation1")
         }
-        else if direction == "down"{
-            direction = "left"
-        }
-        else if direction == "right"{
-            direction = "down"
-        }
-        else{ //left
-            direction = "up"
-        }
-        self.cadet?.removeAction(forKey: "animation1")
-        self.cadet?.run(getWalkAction(dir: direction), withKey: "animation1")
     }
     
     func updateCamera() {
         if let camera = camera {
-            camera.position = CGPoint(x: cadet!.position.x, y: cadet!.position.y)
+            camera.position = CGPoint(x: formationCenter.x, y: formationCenter.y)
         }
     }
     
