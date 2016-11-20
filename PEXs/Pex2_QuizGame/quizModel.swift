@@ -17,7 +17,7 @@ struct quizModel{
     var oldSettings = quizSettings()
     var imageArray : [(String,String,String)] = []
     var rawImageArray : [(String,String,String)] = []
-    var allFilesWithPath = NSBundle.mainBundle().URLsForResourcesWithExtension("png", subdirectory: nil, localization: nil)
+    var allFilesWithPath = Bundle.main.urls(forResourcesWithExtension: "png", subdirectory: nil, localization: nil)
     var image_index = 0 //this is updated whenever we make a new question
     var continent_pool = ["africa","asia","eeu","na","sa","weu"]
     var correct_answer_index = 0
@@ -27,20 +27,20 @@ struct quizModel{
     mutating func loadImagesIntoArray(){
         for file in allFilesWithPath! {
             let fileName = file.lastPathComponent //the last component of the URL is the filename
-            var componentsWithExtension = fileName!.componentsSeparatedByString(".")
-            var components = componentsWithExtension[0].componentsSeparatedByString("_")
-            self.rawImageArray.append((components[0],components[1], fileName!)) //this array gets filled with ([continent (lowercase letters)], [country name], [full filename])
+            var componentsWithExtension = fileName.components(separatedBy: ".")
+            var components = componentsWithExtension[0].components(separatedBy: "_")
+            self.rawImageArray.append((components[0],components[1], fileName)) //this array gets filled with ([continent (lowercase letters)], [country name], [full filename])
         }
         shuffle() //shuffle the array so it's not the same for every game
     }
     
     mutating func shuffle(){
         for _ in 0..<10{
-            self.rawImageArray.sortInPlace{ (_,_) in arc4random() < arc4random()}
+            self.rawImageArray.sort{ (_,_) in arc4random() < arc4random()}
         }
     }
     
-    mutating func getNewQuestion(settings: quizSettings) -> quizViewSettings{
+    mutating func getNewQuestion(_ settings: quizSettings) -> quizViewSettings{
         if(num_questions == 10){
             //the game is over
             used_image_indicies = [] //reset the images which were used
@@ -60,7 +60,7 @@ struct quizModel{
         return questionToDisplay
     }
     
-    mutating func makeGuess(guessIndex: Int) -> Bool{
+    mutating func makeGuess(_ guessIndex: Int) -> Bool{
         num_guesses += 1
         if(guessIndex == correct_answer_index){ //the guess was correct, so get a new question
             num_correct += 1
@@ -88,7 +88,7 @@ struct quizModel{
         num_guesses = 0
     }
     
-    mutating func getAnswerPool(settings: quizSettings) -> quizViewSettings{
+    mutating func getAnswerPool(_ settings: quizSettings) -> quizViewSettings{
         // Note: Index 0 = continent name  1 = country name  2 = filename
         self.questionToDisplay.choices = [] //reset the choices array
         correct_answer_index = Int(arc4random_uniform(UInt32(settings.num_possibilities))) //gives the index where the correct answer will be put, 0-(num_possibilities - 1) inclusive
@@ -108,7 +108,7 @@ struct quizModel{
         }
         return questionToDisplay
     }
-    mutating func updateAnswerPool(settings: quizSettings) -> Bool{
+    mutating func updateAnswerPool(_ settings: quizSettings) -> Bool{
         //this function returns whether a new question should be gathered or not
         var constraintsChanged = false
         //check if any constraints were changed in the loop below

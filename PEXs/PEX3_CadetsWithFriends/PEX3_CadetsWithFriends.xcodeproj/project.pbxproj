@@ -323,6 +323,7 @@
 				TargetAttributes = {
 					057996731DC0FAC500601046 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 62G92J3776;
 					};
 				};
 			};
@@ -549,6 +550,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 62G92J3776;
 				INFOPLIST_FILE = PEX3_CadetsWithFriends/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.troy.weingart.PEX3-CadetsWithFriends";
@@ -561,6 +563,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 62G92J3776;
 				INFOPLIST_FILE = PEX3_CadetsWithFriends/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.troy.weingart.PEX3-CadetsWithFriends";

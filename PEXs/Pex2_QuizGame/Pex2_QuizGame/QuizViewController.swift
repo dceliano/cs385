@@ -22,20 +22,20 @@ class QuizViewController: UIViewController, PresentedVCDelegate{
     @IBOutlet weak var topBar: UISegmentedControl!
     @IBOutlet weak var middleBar: UISegmentedControl!
     @IBOutlet weak var bottomBar: UISegmentedControl!
-    @IBAction func topBarPressed(sender: AnyObject) {
+    @IBAction func topBarPressed(_ sender: AnyObject) {
         let done = barPressed(0, offset: topBar.selectedSegmentIndex)
-        if(!done){ topBar.setEnabled(false, forSegmentAtIndex: topBar.selectedSegmentIndex) }
+        if(!done){ topBar.setEnabled(false, forSegmentAt: topBar.selectedSegmentIndex) }
     }
     
-    @IBAction func middleBarPressed(sender: AnyObject) {
+    @IBAction func middleBarPressed(_ sender: AnyObject) {
         let done = barPressed(3, offset: middleBar.selectedSegmentIndex)
-        if(!done){ middleBar.setEnabled(false, forSegmentAtIndex: middleBar.selectedSegmentIndex) }
+        if(!done){ middleBar.setEnabled(false, forSegmentAt: middleBar.selectedSegmentIndex) }
     }
-    @IBAction func bottomBarPressed(sender: AnyObject) {
+    @IBAction func bottomBarPressed(_ sender: AnyObject) {
         let done = barPressed(6, offset: bottomBar.selectedSegmentIndex)
-        if(!done){ bottomBar.setEnabled(false, forSegmentAtIndex: bottomBar.selectedSegmentIndex) }
+        if(!done){ bottomBar.setEnabled(false, forSegmentAt: bottomBar.selectedSegmentIndex) }
     }
-    func barPressed(barStartIndex: Int, offset: Int) -> Bool{ //returns if the game is over or not
+    func barPressed(_ barStartIndex: Int, offset: Int) -> Bool{ //returns if the game is over or not
         guess_correct = self.myModel.makeGuess(barStartIndex + offset)
         if(guess_correct){
             statusLabel.text = "Correct!"
@@ -53,9 +53,9 @@ class QuizViewController: UIViewController, PresentedVCDelegate{
     func getNewQuestion(){
         questionToDisplay = myModel.getNewQuestion(self.settings)
         if(questionToDisplay.game_over){
-            let alertController = UIAlertController(title: "Quiz Finished", message: "You scored a \(questionToDisplay.quiz_score)%", preferredStyle: UIAlertControllerStyle.Alert)
-            alertController.addAction(UIAlertAction(title: "New Quiz", style: UIAlertActionStyle.Default,handler: gameOverAlertHandler))
-            self.presentViewController(alertController, animated: true, completion: nil)
+            let alertController = UIAlertController(title: "Quiz Finished", message: "You scored a \(questionToDisplay.quiz_score)%", preferredStyle: UIAlertControllerStyle.alert)
+            alertController.addAction(UIAlertAction(title: "New Quiz", style: UIAlertActionStyle.default,handler: gameOverAlertHandler))
+            self.present(alertController, animated: true, completion: nil)
         }
         else{
             imageView.image = UIImage(named: questionToDisplay.image_name)
@@ -64,7 +64,7 @@ class QuizViewController: UIViewController, PresentedVCDelegate{
         }
     }
     
-    func gameOverAlertHandler(alert: UIAlertAction!){
+    func gameOverAlertHandler(_ alert: UIAlertAction!){
         myModel.resetGame()
         self.getNewQuestion()
     }
@@ -76,30 +76,30 @@ class QuizViewController: UIViewController, PresentedVCDelegate{
         bottomBar.removeAllSegments()
         if(settings.num_possibilities >= 3){ //start building from the first (top) row
             for i in 0...2{
-                topBar.insertSegmentWithTitle(self.myModel.questionToDisplay.choices[i], atIndex: i % 3, animated: false)
+                topBar.insertSegment(withTitle: self.myModel.questionToDisplay.choices[i], at: i % 3, animated: false)
             }
         }
         if(settings.num_possibilities >= 6){
             for i in 3...5{
-                middleBar.insertSegmentWithTitle(self.myModel.questionToDisplay.choices[i], atIndex: i % 3, animated: false)
+                middleBar.insertSegment(withTitle: self.myModel.questionToDisplay.choices[i], at: i % 3, animated: false)
             }
         }
         if(settings.num_possibilities >= 9){
             for i in 6...8{
-                bottomBar.insertSegmentWithTitle(self.myModel.questionToDisplay.choices[i], atIndex: i % 3, animated: false)
+                bottomBar.insertSegment(withTitle: self.myModel.questionToDisplay.choices[i], at: i % 3, animated: false)
             }
         }
     }
     
     // MARK : Navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showSettings"{ //if we are about to segue to the SettingsViewController
-            let destController = segue.destinationViewController as! SettingsViewController
+            let destController = segue.destination as! SettingsViewController
             destController.delegate = self
             destController.settings = settings //pass the old settings
         }
     }
-    func acceptNewSettings(newSettings : quizSettings){
+    func acceptNewSettings(_ newSettings : quizSettings){
         self.settings = newSettings
         let get_new_question = self.myModel.updateAnswerPool(self.settings)
         if(get_new_question){ self.gameOverAlertHandler(nil) } //if we should get a new question
