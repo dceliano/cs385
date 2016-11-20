@@ -12,15 +12,22 @@ import GameplayKit
 
 class GameViewController: UIViewController {
 
+    @IBOutlet weak var forwardButton: UIButton!
+    @IBOutlet weak var turnLeftButton: UIButton!
+    @IBOutlet weak var turnRightButton: UIButton!
+    @IBOutlet weak var executeButton: UIButton!
+    var mainScene = GameScene()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
             if let scene = SKScene(fileNamed: "GameScene") {
+                mainScene = scene as! GameScene
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
-                
                 // Present the scene
                 view.presentScene(scene)
             }
@@ -35,7 +42,17 @@ class GameViewController: UIViewController {
     override var shouldAutorotate: Bool {
         return true
     }
-
+    
+    @IBAction func forwardButtonPressed(_ sender: Any) {
+        mainScene.goForward()
+    }
+    @IBAction func turnRightButtonPressed(_ sender: Any) {
+    }
+    @IBAction func turnLeftButtonPressed(_ sender: Any) {
+    }
+    @IBAction func executeButtonPressed(_ sender: Any) {
+    }
+    
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .phone {
             return .allButUpsideDown

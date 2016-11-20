@@ -12,8 +12,9 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-    let cadetSpeed: CGFloat = 150.0
+    var cadetSpeed: CGFloat = 1.0
     var cadet: SKSpriteNode?
+    var direction: String = "up" //start as moving up
     let cadetUpAtlas = SKTextureAtlas(named:"CadetWalkUp.atlas")
     let cadetDownAtlas = SKTextureAtlas(named:"CadetWalkDown.atlas")
     let cadetRightAtlas = SKTextureAtlas(named:"CadetWalkRight.atlas")
@@ -26,35 +27,14 @@ class GameScene: SKScene {
     var lastTouch: CGPoint? = nil
     
     override func didMove(to view: SKView) {
-        // Setup cadet with animation
         setupAtlasArrays()
-        cadet = SKSpriteNode(texture: cadetUpSprites[0])
-        cadet?.position = CGPoint(x: self.frame.midX, y: self.frame.midY)
-        //cadet?.size.width = (cadet?.size.width)! / 10
-        //cadet?.size.height = (cadet?.size.height)! / 10
-        let repeatAction = getWalkAction(dir: "up")
-        self.cadet?.run(repeatAction, withKey: "animation1")
+        //setup the cadet
+        cadet = SKSpriteNode(texture: cadetUpSprites[1])
+        cadet?.position = CGPoint(x: self.frame.midX + 175, y: self.frame.midY)
+        cadet?.size.width = (cadet?.size.width)! / 5
+        cadet?.size.height = (cadet?.size.height)! / 5
+        cadetSpeed = 0.0 //make the cadet still at the beginning
         addChild(self.cadet!)
-    }
-    
-    func setupAtlasArrays(){
-        //setting up all of the arrays and loading the atlas images into the atlas arrays
-        cadetUpSprites.append(cadetUpAtlas.textureNamed("up1"))
-        cadetUpSprites.append(cadetUpAtlas.textureNamed("up2"))
-        cadetUpSprites.append(cadetUpAtlas.textureNamed("up3"))
-        cadetUpSprites.append(cadetUpAtlas.textureNamed("up4"))
-        cadetDownSprites.append(cadetDownAtlas.textureNamed("down1"))
-        cadetDownSprites.append(cadetDownAtlas.textureNamed("down2"))
-        cadetDownSprites.append(cadetDownAtlas.textureNamed("down3"))
-        cadetDownSprites.append(cadetDownAtlas.textureNamed("down4"))
-        cadetRightSprites.append(cadetRightAtlas.textureNamed("right1"))
-        cadetRightSprites.append(cadetRightAtlas.textureNamed("right2"))
-        cadetRightSprites.append(cadetRightAtlas.textureNamed("right3"))
-        cadetRightSprites.append(cadetRightAtlas.textureNamed("right4"))
-        cadetLeftSprites.append(cadetLeftAtlas.textureNamed("left1"))
-        cadetLeftSprites.append(cadetLeftAtlas.textureNamed("left2"))
-        cadetLeftSprites.append(cadetLeftAtlas.textureNamed("left3"))
-        cadetLeftSprites.append(cadetLeftAtlas.textureNamed("left4"))
     }
     
     func getWalkAction(dir: String) -> SKAction{
@@ -106,34 +86,65 @@ class GameScene: SKScene {
         }
     }
     
-    // Determines if the cadet's position should be updated
-    func shouldMove(currentPosition: CGPoint, touchPosition: CGPoint) -> Bool {
-        return abs(currentPosition.x - touchPosition.x) > cadet!.frame.width / 2 ||
-            abs(currentPosition.y - touchPosition.y) > cadet!.frame.height/2
+    
+    // Updates the cadet's position depending on which direction we're moving in
+    func updateCadet() {
+        if cadetSpeed <= 0{
+            self.cadet?.removeAction(forKey: "animation1")
+        }
+        else{ //if we're moving
+            self.cadet?.run(getWalkAction(dir: direction), withKey: "animation1")
+            if direction == "up"{
+                cadet!.position.y += cadetSpeed
+            }
+            else if direction == "down"{
+                cadet!.position.y -= cadetSpeed
+            }
+            else if direction == "right"{
+                cadet!.position.x += cadetSpeed
+            }
+            else{ //left
+                cadet!.position.x -= cadetSpeed
+            }
+        }
+        updateCamera()
     }
     
-    // Updates the cadet's position by moving towards the last touch made
-    func updateCadet() {
-        if let touch = lastTouch {
-            let currentPosition = cadet!.position
-            if shouldMove(currentPosition: currentPosition, touchPosition: touch) {
-                
-                let distance = CGPoint(x: currentPosition.y - touch.y, y: currentPosition.x - touch.x)
-                let distance_to_move = sqrt((distance.x*distance.x) + (distance.y*distance.y))
-                let angle = atan2(distance.x, distance.y) + CGFloat(M_PI)
-//                let rotateAction = SKAction.rotate(toAngle: angle + CGFloat(M_PI*0.5), duration: 0)
-//                
-//                cadet!.run(rotateAction)
-                
-                let velocityX = cadetSpeed * cos(angle)
-                let velocityY = cadetSpeed * sin(angle)
-                
-                let newVelocity = CGVector(dx: velocityX, dy: velocityY)
-                //cadet!.physicsBody!.velocity = newVelocity
-                updateCamera()
-            } else {
-                cadet!.physicsBody!.isResting = true
-            }
+    func halt(){
+        cadetSpeed = 0.0
+    }
+    
+    func goForward(){
+        cadetSpeed = 1.0
+    }
+    
+    func turnLeft(){
+        if direction == "up"{
+            direction = "left"
+        }
+        else if direction == "down"{
+            direction = "right"
+        }
+        else if direction == "right"{
+            direction = "up"
+        }
+        else{ //left
+            direction = "down"
+        }
+    }
+    
+    func turnRight(){
+        if direction == "up"{
+            direction = "right"
+        }
+        else if direction == "down"{
+            direction = "left"
+        }
+        else if direction == "right"{
+            direction = "down"
+        }
+        else{ //left
+            direction = "up"
         }
     }
     
@@ -141,6 +152,26 @@ class GameScene: SKScene {
         if let camera = camera {
             camera.position = CGPoint(x: cadet!.position.x, y: cadet!.position.y)
         }
+    }
+    
+    func setupAtlasArrays(){
+        //setting up all of the arrays and loading the atlas images into the atlas arrays
+        cadetUpSprites.append(cadetUpAtlas.textureNamed("up1"))
+        cadetUpSprites.append(cadetUpAtlas.textureNamed("up2"))
+        cadetUpSprites.append(cadetUpAtlas.textureNamed("up3"))
+        cadetUpSprites.append(cadetUpAtlas.textureNamed("up4"))
+        cadetDownSprites.append(cadetDownAtlas.textureNamed("down1"))
+        cadetDownSprites.append(cadetDownAtlas.textureNamed("down2"))
+        cadetDownSprites.append(cadetDownAtlas.textureNamed("down3"))
+        cadetDownSprites.append(cadetDownAtlas.textureNamed("down4"))
+        cadetRightSprites.append(cadetRightAtlas.textureNamed("right1"))
+        cadetRightSprites.append(cadetRightAtlas.textureNamed("right2"))
+        cadetRightSprites.append(cadetRightAtlas.textureNamed("right3"))
+        cadetRightSprites.append(cadetRightAtlas.textureNamed("right4"))
+        cadetLeftSprites.append(cadetLeftAtlas.textureNamed("left1"))
+        cadetLeftSprites.append(cadetLeftAtlas.textureNamed("left2"))
+        cadetLeftSprites.append(cadetLeftAtlas.textureNamed("left3"))
+        cadetLeftSprites.append(cadetLeftAtlas.textureNamed("left4"))
     }
     
     override func update(_ currentTime: TimeInterval) {
