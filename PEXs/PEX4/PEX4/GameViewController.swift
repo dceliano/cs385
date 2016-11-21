@@ -17,7 +17,8 @@ class GameViewController: UIViewController {
     @IBOutlet weak var turnRightButton: UIButton!
     @IBOutlet weak var executeButton: UIButton!
     var mainScene = GameScene()
-    
+    var buttonPressed : String = "" //the name of which button is pressed
+    @IBOutlet weak var commandLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,31 +39,94 @@ class GameViewController: UIViewController {
             view.showsNodeCount = true
         }
     }
-
-    override var shouldAutorotate: Bool {
-        return true
-    }
     
     @IBAction func forwardButtonPressed(_ sender: Any) {
-        mainScene.goForward()
-    }
-    @IBAction func turnRightButtonPressed(_ sender: Any) {
-        mainScene.turnRight()
-    }
-    @IBAction func turnLeftButtonPressed(_ sender: Any) {
-        mainScene.turnLeft()
-    }
-    @IBAction func haltButtonPressed(_ sender: Any) {
-        mainScene.halt()
-    }
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
-        } else {
-            return .all
-        }
+        buttonPressed = "forwardButton"
+        commandLabel.text = "Forward..."
     }
 
+    @IBAction func HaltButtonPressed(_ sender: Any) {
+        buttonPressed = "haltButton"
+        commandLabel.text = "Flight..."
+    }
+
+    @IBAction func leftFlankButtonPressed(_ sender: Any) {
+        buttonPressed = "leftFlankButton"
+        commandLabel.text = "Left Flank..."
+    }
+    
+    @IBAction func rightFlankButtonPressed(_ sender: Any) {
+        buttonPressed = "rightFlankButton"
+        commandLabel.text = "Right Flank..."
+    }
+    
+    @IBAction func leftTurnButtonPressed(_ sender: Any) {
+        buttonPressed = "leftTurnButton"
+        commandLabel.text = "Column Left..."
+    }
+    
+    @IBAction func rightTurnButtonPressed(_ sender: Any) {
+        buttonPressed = "rightTurnButton"
+        commandLabel.text = "Column Right..."
+    }
+    
+    @IBAction func executeButtonPressed(_ sender: Any) {
+        executeCommand(button: buttonPressed)
+    }
+    @IBAction func cancelButtonPressed(_ sender: Any) {
+        buttonPressed = ""
+        commandLabel.text = "As You Were!"
+    }
+    @IBAction func stepButtonPressed(_ sender: Any) {
+         commandLabel.text = "Get In Step!"
+    }
+    
+    @IBAction func dressButtonPressed(_ sender: Any) {
+         commandLabel.text = "Get Your Dress!"
+    }
+    @IBAction func coverButtonPressed(_ sender: Any) {
+         commandLabel.text = "Cover!"
+    }
+    @IBAction func distanceButtonPressed(_ sender: Any) {
+         commandLabel.text = "Fix Your Distance!"
+    }
+    @IBAction func cadenceLeftButtonPressed(_ sender: Any) {
+        commandLabel.text = "Your Left..."
+    }
+    @IBAction func cadenceRightButtonPressed(_ sender: Any) {
+        commandLabel.text = "Your Right..."
+    }
+    
+    @IBAction func menuButtonPressed(_ sender: Any) {
+        commandLabel.text = "Menu"
+    }
+    
+    func executeCommand(button: String){
+        switch button{
+            case "": //no button was pressed
+                commandLabel.text = ("Give the preemptive command first!")
+            case "forwardButton":
+                mainScene.goForward()
+                commandLabel.text?.append("Harch!")
+            case "rightFlankButton":
+                mainScene.rightFlank()
+                commandLabel.text?.append("Harch!")
+            case "leftFlankButton":
+                mainScene.leftFlank()
+                commandLabel.text?.append("Harch!")
+            case "rightTurnButton":
+                let _ = 0
+            case "leftTurnButton":
+                let _ = 0
+            case "haltButton":
+                mainScene.halt()
+                commandLabel.text?.append("Halt!")
+            default:
+                mainScene.halt()
+                commandLabel.text?.append("Halt!")
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.

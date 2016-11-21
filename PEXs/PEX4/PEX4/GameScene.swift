@@ -145,7 +145,7 @@ class GameScene: SKScene {
         }
     }
     
-    func turnLeft(){
+    func leftFlank(){
         cadetSpeed = 1.0
         for cadet in cadetArray{
             if cadet.direction == "up"{
@@ -165,7 +165,7 @@ class GameScene: SKScene {
         }
     }
     
-    func turnRight(){
+    func rightFlank(){
         cadetSpeed = 1.0
         for cadet in cadetArray{
             if cadet.direction == "up"{
