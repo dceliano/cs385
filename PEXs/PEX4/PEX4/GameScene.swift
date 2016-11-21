@@ -60,7 +60,19 @@ class GameScene: SKScene {
         else if (dir == "right"){
             animateCadet = SKAction.animate(with: self.cadetRightSprites, timePerFrame: 0.2)
         }
-        else{ //left
+        else if dir == "left"{
+            animateCadet = SKAction.animate(with: self.cadetLeftSprites, timePerFrame: 0.2)
+        }
+        else if dir == "upright"{
+            animateCadet = SKAction.animate(with: self.cadetRightSprites, timePerFrame: 0.2)
+        }
+        else if dir == "downright"{
+            animateCadet = SKAction.animate(with: self.cadetRightSprites, timePerFrame: 0.2)
+        }
+        else if dir == "upleft"{
+            animateCadet = SKAction.animate(with: self.cadetLeftSprites, timePerFrame: 0.2)
+        }
+        else if dir == "downleft"{
             animateCadet = SKAction.animate(with: self.cadetLeftSprites, timePerFrame: 0.2)
         }
         repeatAction = SKAction.repeatForever(animateCadet)
@@ -114,8 +126,24 @@ class GameScene: SKScene {
                 else if cadet.direction == "right"{
                     cadet.position.x += cadetSpeed
                 }
-                else{ //left
+                else if cadet.direction == "left"{ //left
                     cadet.position.x -= cadetSpeed
+                }
+                else if cadet.direction == "upright"{
+                    cadet.position.x += cadetSpeed / 2
+                    cadet.position.y += cadetSpeed / 2
+                }
+                else if cadet.direction == "upleft"{
+                    cadet.position.x -= cadetSpeed / 2
+                    cadet.position.y += cadetSpeed / 2
+                }
+                else if cadet.direction == "downright"{
+                    cadet.position.x += cadetSpeed / 2
+                    cadet.position.y -= cadetSpeed / 2
+                }
+                else if cadet.direction == "downleft"{
+                    cadet.position.x -= cadetSpeed / 2
+                    cadet.position.y -= cadetSpeed / 2
                 }
             }
             if (i == numCadets / 2){ //the center of the formation is where the middle cadet is
@@ -143,6 +171,30 @@ class GameScene: SKScene {
             cadet.removeAction(forKey: "animation1")
             cadet.run(getWalkAction(dir: cadet.direction), withKey: "animation1")
         }
+    }
+    
+    func turnRight(){
+        cadetSpeed = 1.0
+        for cadet in cadetArray{
+            if cadet.direction == "up"{
+                cadet.direction = "upright"
+            }
+            else if cadet.direction == "down"{
+                cadet.direction = "downleft"
+            }
+            else if cadet.direction == "right"{
+                cadet.direction = "downright"
+            }
+            else{ //left
+                cadet.direction = "upleft"
+            }
+            cadet.removeAllActions()
+            cadet.run(getWalkAction(dir: cadet.direction), withKey: "animation1")
+        }
+    }
+    
+    func turnLeft(){
+        
     }
     
     func leftFlank(){

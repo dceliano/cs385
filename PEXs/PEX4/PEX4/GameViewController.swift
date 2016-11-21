@@ -115,9 +115,11 @@ class GameViewController: UIViewController {
                 mainScene.leftFlank()
                 commandLabel.text?.append("Harch!")
             case "rightTurnButton":
-                let _ = 0
+                mainScene.turnRight()
+                commandLabel.text?.append("Harch!")
             case "leftTurnButton":
-                let _ = 0
+                mainScene.turnLeft()
+                commandLabel.text?.append("Harch!")
             case "haltButton":
                 mainScene.halt()
                 commandLabel.text?.append("Halt!")
