@@ -14,6 +14,10 @@ class cadetNode: SKSpriteNode{
     var direction = "up"
     var turning = false
     var marchSpeed: CGFloat = 1.0
+    var element = 0
+    var rank = 0
+    var distanceMoved = 0
+    var turnCommandString : Array<String> = []
     
     init(inputtexture: SKTexture, direction: String){
         super.init(texture: inputtexture, color: UIColor.clear, size: inputtexture.size())

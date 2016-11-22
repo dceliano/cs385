@@ -14,8 +14,14 @@ import GameplayKit
 class GameScene: SKScene {
     
     var myModel = gameModel()
-    var cadetArray: Array<cadetNode> = []
-    var formationCenter = CGPoint(x: 0, y: 0)
+    var cadetArray: Array<cadetNode> = [] //load a blank array of cadets
+    var formationCenter = CGPoint(x: 0, y: 0) //load the camera
+    let timePerFrame = 0.2
+    //variables to help complete column movements (it's complicated)
+    var turnStepCount = 0
+    var formationIsTurning : Bool = false //tells us whether we're performing a column movement or not
+    var numStepsToCompleteTurn : Int = 0
+    //load all of the animation files
     let cadetUpAtlas = SKTextureAtlas(named:"CadetWalkUp.atlas")
     let cadetDownAtlas = SKTextureAtlas(named:"CadetWalkDown.atlas")
     let cadetRightAtlas = SKTextureAtlas(named:"CadetWalkRight.atlas")
@@ -30,16 +36,19 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         setupAtlasArrays() //get the animation frames ready
-        //setup the cadet
+        //setup the cadets
         for i in 0...myModel.numCadets - 1{
             let cadet = cadetNode(inputtexture: cadetUpSprites[1], direction: "up")
-            let xoffset = (i % myModel.numElements) * myModel.distanceBetweenCadets // side-to-side spacing
-            let yoffset = floor(Double(i / myModel.numElements)) * Double(myModel.distanceBetweenCadets) // back-to-front spacing
+            cadet.element = i % myModel.numElements
+            cadet.rank = myModel.numRanks - Int(floor(Double(i / myModel.numElements))) //this makes (0,0) in the top left
+            let xoffset = cadet.element * myModel.distanceBetweenCadets // side-to-side spacing
+            let yoffset =  -(cadet.rank * myModel.distanceBetweenCadets) // back-to-front spacing
             cadet.position = CGPoint(x: 450 + xoffset, y: 750 + Int(yoffset))
             cadet.size.width = (cadet.size.width) / 5
             cadet.size.height = (cadet.size.height) / 5
             cadet.marchSpeed = 0.0 //make the cadet still at the beginning
             cadetArray.append(cadet)
+            numStepsToCompleteTurn = myModel.numElements * 2 + (myModel.numRanks - 1) //this is complicated, but it works
         }
         for cadet in cadetArray{
             addChild(cadet)
@@ -51,28 +60,28 @@ class GameScene: SKScene {
         var animateCadet = SKAction()
         var repeatAction = SKAction()
         if (dir == "up"){
-            animateCadet = SKAction.animate(with: self.cadetUpSprites, timePerFrame: 0.2)
+            animateCadet = SKAction.animate(with: self.cadetUpSprites, timePerFrame: timePerFrame)
         }
         else if (dir == "down"){
-            animateCadet = SKAction.animate(with: self.cadetDownSprites, timePerFrame: 0.2)
+            animateCadet = SKAction.animate(with: self.cadetDownSprites, timePerFrame: timePerFrame)
         }
         else if (dir == "right"){
-            animateCadet = SKAction.animate(with: self.cadetRightSprites, timePerFrame: 0.2)
+            animateCadet = SKAction.animate(with: self.cadetRightSprites, timePerFrame: timePerFrame)
         }
         else if dir == "left"{
-            animateCadet = SKAction.animate(with: self.cadetLeftSprites, timePerFrame: 0.2)
+            animateCadet = SKAction.animate(with: self.cadetLeftSprites, timePerFrame: timePerFrame)
         }
         else if dir == "upright"{
-            animateCadet = SKAction.animate(with: self.cadetRightSprites, timePerFrame: 0.2)
+            animateCadet = SKAction.animate(with: self.cadetRightSprites, timePerFrame: timePerFrame)
         }
         else if dir == "downright"{
-            animateCadet = SKAction.animate(with: self.cadetRightSprites, timePerFrame: 0.2)
+            animateCadet = SKAction.animate(with: self.cadetRightSprites, timePerFrame: timePerFrame)
         }
         else if dir == "upleft"{
-            animateCadet = SKAction.animate(with: self.cadetLeftSprites, timePerFrame: 0.2)
+            animateCadet = SKAction.animate(with: self.cadetLeftSprites, timePerFrame: timePerFrame)
         }
         else if dir == "downleft"{
-            animateCadet = SKAction.animate(with: self.cadetLeftSprites, timePerFrame: 0.2)
+            animateCadet = SKAction.animate(with: self.cadetLeftSprites, timePerFrame: timePerFrame)
         }
         repeatAction = SKAction.repeatForever(animateCadet)
         return repeatAction
@@ -109,6 +118,19 @@ class GameScene: SKScene {
     
     // Updates the cadet's position depending on which direction we're moving in
     func updateCadets() {
+        if formationIsTurning{
+            if(turnStepCount >= (numStepsToCompleteTurn - 1)){
+                formationIsTurning = false
+            }
+            else{
+                turnStepCount += 1
+                for cadet in cadetArray{ //retrieve the appropriate movement based on the premade array of movements
+                    cadet.direction = cadet.turnCommandString[turnStepCount]
+                    cadet.removeAction(forKey: "animation1")
+                    cadet.run(getWalkAction(dir: cadet.direction), withKey: "animation1") //rerun the new animation
+                }
+            }
+        }
         var i = 0
         for cadet in cadetArray{
             i += 1
@@ -116,33 +138,46 @@ class GameScene: SKScene {
                 cadet.removeAction(forKey: "animation1")
             }
             else{ //if we're moving
+                cadet.distanceMoved += 1
                 if cadet.direction == "up"{
                     cadet.position.y += cadet.marchSpeed
+                }
+                else if cadet.direction == "uphalf"{
+                    cadet.position.y += cadet.marchSpeed / 2
                 }
                 else if cadet.direction == "down"{
                     cadet.position.y -= cadet.marchSpeed
                 }
+                else if cadet.direction == "downhalf"{
+                    cadet.position.y -= cadet.marchSpeed / 2
+                }
                 else if cadet.direction == "right"{
                     cadet.position.x += cadet.marchSpeed
                 }
-                else if cadet.direction == "left"{ //left
+                else if cadet.direction == "righthalf"{
+                    cadet.position.x += cadet.marchSpeed / 2
+                }
+                else if cadet.direction == "left"{
                     cadet.position.x -= cadet.marchSpeed
                 }
+                else if cadet.direction == "lefthalf"{
+                    cadet.position.x -= cadet.marchSpeed / 2
+                }
                 else if cadet.direction == "upright"{
-                    cadet.position.x += cadet.marchSpeed / 2
-                    cadet.position.y += cadet.marchSpeed / 2
+                    cadet.position.x += cadet.marchSpeed
+                    cadet.position.y += cadet.marchSpeed
                 }
                 else if cadet.direction == "upleft"{
-                    cadet.position.x -= cadet.marchSpeed / 2
-                    cadet.position.y += cadet.marchSpeed / 2
+                    cadet.position.x -= cadet.marchSpeed
+                    cadet.position.y += cadet.marchSpeed
                 }
                 else if cadet.direction == "downright"{
-                    cadet.position.x += cadet.marchSpeed / 2
-                    cadet.position.y -= cadet.marchSpeed / 2
+                    cadet.position.x += cadet.marchSpeed
+                    cadet.position.y -= cadet.marchSpeed
                 }
                 else if cadet.direction == "downleft"{
-                    cadet.position.x -= cadet.marchSpeed / 2
-                    cadet.position.y -= cadet.marchSpeed / 2
+                    cadet.position.x -= cadet.marchSpeed
+                    cadet.position.y -= cadet.marchSpeed
                 }
             }
             if (i == myModel.numCadets / 2){ //the center of the formation is where the middle cadet is
@@ -173,10 +208,33 @@ class GameScene: SKScene {
     }
     
     func turnRight(){
+
+    }
+    
+    func turnLeft(){
+        //this function begins the turning sequence by resetting the turning variables and loading each cadet's turnCommandString
+        turnStepCount = 0
+        formationIsTurning = true
         for cadet in cadetArray{
+            cadet.turnCommandString = []
             cadet.marchSpeed = 1.0
             if cadet.direction == "up"{
-                cadet.direction = "upright"
+                for _ in 0...cadet.rank{
+                    cadet.turnCommandString.append("up") //append the initial straightaway before turning
+                }
+                if cadet.element != 0{
+                    for _ in 0...cadet.element{
+                        cadet.turnCommandString.append("upleft") //append all the 45* turns based on the element we're in
+                    }
+                }
+                for _ in 0...cadet.element{
+                    cadet.turnCommandString.append("left") //append the straightaways after we complete our turn
+                }
+                //append the halfsteps after we complete our turn
+                for _ in 0...(2 * (myModel.numElements - cadet.element - 1)) + (myModel.numRanks - 1){ //once again, complicated, but it works
+                    cadet.turnCommandString.append("lefthalf")
+                }
+                print("El\(cadet.element) Rank\(cadet.rank) String: \(cadet.turnCommandString)")
             }
             else if cadet.direction == "down"{
                 cadet.direction = "downleft"
@@ -190,10 +248,6 @@ class GameScene: SKScene {
             cadet.removeAllActions()
             cadet.run(getWalkAction(dir: cadet.direction), withKey: "animation1")
         }
-    }
-    
-    func turnLeft(){
-        
     }
     
     func leftFlank(){
