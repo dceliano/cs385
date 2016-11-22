@@ -40,41 +40,33 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         }
         
     }
-    
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
         commandLabel.text = "Scale: \(scrollView.zoomScale)"
     }
-    
     @IBAction func forwardButtonPressed(_ sender: Any) {
         buttonPressed = "forwardButton"
         commandLabel.text = "Forward..."
     }
-
     @IBAction func HaltButtonPressed(_ sender: Any) {
         buttonPressed = "haltButton"
         commandLabel.text = "Flight..."
     }
-
     @IBAction func leftFlankButtonPressed(_ sender: Any) {
         buttonPressed = "leftFlankButton"
         commandLabel.text = "Left Flank..."
     }
-    
     @IBAction func rightFlankButtonPressed(_ sender: Any) {
         buttonPressed = "rightFlankButton"
         commandLabel.text = "Right Flank..."
     }
-    
     @IBAction func leftTurnButtonPressed(_ sender: Any) {
         buttonPressed = "leftTurnButton"
         commandLabel.text = "Column Left..."
     }
-    
     @IBAction func rightTurnButtonPressed(_ sender: Any) {
         buttonPressed = "rightTurnButton"
         commandLabel.text = "Column Right..."
     }
-    
     @IBAction func executeButtonPressed(_ sender: Any) {
         executeCommand(button: buttonPressed)
     }
@@ -85,7 +77,6 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     @IBAction func stepButtonPressed(_ sender: Any) {
          commandLabel.text = "Get In Step!"
     }
-    
     @IBAction func dressButtonPressed(_ sender: Any) {
          commandLabel.text = "Get Your Dress!"
     }
@@ -105,7 +96,6 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     @IBAction func menuButtonPressed(_ sender: Any) {
         commandLabel.text = "Menu"
     }
-    
     func executeCommand(button: String){
         switch button{
             case "": //no button was pressed

@@ -7,14 +7,22 @@
 //
 
 import Foundation
+import CoreGraphics
 
 struct gameModel {
+    //game properties
     var distanceMarched : Int = 0
-    var mistakesMade : Int = 0
     let numCadets = 24
     let numElements = 4
     var numRanks = 0
     var distanceBetweenCadets = 5 //measured in pixels
+    
+    //flight commander (user) properties
+    var numMistakesMade : Int = 0
+    var guidonLocation : CGPoint? = nil
+    var level : Int = 0
+    var numChallengesComplete : Int = 0
+    
     init(){
         numRanks = numCadets / numElements
     }

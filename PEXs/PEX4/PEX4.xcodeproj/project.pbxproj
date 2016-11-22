@@ -36,6 +36,7 @@
 		F2B791AA1DE0CD5A00EA5641 /* marble5.png in Resources */ = {isa = PBXBuildFile; fileRef = F2B791A21DE0CD5A00EA5641 /* marble5.png */; };
 		F2B791AB1DE0CD5A00EA5641 /* building.png in Resources */ = {isa = PBXBuildFile; fileRef = F2B791A31DE0CD5A00EA5641 /* building.png */; };
 		F2B791AC1DE0CD5A00EA5641 /* marble6.png in Resources */ = {isa = PBXBuildFile; fileRef = F2B791A41DE0CD5A00EA5641 /* marble6.png */; };
+		F2CB12821DE4409500FB1A86 /* splashScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = F2CB12811DE4409500FB1A86 /* splashScreen.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		F2B791A21DE0CD5A00EA5641 /* marble5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marble5.png; sourceTree = "<group>"; };
 		F2B791A31DE0CD5A00EA5641 /* building.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = building.png; sourceTree = "<group>"; };
 		F2B791A41DE0CD5A00EA5641 /* marble6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marble6.png; sourceTree = "<group>"; };
+		F2CB12811DE4409500FB1A86 /* splashScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = splashScreen.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +192,7 @@
 		F2B7919B1DE0CD3900EA5641 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				F2CB12811DE4409500FB1A86 /* splashScreen.png */,
 				F29FAE781DE11324005DA056 /* Character */,
 				F2B7919C1DE0CD4700EA5641 /* Textures */,
 			);
@@ -329,6 +332,7 @@
 				F29FAE911DE21383005DA056 /* CadetWalkRight.atlas in Resources */,
 				F29FAE741DE10BEB005DA056 /* concrete.png in Resources */,
 				F2B791661DE0B8B300EA5641 /* GameScene.sks in Resources */,
+				F2CB12821DE4409500FB1A86 /* splashScreen.png in Resources */,
 				F2B791AC1DE0CD5A00EA5641 /* marble6.png in Resources */,
 				F2B791AA1DE0CD5A00EA5641 /* marble5.png in Resources */,
 				F2B791A91DE0CD5A00EA5641 /* marble4.png in Resources */,

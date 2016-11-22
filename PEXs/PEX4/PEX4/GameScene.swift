@@ -36,7 +36,7 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         setupAtlasArrays() //get the animation frames ready
-        //setup the cadets
+        //setup the cadets, store them in the cadet array, and then add them as children to the scene
         for i in 0...myModel.numCadets - 1{
             let cadet = cadetNode(inputtexture: cadetUpSprites[1], direction: "up")
             cadet.element = i % myModel.numElements
