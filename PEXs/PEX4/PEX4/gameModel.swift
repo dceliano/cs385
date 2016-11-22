@@ -12,8 +12,8 @@ import CoreGraphics
 struct gameModel {
     //game properties
     var distanceMarched : Int = 0
-    let numCadets = 24
-    let numElements = 4
+    let numCadets = 99
+    let numElements = 9
     var numRanks = 0
     var distanceBetweenCadets = 5 //measured in pixels
     

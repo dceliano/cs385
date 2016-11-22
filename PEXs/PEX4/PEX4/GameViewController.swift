@@ -87,10 +87,10 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
          commandLabel.text = "Fix Your Distance!"
     }
     @IBAction func cadenceLeftButtonPressed(_ sender: Any) {
-        commandLabel.text = "Your Left..."
+        commandLabel.text = "Left..."
     }
     @IBAction func cadenceRightButtonPressed(_ sender: Any) {
-        commandLabel.text = "Your Right..."
+        commandLabel.text = "Right..."
     }
     
     @IBAction func menuButtonPressed(_ sender: Any) {

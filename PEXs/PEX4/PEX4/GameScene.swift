@@ -18,6 +18,7 @@ class GameScene: SKScene {
     var formationCenter = CGPoint(x: 0, y: 0) //load the camera
     let timePerFrame = 0.2
     //variables to help complete column movements (it's complicated)
+    var intermediateStepCount : Int = 0
     var turnStepCount = 0
     var formationIsTurning : Bool = false //tells us whether we're performing a column movement or not
     var numStepsToCompleteTurn : Int = 0
@@ -120,15 +121,22 @@ class GameScene: SKScene {
     func updateCadets() {
         if formationIsTurning{
             if(turnStepCount >= (numStepsToCompleteTurn - 1)){
+                for cadet in cadetArray{
+                    //rerun the new animation
+                    cadet.removeAction(forKey: "animation1")
+                    cadet.direction = "lefthalf"
+                    cadet.run(getWalkAction(dir: "left"), withKey: "animation1")
+                }
                 formationIsTurning = false
             }
             else{
-                turnStepCount += 1
-                for cadet in cadetArray{ //retrieve the appropriate movement based on the premade array of movements
-                    cadet.direction = cadet.turnCommandString[turnStepCount]
-                    cadet.removeAction(forKey: "animation1")
-                    cadet.run(getWalkAction(dir: cadet.direction), withKey: "animation1") //rerun the new animation
+                if intermediateStepCount % 5 == 0{
+                    turnStepCount += 1
+                    for cadet in cadetArray{
+                        cadet.direction = cadet.turnCommandString[turnStepCount]
+                    }
                 }
+                intermediateStepCount += 1
             }
         }
         var i = 0
@@ -203,6 +211,11 @@ class GameScene: SKScene {
         formationIsTurning = false
         for cadet in cadetArray{
             cadet.marchSpeed = 1.0
+            //switch from half steps to full steps
+            if cadet.direction == "lefthalf"{ cadet.direction = "left" }
+            else if cadet.direction == "righthalf"{ cadet.direction = "right" }
+            else if cadet.direction == "downhalf"{ cadet.direction = "down" }
+            else if cadet.direction == "uphalf"{ cadet.direction = "up" }
             cadet.removeAction(forKey: "animation1")
             cadet.run(getWalkAction(dir: cadet.direction), withKey: "animation1")
         }
@@ -246,8 +259,8 @@ class GameScene: SKScene {
             else{ //left
                 cadet.direction = "upleft"
             }
-            cadet.removeAllActions()
-            cadet.run(getWalkAction(dir: cadet.direction), withKey: "animation1")
+            cadet.removeAction(forKey: "animation1")
+            cadet.run(getWalkAction(dir: "upleft"), withKey: "animation1")
         }
     }
     
