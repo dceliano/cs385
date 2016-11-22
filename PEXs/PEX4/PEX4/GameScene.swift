@@ -13,8 +13,7 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-    var cadetSpeed: CGFloat = 1.0
-    let numCadets = 24
+    var myModel = gameModel()
     var cadetArray: Array<cadetNode> = []
     var formationCenter = CGPoint(x: 0, y: 0)
     let cadetUpAtlas = SKTextureAtlas(named:"CadetWalkUp.atlas")
@@ -30,16 +29,16 @@ class GameScene: SKScene {
     
     
     override func didMove(to view: SKView) {
-        setupAtlasArrays()
+        setupAtlasArrays() //get the animation frames ready
         //setup the cadet
-        for i in 0...numCadets - 1{
+        for i in 0...myModel.numCadets - 1{
             let cadet = cadetNode(inputtexture: cadetUpSprites[1], direction: "up")
-            let xoffset = (i % 4) * 5 // side-to-side spacing
-            let yoffset = floor(Double(i / 4)) * 5 // back-to-front spacing
+            let xoffset = (i % myModel.numElements) * myModel.distanceBetweenCadets // side-to-side spacing
+            let yoffset = floor(Double(i / myModel.numElements)) * Double(myModel.distanceBetweenCadets) // back-to-front spacing
             cadet.position = CGPoint(x: 450 + xoffset, y: 750 + Int(yoffset))
             cadet.size.width = (cadet.size.width) / 5
             cadet.size.height = (cadet.size.height) / 5
-            cadetSpeed = 0.0 //make the cadet still at the beginning
+            cadet.marchSpeed = 0.0 //make the cadet still at the beginning
             cadetArray.append(cadet)
         }
         for cadet in cadetArray{
@@ -113,40 +112,40 @@ class GameScene: SKScene {
         var i = 0
         for cadet in cadetArray{
             i += 1
-            if cadetSpeed <= 0{
+            if cadet.marchSpeed <= 0{
                 cadet.removeAction(forKey: "animation1")
             }
             else{ //if we're moving
                 if cadet.direction == "up"{
-                    cadet.position.y += cadetSpeed
+                    cadet.position.y += cadet.marchSpeed
                 }
                 else if cadet.direction == "down"{
-                    cadet.position.y -= cadetSpeed
+                    cadet.position.y -= cadet.marchSpeed
                 }
                 else if cadet.direction == "right"{
-                    cadet.position.x += cadetSpeed
+                    cadet.position.x += cadet.marchSpeed
                 }
                 else if cadet.direction == "left"{ //left
-                    cadet.position.x -= cadetSpeed
+                    cadet.position.x -= cadet.marchSpeed
                 }
                 else if cadet.direction == "upright"{
-                    cadet.position.x += cadetSpeed / 2
-                    cadet.position.y += cadetSpeed / 2
+                    cadet.position.x += cadet.marchSpeed / 2
+                    cadet.position.y += cadet.marchSpeed / 2
                 }
                 else if cadet.direction == "upleft"{
-                    cadet.position.x -= cadetSpeed / 2
-                    cadet.position.y += cadetSpeed / 2
+                    cadet.position.x -= cadet.marchSpeed / 2
+                    cadet.position.y += cadet.marchSpeed / 2
                 }
                 else if cadet.direction == "downright"{
-                    cadet.position.x += cadetSpeed / 2
-                    cadet.position.y -= cadetSpeed / 2
+                    cadet.position.x += cadet.marchSpeed / 2
+                    cadet.position.y -= cadet.marchSpeed / 2
                 }
                 else if cadet.direction == "downleft"{
-                    cadet.position.x -= cadetSpeed / 2
-                    cadet.position.y -= cadetSpeed / 2
+                    cadet.position.x -= cadet.marchSpeed / 2
+                    cadet.position.y -= cadet.marchSpeed / 2
                 }
             }
-            if (i == numCadets / 2){ //the center of the formation is where the middle cadet is
+            if (i == myModel.numCadets / 2){ //the center of the formation is where the middle cadet is
                 formationCenter = CGPoint(x: cadet.position.x, y: cadet.position.y)
             }
         }
@@ -154,9 +153,9 @@ class GameScene: SKScene {
     }
     
     func halt(){
-        cadetSpeed = 0.0
         for cadet in cadetArray{
             cadet.removeAction(forKey: "animation1") //stop the animation
+            cadet.marchSpeed = 0.0
             //set image[1] (the standstill image) to be the one that is displayed.
             if cadet.direction == "up" {cadet.texture = cadetUpSprites[1]}
             if cadet.direction == "down" {cadet.texture = cadetDownSprites[1]}
@@ -166,16 +165,16 @@ class GameScene: SKScene {
     }
     
     func goForward(){
-        cadetSpeed = 1.0
         for cadet in cadetArray{
+            cadet.marchSpeed = 1.0
             cadet.removeAction(forKey: "animation1")
             cadet.run(getWalkAction(dir: cadet.direction), withKey: "animation1")
         }
     }
     
     func turnRight(){
-        cadetSpeed = 1.0
         for cadet in cadetArray{
+            cadet.marchSpeed = 1.0
             if cadet.direction == "up"{
                 cadet.direction = "upright"
             }
@@ -198,8 +197,8 @@ class GameScene: SKScene {
     }
     
     func leftFlank(){
-        cadetSpeed = 1.0
         for cadet in cadetArray{
+            cadet.marchSpeed = 1.0
             if cadet.direction == "up"{
                 cadet.direction = "left"
             }
@@ -218,8 +217,8 @@ class GameScene: SKScene {
     }
     
     func rightFlank(){
-        cadetSpeed = 1.0
         for cadet in cadetArray{
+            cadet.marchSpeed = 1.0
             if cadet.direction == "up"{
                 cadet.direction = "right"
             }
@@ -237,8 +236,22 @@ class GameScene: SKScene {
         }
     }
     
+    func zoomCameraIn(){
+        if let camera = camera {
+            camera.xScale = camera.xScale / 2
+            camera.yScale = camera.yScale / 2
+        }
+    }
+    func zoomCameraOut(){
+        if let camera = camera {
+            camera.xScale = camera.xScale * 2
+            camera.yScale = camera.yScale * 2
+        }
+    }
+    
     func updateCamera() {
         if let camera = camera {
+            //the camera follows the center of the formation
             camera.position = CGPoint(x: formationCenter.x, y: formationCenter.y)
         }
     }

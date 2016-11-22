@@ -8,8 +8,11 @@
 
 import Foundation
 
-struct myModel {
+struct gameModel {
     var distanceMarched : Int = 0
     var mistakesMade : Int = 0
+    let numCadets = 24
+    let numElements = 4
+    var distanceBetweenCadets = 5 //measured in pixels
     
 }

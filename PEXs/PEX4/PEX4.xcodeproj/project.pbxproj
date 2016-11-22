@@ -16,7 +16,7 @@
 		F29FAE911DE21383005DA056 /* CadetWalkRight.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F29FAE8D1DE21383005DA056 /* CadetWalkRight.atlas */; };
 		F29FAE921DE21383005DA056 /* CadetWalkUp.atlas in Resources */ = {isa = PBXBuildFile; fileRef = F29FAE8E1DE21383005DA056 /* CadetWalkUp.atlas */; };
 		F29FAE9C1DE24A79005DA056 /* cadetNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29FAE9B1DE24A79005DA056 /* cadetNode.swift */; };
-		F29FAE9E1DE296D5005DA056 /* myModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29FAE9D1DE296D5005DA056 /* myModel.swift */; };
+		F29FAE9E1DE296D5005DA056 /* gameModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F29FAE9D1DE296D5005DA056 /* gameModel.swift */; };
 		F2B791641DE0B8B300EA5641 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B791631DE0B8B300EA5641 /* AppDelegate.swift */; };
 		F2B791661DE0B8B300EA5641 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F2B791651DE0B8B300EA5641 /* GameScene.sks */; };
 		F2B791681DE0B8B300EA5641 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = F2B791671DE0B8B300EA5641 /* Actions.sks */; };
@@ -65,7 +65,7 @@
 		F29FAE8D1DE21383005DA056 /* CadetWalkRight.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = CadetWalkRight.atlas; sourceTree = "<group>"; };
 		F29FAE8E1DE21383005DA056 /* CadetWalkUp.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = CadetWalkUp.atlas; sourceTree = "<group>"; };
 		F29FAE9B1DE24A79005DA056 /* cadetNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = cadetNode.swift; sourceTree = "<group>"; };
-		F29FAE9D1DE296D5005DA056 /* myModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = myModel.swift; sourceTree = "<group>"; };
+		F29FAE9D1DE296D5005DA056 /* gameModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = gameModel.swift; sourceTree = "<group>"; };
 		F2B791601DE0B8B300EA5641 /* PEX4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PEX4.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2B791631DE0B8B300EA5641 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F2B791651DE0B8B300EA5641 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -154,11 +154,11 @@
 			children = (
 				F2B7919B1DE0CD3900EA5641 /* Assets */,
 				F2B791631DE0B8B300EA5641 /* AppDelegate.swift */,
-				F29FAE9B1DE24A79005DA056 /* cadetNode.swift */,
 				F2B791991DE0CCFC00EA5641 /* Tiles.sks */,
 				F2B791651DE0B8B300EA5641 /* GameScene.sks */,
 				F2B791671DE0B8B300EA5641 /* Actions.sks */,
-				F29FAE9D1DE296D5005DA056 /* myModel.swift */,
+				F29FAE9B1DE24A79005DA056 /* cadetNode.swift */,
+				F29FAE9D1DE296D5005DA056 /* gameModel.swift */,
 				F2B791691DE0B8B300EA5641 /* GameScene.swift */,
 				F2B7916B1DE0B8B300EA5641 /* GameViewController.swift */,
 				F2B7916D1DE0B8B300EA5641 /* Main.storyboard */,
@@ -372,7 +372,7 @@
 				F2B7916A1DE0B8B300EA5641 /* GameScene.swift in Sources */,
 				F29FAE9C1DE24A79005DA056 /* cadetNode.swift in Sources */,
 				F2B7916C1DE0B8B300EA5641 /* GameViewController.swift in Sources */,
-				F29FAE9E1DE296D5005DA056 /* myModel.swift in Sources */,
+				F29FAE9E1DE296D5005DA056 /* gameModel.swift in Sources */,
 				F2B791641DE0B8B300EA5641 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -12,6 +12,9 @@ import GameplayKit
 
 class cadetNode: SKSpriteNode{
     var direction = "up"
+    var turning = false
+    var marchSpeed: CGFloat = 1.0
+    
     init(inputtexture: SKTexture, direction: String){
         super.init(texture: inputtexture, color: UIColor.clear, size: inputtexture.size())
     }

@@ -10,7 +10,7 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var forwardButton: UIButton!
     @IBOutlet weak var turnLeftButton: UIButton!
@@ -38,6 +38,11 @@ class GameViewController: UIViewController {
             view.showsFPS = true
             view.showsNodeCount = true
         }
+        
+    }
+    
+    func scrollViewDidZoom(_ scrollView: UIScrollView) {
+        commandLabel.text = "Scale: \(scrollView.zoomScale)"
     }
     
     @IBAction func forwardButtonPressed(_ sender: Any) {
@@ -127,6 +132,12 @@ class GameViewController: UIViewController {
                 mainScene.halt()
                 commandLabel.text?.append("Halt!")
         }
+    }
+    @IBAction func zoomIn(_ sender: Any) {
+        mainScene.zoomCameraIn()
+    }
+    @IBAction func zoomOut(_ sender: Any) {
+        mainScene.zoomCameraOut()
     }
     
     override func didReceiveMemoryWarning() {
