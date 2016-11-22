@@ -40,7 +40,7 @@ class GameScene: SKScene {
         for i in 0...myModel.numCadets - 1{
             let cadet = cadetNode(inputtexture: cadetUpSprites[1], direction: "up")
             cadet.element = i % myModel.numElements
-            cadet.rank = myModel.numRanks - Int(floor(Double(i / myModel.numElements))) //this makes (0,0) in the top left
+            cadet.rank = Int(floor(Double(i / myModel.numElements))) //this makes (0,0) in the top left
             let xoffset = cadet.element * myModel.distanceBetweenCadets // side-to-side spacing
             let yoffset =  -(cadet.rank * myModel.distanceBetweenCadets) // back-to-front spacing
             cadet.position = CGPoint(x: 450 + xoffset, y: 750 + Int(yoffset))
@@ -200,6 +200,7 @@ class GameScene: SKScene {
     }
     
     func goForward(){
+        formationIsTurning = false
         for cadet in cadetArray{
             cadet.marchSpeed = 1.0
             cadet.removeAction(forKey: "animation1")
@@ -223,7 +224,7 @@ class GameScene: SKScene {
                     cadet.turnCommandString.append("up") //append the initial straightaway before turning
                 }
                 if cadet.element != 0{
-                    for _ in 0...cadet.element{
+                    for _ in 1...cadet.element{
                         cadet.turnCommandString.append("upleft") //append all the 45* turns based on the element we're in
                     }
                 }
@@ -231,7 +232,7 @@ class GameScene: SKScene {
                     cadet.turnCommandString.append("left") //append the straightaways after we complete our turn
                 }
                 //append the halfsteps after we complete our turn
-                for _ in 0...(2 * (myModel.numElements - cadet.element - 1)) + (myModel.numRanks - 1){ //once again, complicated, but it works
+                for _ in 1...(2 * (myModel.numElements - cadet.element - 1)) + (myModel.numRanks - 1){ //once again, complicated, but it works
                     cadet.turnCommandString.append("lefthalf")
                 }
                 print("El\(cadet.element) Rank\(cadet.rank) String: \(cadet.turnCommandString)")

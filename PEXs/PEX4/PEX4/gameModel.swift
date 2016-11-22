@@ -11,7 +11,7 @@ import Foundation
 struct gameModel {
     var distanceMarched : Int = 0
     var mistakesMade : Int = 0
-    let numCadets = 8
+    let numCadets = 24
     let numElements = 4
     var numRanks = 0
     var distanceBetweenCadets = 5 //measured in pixels
