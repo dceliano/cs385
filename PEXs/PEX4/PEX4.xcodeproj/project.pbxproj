@@ -286,7 +286,7 @@
 				TargetAttributes = {
 					F2B7915F1DE0B8B300EA5641 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 62G92J3776;
+						DevelopmentTeam = LDLH93LMDN;
 						ProvisioningStyle = Automatic;
 					};
 					F2B791791DE0B8B300EA5641 = {
@@ -527,8 +527,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 62G92J3776;
+				DEVELOPMENT_TEAM = LDLH93LMDN;
 				INFOPLIST_FILE = PEX4/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = USAFA.PEX4;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -540,8 +541,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 62G92J3776;
+				DEVELOPMENT_TEAM = LDLH93LMDN;
 				INFOPLIST_FILE = PEX4/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = USAFA.PEX4;
 				PRODUCT_NAME = "$(TARGET_NAME)";
