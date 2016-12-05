@@ -21,7 +21,10 @@ class GameScene: SKScene {
     var intermediateStepCount : Int = 0
     var turnStepCount = 0
     var formationIsTurning : Bool = false //tells us whether we're performing a column movement or not
+    var fixingSpacing : Bool = false //tells us whether we're fixing our spacing after a turn
+    var justFinishedTurning : Bool = false
     var numStepsToCompleteTurn : Int = 0
+    let turnSpeed : Int = 5
     //load all of the animation files
     let cadetUpAtlas = SKTextureAtlas(named:"CadetWalkUp.atlas")
     let cadetDownAtlas = SKTextureAtlas(named:"CadetWalkDown.atlas")
@@ -120,7 +123,8 @@ class GameScene: SKScene {
     // Updates the cadet's position depending on which direction we're moving in
     func updateCadets() {
         if formationIsTurning{
-            if(turnStepCount >= (numStepsToCompleteTurn - 1)){
+            if(turnStepCount >= numStepsToCompleteTurn){
+                //we are done turning, and we now have to fix the spacing.
                 for cadet in cadetArray{
                     //rerun the new animation
                     cadet.removeAction(forKey: "animation1")
@@ -128,17 +132,40 @@ class GameScene: SKScene {
                     cadet.run(getWalkAction(dir: "left"), withKey: "animation1")
                 }
                 formationIsTurning = false
+                justFinishedTurning = true
             }
             else{
-                if intermediateStepCount % 5 == 0{
+                if intermediateStepCount % turnSpeed == 0{
                     turnStepCount += 1
                     for cadet in cadetArray{
-                        cadet.direction = cadet.turnCommandString[turnStepCount]
+                        if (turnStepCount < numStepsToCompleteTurn){
+                            cadet.direction = cadet.turnCommandString[turnStepCount]
+                        }
                     }
                 }
                 intermediateStepCount += 1
             }
         }
+        if fixingSpacing{
+            if intermediateStepCount % 5 == 0{
+                let rankToUpdate = intermediateStepCount / 5
+                print("Updating rank \(rankToUpdate).")
+                for cadet in cadetArray{
+                    if cadet.rank == rankToUpdate{
+                        cadet.direction = "left"
+                        cadet.run(getWalkAction(dir: "left"), withKey: "animation1")
+                        cadet.marchSpeed = 1.0
+                        print("Just made cadet Rank\(cadet.rank) El\(cadet.element) walk normally.")
+                    }
+                }
+                if rankToUpdate >= myModel.numRanks - 1{
+                    fixingSpacing = false //we are done fixing spacing
+                    getInStep()
+                }
+            }
+            intermediateStepCount += 1
+        }
+        
         var i = 0
         for cadet in cadetArray{
             i += 1
@@ -195,6 +222,12 @@ class GameScene: SKScene {
         updateCamera()
     }
     
+    func getInStep(){
+        for cadet in cadetArray{
+            cadet.run(getWalkAction(dir: cadet.direction), withKey: "animation1")
+        }
+    }
+    
     func halt(){
         for cadet in cadetArray{
             cadet.removeAction(forKey: "animation1") //stop the animation
@@ -208,16 +241,23 @@ class GameScene: SKScene {
     }
     
     func goForward(){
-        formationIsTurning = false
-        for cadet in cadetArray{
-            cadet.marchSpeed = 1.0
-            //switch from half steps to full steps
-            if cadet.direction == "lefthalf"{ cadet.direction = "left" }
-            else if cadet.direction == "righthalf"{ cadet.direction = "right" }
-            else if cadet.direction == "downhalf"{ cadet.direction = "down" }
-            else if cadet.direction == "uphalf"{ cadet.direction = "up" }
-            cadet.removeAction(forKey: "animation1")
-            cadet.run(getWalkAction(dir: cadet.direction), withKey: "animation1")
+        if(justFinishedTurning){ //if we are just completing a turn, we have to fix the spacing
+            formationIsTurning = false
+            justFinishedTurning = false
+            intermediateStepCount = 0 //reset this
+            fixingSpacing = true
+        }
+        else{
+            for cadet in cadetArray{
+                cadet.marchSpeed = 1.0
+                //switch from half steps to full steps
+//                if cadet.direction == "lefthalf"{ cadet.direction = "left" }
+//                else if cadet.direction == "righthalf"{ cadet.direction = "right" }
+//                else if cadet.direction == "downhalf"{ cadet.direction = "down" }
+//                else if cadet.direction == "uphalf"{ cadet.direction = "up" }
+                cadet.removeAction(forKey: "animation1")
+                cadet.run(getWalkAction(dir: cadet.direction), withKey: "animation1")
+            }
         }
     }
     
