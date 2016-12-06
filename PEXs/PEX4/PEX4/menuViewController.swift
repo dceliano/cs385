@@ -11,27 +11,30 @@ import SpriteKit
 import GameplayKit
 
 class menuViewController: UIViewController, UIScrollViewDelegate {
-    var menuScene = MenuScene()
-
-    override func loadView(){
-        self.view = SKView(frame: CGRect(x: 0, y: 0, width: 320, height: 480))
+    var sourceVC = GameViewController()
+    @IBOutlet weak var speedStepper: UIStepper!
+    @IBOutlet weak var numCadetsStepper: UIStepper!
+    @IBOutlet weak var numElementsStepper: UIStepper!
+    @IBOutlet weak var numElementsLabel: UILabel!
+    @IBOutlet weak var numCadetsLabel: UILabel!
+    @IBOutlet weak var speedLabel: UILabel!
+    @IBAction func speedChanged(_ sender: Any) {
+        speedLabel.text = String(speedStepper.value)
+        sourceVC.gameScene.speedSetting = CGFloat(speedStepper.value)
+    }
+    @IBAction func numCadetsChanged(_ sender: Any) {
+        numCadetsLabel.text = String(Int(numCadetsStepper.value))
+        sourceVC.gameScene.myModel.numCadets = Int(numCadetsStepper.value)
+        sourceVC.gameScene.updateFlightSize()
+    }
+    @IBAction func numElementsChanged(_ sender: Any) {
+        numElementsLabel.text = String(Int(numElementsStepper.value))
+        sourceVC.gameScene.myModel.numElements = Int(numElementsStepper.value)
+        sourceVC.gameScene.updateFlightSize()
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if let view = self.view as! SKView? {
-            // Load the SKScene from 'MainMenuScene.sks'
-            if let scene = SKScene(fileNamed: "MenuScene") {
-                menuScene = scene as! MenuScene
-                // Set the scale mode to scale to fit the window
-                scene.scaleMode = .aspectFill
-                // Present the scene
-                view.presentScene(scene)
-            }
-            view.ignoresSiblingOrder = true
-            view.showsFPS = true
-            view.showsNodeCount = true
-        }
+
         self.navigationController?.isNavigationBarHidden = false
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -42,6 +45,5 @@ class menuViewController: UIViewController, UIScrollViewDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
 }

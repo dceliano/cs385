@@ -9,7 +9,11 @@
 import UIKit
 
 class MainMenuViewController: UIViewController {
+    @IBOutlet weak var LoadingButtonLabel: UIButton!
 
+    @IBAction func newButtonPressed(_ sender: Any) {
+    LoadingButtonLabel.setTitle("Game is Loading...", for: UIControlState.normal)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 

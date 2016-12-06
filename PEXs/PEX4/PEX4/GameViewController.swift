@@ -37,7 +37,9 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
             view.showsNodeCount = true
         }
         self.navigationController?.isNavigationBarHidden = true
-        print("loaded game view")
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        (segue.destination as! menuViewController).sourceVC = self
     }
     override func viewDidAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true

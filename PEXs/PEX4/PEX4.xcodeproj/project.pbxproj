@@ -14,8 +14,6 @@
 		F25585161DF6096400EEE72E /* marching_icon87.png in Resources */ = {isa = PBXBuildFile; fileRef = F255850F1DF6096400EEE72E /* marching_icon87.png */; };
 		F25585171DF6096400EEE72E /* marching_icon120.png in Resources */ = {isa = PBXBuildFile; fileRef = F25585101DF6096400EEE72E /* marching_icon120.png */; };
 		F25585181DF6096400EEE72E /* marching_icon180.png in Resources */ = {isa = PBXBuildFile; fileRef = F25585111DF6096400EEE72E /* marching_icon180.png */; };
-		F255851A1DF6543D00EEE72E /* MenuScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25585191DF6543D00EEE72E /* MenuScene.swift */; };
-		F255851C1DF65B0D00EEE72E /* MenuScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = F255851B1DF65B0D00EEE72E /* MenuScene.sks */; };
 		F25585201DF65D3500EEE72E /* menuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F255851F1DF65D3500EEE72E /* menuViewController.swift */; };
 		F25585221DF6662000EEE72E /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25585211DF6662000EEE72E /* MainMenuViewController.swift */; };
 		F29FAE731DE10BEB005DA056 /* blacktop.png in Resources */ = {isa = PBXBuildFile; fileRef = F29FAE701DE10BEB005DA056 /* blacktop.png */; };
@@ -75,8 +73,6 @@
 		F255850F1DF6096400EEE72E /* marching_icon87.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marching_icon87.png; sourceTree = "<group>"; };
 		F25585101DF6096400EEE72E /* marching_icon120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marching_icon120.png; sourceTree = "<group>"; };
 		F25585111DF6096400EEE72E /* marching_icon180.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marching_icon180.png; sourceTree = "<group>"; };
-		F25585191DF6543D00EEE72E /* MenuScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuScene.swift; sourceTree = "<group>"; };
-		F255851B1DF65B0D00EEE72E /* MenuScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MenuScene.sks; sourceTree = "<group>"; };
 		F255851F1DF65D3500EEE72E /* menuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = menuViewController.swift; sourceTree = "<group>"; };
 		F25585211DF6662000EEE72E /* MainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		F29FAE701DE10BEB005DA056 /* blacktop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blacktop.png; sourceTree = "<group>"; };
@@ -194,12 +190,10 @@
 				F2B791631DE0B8B300EA5641 /* AppDelegate.swift */,
 				F2B791991DE0CCFC00EA5641 /* Tiles.sks */,
 				F2B791651DE0B8B300EA5641 /* GameScene.sks */,
-				F255851B1DF65B0D00EEE72E /* MenuScene.sks */,
 				F2B791671DE0B8B300EA5641 /* Actions.sks */,
 				F29FAE9B1DE24A79005DA056 /* cadetNode.swift */,
 				F29FAE9D1DE296D5005DA056 /* gameModel.swift */,
 				F2B791691DE0B8B300EA5641 /* GameScene.swift */,
-				F25585191DF6543D00EEE72E /* MenuScene.swift */,
 				F2B7916B1DE0B8B300EA5641 /* GameViewController.swift */,
 				F25585211DF6662000EEE72E /* MainMenuViewController.swift */,
 				F255851F1DF65D3500EEE72E /* menuViewController.swift */,
@@ -372,7 +366,6 @@
 				F25585161DF6096400EEE72E /* marching_icon87.png in Resources */,
 				F29FAE901DE21383005DA056 /* CadetWalkLeft.atlas in Resources */,
 				F2B7916F1DE0B8B300EA5641 /* Main.storyboard in Resources */,
-				F255851C1DF65B0D00EEE72E /* MenuScene.sks in Resources */,
 				F29FAE911DE21383005DA056 /* CadetWalkRight.atlas in Resources */,
 				F29FAE741DE10BEB005DA056 /* concrete.png in Resources */,
 				F2B791661DE0B8B300EA5641 /* GameScene.sks in Resources */,
@@ -423,7 +416,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F25585221DF6662000EEE72E /* MainMenuViewController.swift in Sources */,
-				F255851A1DF6543D00EEE72E /* MenuScene.swift in Sources */,
 				F2B7916A1DE0B8B300EA5641 /* GameScene.swift in Sources */,
 				F29FAE9C1DE24A79005DA056 /* cadetNode.swift in Sources */,
 				F2B7916C1DE0B8B300EA5641 /* GameViewController.swift in Sources */,
@@ -581,7 +573,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 62G92J3776;
 				INFOPLIST_FILE = PEX4/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = USAFA.PEX4;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -595,7 +587,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 62G92J3776;
 				INFOPLIST_FILE = PEX4/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = USAFA.PEX4;
 				PRODUCT_NAME = "$(TARGET_NAME)";

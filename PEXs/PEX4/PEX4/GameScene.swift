@@ -24,6 +24,7 @@ class GameScene: SKScene {
     var inHalfSteps : Bool = false
     var numStepsToCompleteTurn : Int = 0
     let turnSpeed : Int = 5
+    var speedSetting : CGFloat = 0.625
     //load all of the animation files
     let cadetUpAtlas = SKTextureAtlas(named:"CadetWalkUp.atlas")
     let cadetDownAtlas = SKTextureAtlas(named:"CadetWalkDown.atlas")
@@ -40,6 +41,12 @@ class GameScene: SKScene {
     override func didMove(to view: SKView) {
         setupAtlasArrays() //get the animation frames ready
         //setup the cadets, store them in the cadet array, and then add them as children to the scene
+        updateFlightSize()
+    }
+    
+    func updateFlightSize(){
+        print("updating cadet flight")
+        cadetArray = []
         for i in 0...myModel.numCadets - 1{
             let cadet = cadetNode(inputtexture: cadetUpSprites[1], direction: "up")
             cadet.element = i % myModel.numElements
@@ -57,7 +64,6 @@ class GameScene: SKScene {
             addChild(cadet)
         }
     }
-    
     
     func getWalkAction(dir: String) -> SKAction{
         var animateCadet = SKAction()
@@ -148,7 +154,7 @@ class GameScene: SKScene {
                 inHalfSteps = true
             }
             else{
-                if intermediateStepCount % 5 == 0{
+                if intermediateStepCount % Int(floor(Double(5.0/speedSetting))) == 0{
                     turnStepCount += 1
                     for cadet in cadetArray{
                         if (turnStepCount < numStepsToCompleteTurn){
@@ -160,12 +166,12 @@ class GameScene: SKScene {
             }
         }
         if fixingSpacing{
-            if intermediateStepCount % 5 == 0{
-                let rankToUpdate = intermediateStepCount / 5
+            if intermediateStepCount % Int(floor(Double(5.0/speedSetting))) == 0{
+                let rankToUpdate = intermediateStepCount / Int(floor(Double(5.0/speedSetting)))
                 print("Updating rank \(rankToUpdate).")
                 for cadet in cadetArray{
                     if cadet.rank == rankToUpdate{
-                        cadet.marchSpeed = 1.0
+                        cadet.marchSpeed = self.speedSetting
                         if cadet.direction == "left" || cadet.direction == "lefthalf"{
                             cadet.direction = "left"
                             cadet.run(getWalkAction(dir: "left"), withKey: "animation1")
@@ -277,7 +283,7 @@ class GameScene: SKScene {
         }
         else{
             for cadet in cadetArray{
-                cadet.marchSpeed = 1.0
+                cadet.marchSpeed = self.speedSetting
                 cadet.removeAction(forKey: "animation1")
                 cadet.run(getWalkAction(dir: cadet.direction), withKey: "animation1")
             }
@@ -296,7 +302,7 @@ class GameScene: SKScene {
             for cadet in cadetArray{
                 cadet.adjustedElement = myModel.numElements - 1 - cadet.element
                 cadet.turnCommandString = []
-                cadet.marchSpeed = 1.0
+                cadet.marchSpeed = self.speedSetting
                 cadet.removeAction(forKey: "animation1")
                 if cadet.direction == "up"{
                     for _ in 0...cadet.rank{
@@ -389,7 +395,7 @@ class GameScene: SKScene {
             formationIsTurning = true
             for cadet in cadetArray{
                 cadet.turnCommandString = []
-                cadet.marchSpeed = 1.0
+                cadet.marchSpeed = self.speedSetting
                 cadet.removeAction(forKey: "animation1")
                 if cadet.direction == "up"{
                     for _ in 0...cadet.rank{
@@ -477,7 +483,7 @@ class GameScene: SKScene {
         }
         else{
             for cadet in cadetArray{
-                cadet.marchSpeed = 1.0
+                cadet.marchSpeed = self.speedSetting
                 if cadet.direction == "up"{
                     cadet.direction = "left"
                 }
@@ -502,7 +508,7 @@ class GameScene: SKScene {
         }
         else{
             for cadet in cadetArray{
-                cadet.marchSpeed = 1.0
+                cadet.marchSpeed = self.speedSetting
                 if cadet.direction == "up"{
                     cadet.direction = "right"
                 }
