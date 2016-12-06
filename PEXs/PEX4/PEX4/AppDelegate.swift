@@ -5,6 +5,9 @@
 //  Created by Dom Celiano on 11/19/16.
 //  Copyright © 2016 Dom Celiano. All rights reserved.
 //
+// I used this website: https://www.ioscreator.com/tutorials/scenes-tutorial-spritekit-swift
+// Also, I took quite a bit of code from this tutorial: https://www.raywenderlich.com/118225/introduction-sprite-kit-scene-editor
+
 
 import UIKit
 

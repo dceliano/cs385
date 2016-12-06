@@ -5,7 +5,6 @@
 //  Created by Dom Celiano on 11/19/16.
 //  Copyright © 2016 Dom Celiano. All rights reserved.
 //
-//I took quite a bit of code from this tutorial: https://www.raywenderlich.com/118225/introduction-sprite-kit-scene-editor
 
 import SpriteKit
 import GameplayKit
@@ -22,7 +21,7 @@ class GameScene: SKScene {
     var turnStepCount = 0
     var formationIsTurning : Bool = false //tells us whether we're performing a column movement or not
     var fixingSpacing : Bool = false //tells us whether we're fixing our spacing after a turn
-    var justFinishedTurning : Bool = false
+    var inHalfSteps : Bool = false
     var numStepsToCompleteTurn : Int = 0
     let turnSpeed : Int = 5
     //load all of the animation files
@@ -146,7 +145,7 @@ class GameScene: SKScene {
                     }
                 }
                 formationIsTurning = false
-                justFinishedTurning = true
+                inHalfSteps = true
             }
             else{
                 if intermediateStepCount % 5 == 0{
@@ -270,9 +269,9 @@ class GameScene: SKScene {
     }
     
     func goForward(){
-        if(justFinishedTurning){ //if we are just completing a turn, we have to fix the spacing
+        if(inHalfSteps){ //if we are just completing a turn, we have to fix the spacing
             formationIsTurning = false
-            justFinishedTurning = false
+            inHalfSteps = false
             intermediateStepCount = 0 //reset this
             fixingSpacing = true
         }
@@ -286,220 +285,244 @@ class GameScene: SKScene {
     }
     
     func turnRight(){
-        //this function begins the turning sequence by resetting the turning variables and loading each cadet's turnCommandString
-        turnStepCount = 0
-        intermediateStepCount = 0
-        formationIsTurning = true
-        for cadet in cadetArray{
-            cadet.adjustedElement = myModel.numElements - 1 - cadet.element
-            cadet.turnCommandString = []
-            cadet.marchSpeed = 1.0
-            cadet.removeAction(forKey: "animation1")
-            if cadet.direction == "up"{
-                for _ in 0...cadet.rank{
-                    cadet.turnCommandString.append("up") //append the initial straightaway before turning
-                }
-                if cadet.adjustedElement != 0{
-                    for _ in 1...cadet.adjustedElement{
-                        cadet.turnCommandString.append("upright") //append all the 45* turns based on the element we're in
+        if(inHalfSteps){
+            halfStepsError()
+        }
+        else{
+            //this function begins the turning sequence by resetting the turning variables and loading each cadet's turnCommandString
+            turnStepCount = 0
+            intermediateStepCount = 0
+            formationIsTurning = true
+            for cadet in cadetArray{
+                cadet.adjustedElement = myModel.numElements - 1 - cadet.element
+                cadet.turnCommandString = []
+                cadet.marchSpeed = 1.0
+                cadet.removeAction(forKey: "animation1")
+                if cadet.direction == "up"{
+                    for _ in 0...cadet.rank{
+                        cadet.turnCommandString.append("up") //append the initial straightaway before turning
                     }
-                }
-                for _ in 0...cadet.adjustedElement{
-                    cadet.turnCommandString.append("right") //append the straightaways after we complete our turn
-                }
-                //append the halfsteps after we complete our turn
-                for _ in 1...(2 * (myModel.numElements - cadet.adjustedElement - 1)) + (myModel.numRanks - 1){ //once again, complicated, but it works
-                    cadet.turnCommandString.append("righthalf")
-                }
-                print("El\(cadet.element) Rank\(cadet.rank) String: \(cadet.turnCommandString)")
-                cadet.run(getWalkAction(dir: "right"), withKey: "animation1")
-            }
-            else if cadet.direction == "down"{
-                for _ in 0...cadet.rank{
-                    cadet.turnCommandString.append("down") //append the initial straightaway before turning
-                }
-                if cadet.adjustedElement != 0{
-                    for _ in 1...cadet.adjustedElement{
-                        cadet.turnCommandString.append("downleft") //append all the 45* turns based on the element we're in
+                    if cadet.adjustedElement != 0{
+                        for _ in 1...cadet.adjustedElement{
+                            cadet.turnCommandString.append("upright") //append all the 45* turns based on the element we're in
+                        }
                     }
-                }
-                for _ in 0...cadet.adjustedElement{
-                    cadet.turnCommandString.append("left") //append the straightaways after we complete our turn
-                }
-                //append the halfsteps after we complete our turn
-                for _ in 1...(2 * (myModel.numElements - cadet.adjustedElement - 1)) + (myModel.numRanks - 1){ //once again, complicated, but it works
-                    cadet.turnCommandString.append("lefthalf")
-                }
-                print("El\(cadet.element) Rank\(cadet.rank) String: \(cadet.turnCommandString)")
-                cadet.run(getWalkAction(dir: "left"), withKey: "animation1")
-            }
-            else if cadet.direction == "right"{
-                for _ in 0...cadet.rank{
-                    cadet.turnCommandString.append("right") //append the initial straightaway before turning
-                }
-                if cadet.adjustedElement != 0{
-                    for _ in 1...cadet.adjustedElement{
-                        cadet.turnCommandString.append("downright") //append all the 45* turns based on the element we're in
+                    for _ in 0...cadet.adjustedElement{
+                        cadet.turnCommandString.append("right") //append the straightaways after we complete our turn
                     }
-                }
-                for _ in 0...cadet.adjustedElement{
-                    cadet.turnCommandString.append("down") //append the straightaways after we complete our turn
-                }
-                //append the halfsteps after we complete our turn
-                for _ in 1...(2 * (myModel.numElements - cadet.adjustedElement - 1)) + (myModel.numRanks - 1){ //once again, complicated, but it works
-                    cadet.turnCommandString.append("downhalf")
-                }
-                print("El\(cadet.element) Rank\(cadet.rank) String: \(cadet.turnCommandString)")
-                cadet.run(getWalkAction(dir: "down"), withKey: "animation1")
-            }
-            else if cadet.direction == "left"{ //left
-                for _ in 0...cadet.rank{
-                    cadet.turnCommandString.append("left") //append the initial straightaway before turning
-                }
-                if cadet.adjustedElement != 0{
-                    for _ in 1...cadet.adjustedElement{
-                        cadet.turnCommandString.append("upleft") //append all the 45* turns based on the element we're in
+                    //append the halfsteps after we complete our turn
+                    for _ in 1...(2 * (myModel.numElements - cadet.adjustedElement - 1)) + (myModel.numRanks - 1){ //once again, complicated, but it works
+                        cadet.turnCommandString.append("righthalf")
                     }
+                    print("El\(cadet.element) Rank\(cadet.rank) String: \(cadet.turnCommandString)")
+                    cadet.run(getWalkAction(dir: "right"), withKey: "animation1")
                 }
-                for _ in 0...cadet.adjustedElement{
-                    cadet.turnCommandString.append("up") //append the straightaways after we complete our turn
+                else if cadet.direction == "down"{
+                    for _ in 0...cadet.rank{
+                        cadet.turnCommandString.append("down") //append the initial straightaway before turning
+                    }
+                    if cadet.adjustedElement != 0{
+                        for _ in 1...cadet.adjustedElement{
+                            cadet.turnCommandString.append("downleft") //append all the 45* turns based on the element we're in
+                        }
+                    }
+                    for _ in 0...cadet.adjustedElement{
+                        cadet.turnCommandString.append("left") //append the straightaways after we complete our turn
+                    }
+                    //append the halfsteps after we complete our turn
+                    for _ in 1...(2 * (myModel.numElements - cadet.adjustedElement - 1)) + (myModel.numRanks - 1){ //once again, complicated, but it works
+                        cadet.turnCommandString.append("lefthalf")
+                    }
+                    print("El\(cadet.element) Rank\(cadet.rank) String: \(cadet.turnCommandString)")
+                    cadet.run(getWalkAction(dir: "left"), withKey: "animation1")
                 }
-                //append the halfsteps after we complete our turn
-                for _ in 1...(2 * (myModel.numElements - cadet.adjustedElement - 1)) + (myModel.numRanks - 1){ //once again, complicated, but it works
-                    cadet.turnCommandString.append("uphalf")
+                else if cadet.direction == "right"{
+                    for _ in 0...cadet.rank{
+                        cadet.turnCommandString.append("right") //append the initial straightaway before turning
+                    }
+                    if cadet.adjustedElement != 0{
+                        for _ in 1...cadet.adjustedElement{
+                            cadet.turnCommandString.append("downright") //append all the 45* turns based on the element we're in
+                        }
+                    }
+                    for _ in 0...cadet.adjustedElement{
+                        cadet.turnCommandString.append("down") //append the straightaways after we complete our turn
+                    }
+                    //append the halfsteps after we complete our turn
+                    for _ in 1...(2 * (myModel.numElements - cadet.adjustedElement - 1)) + (myModel.numRanks - 1){ //once again, complicated, but it works
+                        cadet.turnCommandString.append("downhalf")
+                    }
+                    print("El\(cadet.element) Rank\(cadet.rank) String: \(cadet.turnCommandString)")
+                    cadet.run(getWalkAction(dir: "down"), withKey: "animation1")
                 }
-                print("El\(cadet.element) Rank\(cadet.rank) String: \(cadet.turnCommandString)")
-                cadet.run(getWalkAction(dir: "up"), withKey: "animation1")
+                else if cadet.direction == "left"{ //left
+                    for _ in 0...cadet.rank{
+                        cadet.turnCommandString.append("left") //append the initial straightaway before turning
+                    }
+                    if cadet.adjustedElement != 0{
+                        for _ in 1...cadet.adjustedElement{
+                            cadet.turnCommandString.append("upleft") //append all the 45* turns based on the element we're in
+                        }
+                    }
+                    for _ in 0...cadet.adjustedElement{
+                        cadet.turnCommandString.append("up") //append the straightaways after we complete our turn
+                    }
+                    //append the halfsteps after we complete our turn
+                    for _ in 1...(2 * (myModel.numElements - cadet.adjustedElement - 1)) + (myModel.numRanks - 1){ //once again, complicated, but it works
+                        cadet.turnCommandString.append("uphalf")
+                    }
+                    print("El\(cadet.element) Rank\(cadet.rank) String: \(cadet.turnCommandString)")
+                    cadet.run(getWalkAction(dir: "up"), withKey: "animation1")
+                }
             }
         }
     }
     
     func turnLeft(){
-        //this function begins the turning sequence by resetting the turning variables and loading each cadet's turnCommandString
-        turnStepCount = 0
-        intermediateStepCount = 0
-        formationIsTurning = true
-        for cadet in cadetArray{
-            cadet.turnCommandString = []
-            cadet.marchSpeed = 1.0
-            cadet.removeAction(forKey: "animation1")
-            if cadet.direction == "up"{
-                for _ in 0...cadet.rank{
-                    cadet.turnCommandString.append("up") //append the initial straightaway before turning
-                }
-                if cadet.element != 0{
-                    for _ in 1...cadet.element{
-                        cadet.turnCommandString.append("upleft") //append all the 45* turns based on the element we're in
+        if(inHalfSteps){
+            halfStepsError()
+        }
+        else{
+            //this function begins the turning sequence by resetting the turning variables and loading each cadet's turnCommandString
+            turnStepCount = 0
+            intermediateStepCount = 0
+            formationIsTurning = true
+            for cadet in cadetArray{
+                cadet.turnCommandString = []
+                cadet.marchSpeed = 1.0
+                cadet.removeAction(forKey: "animation1")
+                if cadet.direction == "up"{
+                    for _ in 0...cadet.rank{
+                        cadet.turnCommandString.append("up") //append the initial straightaway before turning
                     }
-                }
-                for _ in 0...cadet.element{
-                    cadet.turnCommandString.append("left") //append the straightaways after we complete our turn
-                }
-                //append the halfsteps after we complete our turn
-                for _ in 1...(2 * (myModel.numElements - cadet.element - 1)) + (myModel.numRanks - 1){ //once again, complicated, but it works
-                    cadet.turnCommandString.append("lefthalf")
-                }
-                print("El\(cadet.element) Rank\(cadet.rank) String: \(cadet.turnCommandString)")
-                cadet.run(getWalkAction(dir: "downleft"), withKey: "animation1")
-            }
-            else if cadet.direction == "down"{
-                for _ in 0...cadet.rank{
-                    cadet.turnCommandString.append("down") //append the initial straightaway before turning
-                }
-                if cadet.element != 0{
-                    for _ in 1...cadet.element{
-                        cadet.turnCommandString.append("downright") //append all the 45* turns based on the element we're in
+                    if cadet.element != 0{
+                        for _ in 1...cadet.element{
+                            cadet.turnCommandString.append("upleft") //append all the 45* turns based on the element we're in
+                        }
                     }
-                }
-                for _ in 0...cadet.element{
-                    cadet.turnCommandString.append("right") //append the straightaways after we complete our turn
-                }
-                //append the halfsteps after we complete our turn
-                for _ in 1...(2 * (myModel.numElements - cadet.element - 1)) + (myModel.numRanks - 1){ //once again, complicated, but it works
-                    cadet.turnCommandString.append("righthalf")
-                }
-                print("El\(cadet.element) Rank\(cadet.rank) String: \(cadet.turnCommandString)")
-                cadet.run(getWalkAction(dir: "right"), withKey: "animation1")
-            }
-            else if cadet.direction == "right"{
-                for _ in 0...cadet.rank{
-                    cadet.turnCommandString.append("right") //append the initial straightaway before turning
-                }
-                if cadet.element != 0{
-                    for _ in 1...cadet.element{
-                        cadet.turnCommandString.append("upright") //append all the 45* turns based on the element we're in
+                    for _ in 0...cadet.element{
+                        cadet.turnCommandString.append("left") //append the straightaways after we complete our turn
                     }
-                }
-                for _ in 0...cadet.element{
-                    cadet.turnCommandString.append("up") //append the straightaways after we complete our turn
-                }
-                //append the halfsteps after we complete our turn
-                for _ in 1...(2 * (myModel.numElements - cadet.element - 1)) + (myModel.numRanks - 1){ //once again, complicated, but it works
-                    cadet.turnCommandString.append("uphalf")
-                }
-                print("El\(cadet.element) Rank\(cadet.rank) String: \(cadet.turnCommandString)")
-                cadet.run(getWalkAction(dir: "up"), withKey: "animation1")
-            }
-            else if cadet.direction == "left"{ //left
-                for _ in 0...cadet.rank{
-                    cadet.turnCommandString.append("left") //append the initial straightaway before turning
-                }
-                if cadet.element != 0{
-                    for _ in 1...cadet.element{
-                        cadet.turnCommandString.append("downleft") //append all the 45* turns based on the element we're in
+                    //append the halfsteps after we complete our turn
+                    for _ in 1...(2 * (myModel.numElements - cadet.element - 1)) + (myModel.numRanks - 1){ //once again, complicated, but it works
+                        cadet.turnCommandString.append("lefthalf")
                     }
+                    print("El\(cadet.element) Rank\(cadet.rank) String: \(cadet.turnCommandString)")
+                    cadet.run(getWalkAction(dir: "downleft"), withKey: "animation1")
                 }
-                for _ in 0...cadet.element{
-                    cadet.turnCommandString.append("down") //append the straightaways after we complete our turn
+                else if cadet.direction == "down"{
+                    for _ in 0...cadet.rank{
+                        cadet.turnCommandString.append("down") //append the initial straightaway before turning
+                    }
+                    if cadet.element != 0{
+                        for _ in 1...cadet.element{
+                            cadet.turnCommandString.append("downright") //append all the 45* turns based on the element we're in
+                        }
+                    }
+                    for _ in 0...cadet.element{
+                        cadet.turnCommandString.append("right") //append the straightaways after we complete our turn
+                    }
+                    //append the halfsteps after we complete our turn
+                    for _ in 1...(2 * (myModel.numElements - cadet.element - 1)) + (myModel.numRanks - 1){ //once again, complicated, but it works
+                        cadet.turnCommandString.append("righthalf")
+                    }
+                    print("El\(cadet.element) Rank\(cadet.rank) String: \(cadet.turnCommandString)")
+                    cadet.run(getWalkAction(dir: "right"), withKey: "animation1")
                 }
-                //append the halfsteps after we complete our turn
-                for _ in 1...(2 * (myModel.numElements - cadet.element - 1)) + (myModel.numRanks - 1){ //once again, complicated, but it works
-                    cadet.turnCommandString.append("downhalf")
+                else if cadet.direction == "right"{
+                    for _ in 0...cadet.rank{
+                        cadet.turnCommandString.append("right") //append the initial straightaway before turning
+                    }
+                    if cadet.element != 0{
+                        for _ in 1...cadet.element{
+                            cadet.turnCommandString.append("upright") //append all the 45* turns based on the element we're in
+                        }
+                    }
+                    for _ in 0...cadet.element{
+                        cadet.turnCommandString.append("up") //append the straightaways after we complete our turn
+                    }
+                    //append the halfsteps after we complete our turn
+                    for _ in 1...(2 * (myModel.numElements - cadet.element - 1)) + (myModel.numRanks - 1){ //once again, complicated, but it works
+                        cadet.turnCommandString.append("uphalf")
+                    }
+                    print("El\(cadet.element) Rank\(cadet.rank) String: \(cadet.turnCommandString)")
+                    cadet.run(getWalkAction(dir: "up"), withKey: "animation1")
                 }
-                print("El\(cadet.element) Rank\(cadet.rank) String: \(cadet.turnCommandString)")
-                cadet.run(getWalkAction(dir: "down"), withKey: "animation1")
+                else if cadet.direction == "left"{ //left
+                    for _ in 0...cadet.rank{
+                        cadet.turnCommandString.append("left") //append the initial straightaway before turning
+                    }
+                    if cadet.element != 0{
+                        for _ in 1...cadet.element{
+                            cadet.turnCommandString.append("downleft") //append all the 45* turns based on the element we're in
+                        }
+                    }
+                    for _ in 0...cadet.element{
+                        cadet.turnCommandString.append("down") //append the straightaways after we complete our turn
+                    }
+                    //append the halfsteps after we complete our turn
+                    for _ in 1...(2 * (myModel.numElements - cadet.element - 1)) + (myModel.numRanks - 1){ //once again, complicated, but it works
+                        cadet.turnCommandString.append("downhalf")
+                    }
+                    print("El\(cadet.element) Rank\(cadet.rank) String: \(cadet.turnCommandString)")
+                    cadet.run(getWalkAction(dir: "down"), withKey: "animation1")
+                }
             }
         }
     }
     
     func leftFlank(){
-        for cadet in cadetArray{
-            cadet.marchSpeed = 1.0
-            if cadet.direction == "up"{
-                cadet.direction = "left"
+        if(inHalfSteps){
+            halfStepsError()
+        }
+        else{
+            for cadet in cadetArray{
+                cadet.marchSpeed = 1.0
+                if cadet.direction == "up"{
+                    cadet.direction = "left"
+                }
+                else if cadet.direction == "down"{
+                    cadet.direction = "right"
+                }
+                else if cadet.direction == "right"{
+                    cadet.direction = "up"
+                }
+                else{ //left
+                    cadet.direction = "down"
+                }
+                cadet.removeAction(forKey: "animation1")
+                cadet.run(getWalkAction(dir: cadet.direction), withKey: "animation1")
             }
-            else if cadet.direction == "down"{
-                cadet.direction = "right"
-            }
-            else if cadet.direction == "right"{
-                cadet.direction = "up"
-            }
-            else{ //left
-                cadet.direction = "down"
-            }
-            cadet.removeAction(forKey: "animation1")
-            cadet.run(getWalkAction(dir: cadet.direction), withKey: "animation1")
         }
     }
     
     func rightFlank(){
-        for cadet in cadetArray{
-            cadet.marchSpeed = 1.0
-            if cadet.direction == "up"{
-                cadet.direction = "right"
-            }
-            else if cadet.direction == "down"{
-                cadet.direction = "left"
-            }
-            else if cadet.direction == "right"{
-                cadet.direction = "down"
-            }
-            else{ //left
-                cadet.direction = "up"
-            }
-            cadet.removeAction(forKey: "animation1")
-            cadet.run(getWalkAction(dir: cadet.direction), withKey: "animation1")
+        if(inHalfSteps){
+            halfStepsError()
         }
+        else{
+            for cadet in cadetArray{
+                cadet.marchSpeed = 1.0
+                if cadet.direction == "up"{
+                    cadet.direction = "right"
+                }
+                else if cadet.direction == "down"{
+                    cadet.direction = "left"
+                }
+                else if cadet.direction == "right"{
+                    cadet.direction = "down"
+                }
+                else{ //left
+                    cadet.direction = "up"
+                }
+                cadet.removeAction(forKey: "animation1")
+                cadet.run(getWalkAction(dir: cadet.direction), withKey: "animation1")
+            }
+        }
+    }
+    
+    func halfStepsError(){
+        //GameViewController.halfStepError()
     }
     
     func zoomCameraIn(){

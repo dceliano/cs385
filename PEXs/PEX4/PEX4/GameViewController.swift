@@ -16,7 +16,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var turnLeftButton: UIButton!
     @IBOutlet weak var turnRightButton: UIButton!
     @IBOutlet weak var executeButton: UIButton!
-    var mainScene = GameScene()
+    var gameScene = GameScene()
     var buttonPressed : String = "" //the name of which button is pressed
     @IBOutlet weak var commandLabel: UILabel!
     
@@ -24,24 +24,29 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         
         if let view = self.view as! SKView? {
-            // Load the SKScene from 'GameScene.sks'
+            // Load the SKScene from 'MainMenuScene.sks'
             if let scene = SKScene(fileNamed: "GameScene") {
-                mainScene = scene as! GameScene
+                gameScene = scene as! GameScene
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
                 // Present the scene
                 view.presentScene(scene)
             }
-            
             view.ignoresSiblingOrder = true
-            
             view.showsFPS = true
             view.showsNodeCount = true
         }
-        
+        self.navigationController?.isNavigationBarHidden = true
+        print("loaded game view")
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        self.navigationController?.isNavigationBarHidden = true
     }
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
         commandLabel.text = "Scale: \(scrollView.zoomScale)"
+    }
+    func halfStepError(){
+        commandLabel.text = "You can't do that while in half steps!"
     }
     @IBAction func forwardButtonPressed(_ sender: Any) {
         buttonPressed = "forwardButton"
@@ -101,33 +106,33 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
             case "": //no button was pressed
                 commandLabel.text = ("Give the preemptive command first!")
             case "forwardButton":
-                mainScene.goForward()
+                gameScene.goForward()
                 commandLabel.text?.append("Harch!")
             case "rightFlankButton":
-                mainScene.rightFlank()
+                gameScene.rightFlank()
                 commandLabel.text?.append("Harch!")
             case "leftFlankButton":
-                mainScene.leftFlank()
+                gameScene.leftFlank()
                 commandLabel.text?.append("Harch!")
             case "rightTurnButton":
-                mainScene.turnRight()
+                gameScene.turnRight()
                 commandLabel.text?.append("Harch!")
             case "leftTurnButton":
-                mainScene.turnLeft()
+                gameScene.turnLeft()
                 commandLabel.text?.append("Harch!")
             case "haltButton":
-                mainScene.halt()
+                gameScene.halt()
                 commandLabel.text?.append("Halt!")
             default:
-                mainScene.halt()
+                gameScene.halt()
                 commandLabel.text?.append("Halt!")
         }
     }
     @IBAction func zoomIn(_ sender: Any) {
-        mainScene.zoomCameraIn()
+        gameScene.zoomCameraIn()
     }
     @IBAction func zoomOut(_ sender: Any) {
-        mainScene.zoomCameraOut()
+        gameScene.zoomCameraOut()
     }
     
     override func didReceiveMemoryWarning() {
