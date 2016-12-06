@@ -34,10 +34,15 @@ class menuViewController: UIViewController, UIScrollViewDelegate {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.navigationController?.isNavigationBarHidden = false
     }
     override func viewDidAppear(_ animated: Bool) {
+        speedStepper.value = Double(sourceVC.gameScene.speedSetting)
+        numCadetsStepper.value = Double(sourceVC.gameScene.myModel.numCadets)
+        numElementsStepper.value = Double(sourceVC.gameScene.myModel.numElements)
+        speedLabel.text = String(speedStepper.value)
+        numCadetsLabel.text = String(Int(numCadetsStepper.value))
+        numElementsLabel.text = String(Int(numElementsStepper.value))
         self.navigationController?.isNavigationBarHidden = false
     }
 
