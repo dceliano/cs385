@@ -17,6 +17,7 @@ class cadetNode: SKSpriteNode{
     var element = 0
     var rank = 0
     var distanceMoved = 0
+    var adjustedElement = 0
     var turnCommandString : Array<String> = []
     
     init(inputtexture: SKTexture, direction: String){
