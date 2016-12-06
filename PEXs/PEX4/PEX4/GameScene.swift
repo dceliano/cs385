@@ -24,7 +24,7 @@ class GameScene: SKScene {
     var inHalfSteps : Bool = false
     var numStepsToCompleteTurn : Int = 0
     let turnSpeed : Int = 5
-    var speedSetting : CGFloat = 0.625
+    var speedSetting : CGFloat = 0.5
     //load all of the animation files
     let cadetUpAtlas = SKTextureAtlas(named:"CadetWalkUp.atlas")
     let cadetDownAtlas = SKTextureAtlas(named:"CadetWalkDown.atlas")
@@ -46,6 +46,7 @@ class GameScene: SKScene {
     
     func updateFlightSize(){
         print("updating cadet flight")
+        removeChildren(in: cadetArray)
         cadetArray = []
         for i in 0...myModel.numCadets - 1{
             let cadet = cadetNode(inputtexture: cadetUpSprites[1], direction: "up")
