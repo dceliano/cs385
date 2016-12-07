@@ -28,6 +28,8 @@ class GameScene: SKScene {
     let turnSpeed : Int = 5
     var speedSetting : CGFloat = 0.5
     var flightRotationTracker : Int = 0
+    var playerLevel : Int = 0
+    var oldPlayerLevel : Int = 0
     //load all of the animation files
     let cadetUpAtlas = SKTextureAtlas(named:"CadetWalkUp.atlas")
     let cadetDownAtlas = SKTextureAtlas(named:"CadetWalkDown.atlas")
@@ -46,12 +48,19 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         setupAtlasArrays() //get the animation frames ready
+        viewController.gameScene = self
+        viewController.myModel = self.myModel
+        viewController.myModelOverarching = self.myModelOverarching
         updateFlightSize() //setup the cadets, store them in the cadet array, and then add them as children to the scene
     }
     
     func updateFlightSize(){
         print("updating the cadet flight")
         flightRotationTracker = 0
+        playerLevel = (myModel.distanceMarched / 4000)
+        viewController.newLevelReached()
+        viewController.commandLabel.text = ""
+        oldPlayerLevel = playerLevel
         myModel.numRanks = (Int(ceil(CGFloat(CGFloat(myModel.numCadets) / CGFloat(myModel.numElements))))) //recalculate the number of ranks
         if !(cadetArray.isEmpty){
             //save the starting position of the upper left if we have any remnants of a flight
@@ -221,7 +230,11 @@ class GameScene: SKScene {
         else if((cadetArray.first?.marchSpeed)! >= CGFloat(0.1)){
             myModel.distanceMarched += 2
         }
-        //print("We have marched \(myModel.distanceMarched)")
+        playerLevel = (myModel.distanceMarched / 4000)
+        if playerLevel != oldPlayerLevel{
+            viewController.newLevelReached()
+        }
+        oldPlayerLevel = playerLevel
         var i = 0
         for cadet in cadetArray{
             i += 1

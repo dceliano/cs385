@@ -72,14 +72,14 @@ struct gameModel: CustomStringConvertible{
         }
         catch {
         }
-        myDataFile = docsURL!.appendingPathComponent("data.txt") as NSURL?
+        myDataFile = docsURL!.appendingPathComponent("data3.txt") as NSURL?
         if myDataFile!.checkResourceIsReachableAndReturnError(nil) {
-            readData()
+            //readData()
         }
         else {
-            let mygameData = NSKeyedArchiver.archivedData(withRootObject: data)
+            //let mygameData = NSKeyedArchiver.archivedData(withRootObject: data)
             do{
-                try mygameData.write(to: self.myDataFile! as URL)
+                //try mygameData.write(to: self.myDataFile! as URL)
             } catch{
                 print("error")
             }
@@ -91,7 +91,7 @@ struct gameModel: CustomStringConvertible{
         let mygameData = NSKeyedArchiver.archivedData(withRootObject: data)
         let defaults = UserDefaults.standard
         defaults.set(mygameData, forKey: "data")
-        myDataFile = docsURL!.appendingPathComponent("data.txt") as NSURL?
+        myDataFile = docsURL!.appendingPathComponent("data3.txt") as NSURL?
         do{
             try mygameData.write(to: self.myDataFile! as URL)
             print("written data: \(data)")

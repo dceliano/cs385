@@ -25,10 +25,10 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     @IBAction func saveButtonPressed(_ sender: Any) {
         print("attempting to save game")
         //save the model for future use
-        myModelOverarching = gameScene.myModelOverarching
-        myModel = gameScene.myModel
         myModelOverarching.data = [myModel] //update the model data
         myModelOverarching.writeData()
+        gameScene.myModel = myModel
+        gameScene.myModelOverarching = myModelOverarching
         commandLabel.text = "Game has been saved!"
     }
     override func viewDidLoad() {
@@ -48,19 +48,17 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
             view.showsFPS = true
             view.showsNodeCount = true
         }
-        //set up references to the models in the game scene
-        myModelOverarching = gameScene.myModelOverarching
-        myModel = gameScene.myModel
         
         self.navigationController?.isNavigationBarHidden = true //hide the naviation bar
         
         if shouldLoadData{ //if load as pressed on the home screen
             //set up the model to load in what we had before if we hit "load" on the main menu
             print("attempting to load saved data")
-            myModelOverarching = gameScene.myModelOverarching
-            myModel = gameScene.myModel
             myModelOverarching.readData()
             myModel = myModelOverarching.data.first!
+            gameScene.myModel = myModel
+            gameScene.myModelOverarching = myModelOverarching
+            shouldLoadData = false
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -72,6 +70,9 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     }
     func scrollViewDidZoom(_ scrollView: UIScrollView) {
         commandLabel.text = "Scale: \(scrollView.zoomScale)"
+    }
+    func newLevelReached(){
+        commandLabel.text = "You have reached level \(gameScene.playerLevel)!"
     }
     func halfStepError(){
         commandLabel.text = "You can't do that while in half steps!"
@@ -154,23 +155,29 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
                 }
                 else{
                     halfStepError()
-                }
+            }
             case "rightTurnButton":
-                if !gameScene.inHalfSteps{
+                if !gameScene.inHalfSteps && gameScene.flightRotationTracker % 4 == 0{
                     gameScene.turnRight()
                     commandLabel.text?.append("Harch!")
                 }
-                else{
+                else if gameScene.inHalfSteps{
                     halfStepError()
                 }
+                else{
+                    columnFormationError()
+            }
             case "leftTurnButton":
-                if !gameScene.inHalfSteps{
+                if !gameScene.inHalfSteps && gameScene.flightRotationTracker % 4 == 0{
                     gameScene.turnLeft()
                     commandLabel.text?.append("Harch!")
                 }
-                else{
+                else if gameScene.inHalfSteps{
                     halfStepError()
                 }
+                else{
+                    columnFormationError()
+            }
             case "haltButton":
                 gameScene.halt()
                 commandLabel.text?.append("Halt!")

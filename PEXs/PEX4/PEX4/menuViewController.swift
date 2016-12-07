@@ -48,11 +48,15 @@ class menuViewController: UIViewController, UIScrollViewDelegate {
         speedStepper.value = Double(sourceVC.gameScene.speedSetting)
         numCadetsStepper.value = Double(sourceVC.gameScene.myModel.numCadets)
         numElementsStepper.value = Double(sourceVC.gameScene.myModel.numElements)
+        
         speedLabel.text = String(speedStepper.value)
         sourceVC.commandLabel.text = ""
         numCadetsLabel.text = String(Int(numCadetsStepper.value))
         numElementsLabel.text = String(Int(numElementsStepper.value))
-        levelProgressLabel.text = String(Int(sourceVC.myModel.distanceMarched / 10))
+        levelProgressLabel.text = "\(Int((CGFloat(sourceVC.myModel.distanceMarched % 4000) / 4000.0) * 100))%"
+        sourceVC.gameScene.playerLevel = sourceVC.myModel.distanceMarched / 4000
+        currentLevelLabel.text = String(Int(sourceVC.gameScene.playerLevel))
+        
         self.navigationController?.isNavigationBarHidden = false
     }
 
