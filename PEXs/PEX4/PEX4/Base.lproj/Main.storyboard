@@ -114,6 +114,17 @@
                                     <action selector="forwardButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="QxM-Ef-qfj"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BX0-NS-0ax" userLabel="flightButton">
+                                <rect key="frame" x="0.0" y="503" width="124" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Flight... (halt)">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="HaltButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="I1O-Oa-wmL"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eck-Xc-nhn" userLabel="executeButton">
                                 <rect key="frame" x="144" y="541" width="86" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -190,15 +201,18 @@
                                     <action selector="zoomOut:" destination="BV1-FR-VrT" eventType="touchUpInside" id="Ors-HU-K6Y"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BX0-NS-0ax" userLabel="flightButton">
-                                <rect key="frame" x="0.0" y="503" width="124" height="45"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bjE-Zu-5HN" userLabel="saveButton">
+                                <rect key="frame" x="2" y="7" width="102" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Flight... (halt)">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="Palatino-BoldItalic" family="Palatino" pointSize="20"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <size key="titleShadowOffset" width="2" height="1"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="HaltButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="I1O-Oa-wmL"/>
+                                    <action selector="saveButtonPressed:" destination="BV1-FR-VrT" eventType="touchUpInside" id="bKn-i4-fY4"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -406,7 +420,7 @@
                                 </state>
                                 <connections>
                                     <action selector="newButtonPressed:" destination="pTZ-Ge-y4e" eventType="touchUpInside" id="fqz-BK-poN"/>
-                                    <segue destination="hvF-T3-5rS" kind="show" id="h9w-9v-zHn"/>
+                                    <segue destination="hvF-T3-5rS" kind="show" identifier="newGameSegue" id="qtj-8D-ZTM"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D5X-B7-xnq">
@@ -428,6 +442,10 @@
                                     <color key="titleColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="loadButtonPressed:" destination="pTZ-Ge-y4e" eventType="touchUpInside" id="4eg-X0-sw3"/>
+                                    <segue destination="hvF-T3-5rS" kind="show" identifier="loadSegue" id="b6w-5e-bzb"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t1p-0b-Ipn" userLabel="Loading">
                                 <rect key="frame" x="0.0" y="570" width="375" height="69"/>
@@ -472,4 +490,7 @@
         <image name="splashScreen.png" width="524" height="646"/>
         <image name="terrazo.png" width="125" height="125"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="qtj-8D-ZTM"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -11,15 +11,25 @@ import SpriteKit
 import GameplayKit
 
 class GameViewController: UIViewController, UIScrollViewDelegate {
-
+    var shouldLoadData = false
     @IBOutlet weak var forwardButton: UIButton!
     @IBOutlet weak var turnLeftButton: UIButton!
     @IBOutlet weak var turnRightButton: UIButton!
     @IBOutlet weak var executeButton: UIButton!
+    var myModel = gameModel.gameModel()
+    var myModelOverarching = gameModel()
     var gameScene = GameScene()
     var buttonPressed : String = "" //the name of which button is pressed
     @IBOutlet weak var commandLabel: UILabel!
     
+    @IBAction func saveButtonPressed(_ sender: Any) {
+        print("attempting to save game")
+        //save the model for future use
+        myModelOverarching = gameScene.myModelOverarching
+        myModel = gameScene.myModel
+        myModelOverarching.data = [myModel] //update the model data
+        myModelOverarching.writeData()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -37,7 +47,20 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
             view.showsFPS = true
             view.showsNodeCount = true
         }
-        self.navigationController?.isNavigationBarHidden = true
+        //set up references to the models in the game scene
+        myModelOverarching = gameScene.myModelOverarching
+        myModel = gameScene.myModel
+        
+        self.navigationController?.isNavigationBarHidden = true //hide the naviation bar
+        
+        if shouldLoadData{ //if load as pressed on the home screen
+            //set up the model to load in what we had before if we hit "load" on the main menu
+            print("attempting to load saved data")
+            myModelOverarching = gameScene.myModelOverarching
+            myModel = gameScene.myModel
+            myModelOverarching.readData()
+            myModel = myModelOverarching.data.first!
+        }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         (segue.destination as! menuViewController).sourceVC = self

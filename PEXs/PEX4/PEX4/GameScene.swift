@@ -13,6 +13,7 @@ import GameplayKit
 class GameScene: SKScene {
     
     var viewController : GameViewController! // we need to make sure to set this when we create our GameScene
+    var myModelOverarching = gameModel()
     var myModel = gameModel.gameModel()
     var cadetArray: Array<cadetNode> = [] //load a blank array of cadets
     var formationCenter = CGPoint(x: 0, y: 0) //load the camera
@@ -44,8 +45,7 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) {
         setupAtlasArrays() //get the animation frames ready
-        //setup the cadets, store them in the cadet array, and then add them as children to the scene
-        updateFlightSize()
+        updateFlightSize() //setup the cadets, store them in the cadet array, and then add them as children to the scene
     }
     
     func updateFlightSize(){
@@ -213,6 +213,13 @@ class GameScene: SKScene {
             intermediateStepCount += 1
         }
         
+        if(inHalfSteps){
+            myModel.distanceMarched += 1
+        }
+        else if((cadetArray.first?.marchSpeed)! >= CGFloat(0.1)){
+            myModel.distanceMarched += 2
+        }
+        //print("We have marched \(myModel.distanceMarched)")
         var i = 0
         for cadet in cadetArray{
             i += 1
@@ -220,7 +227,6 @@ class GameScene: SKScene {
                 cadet.removeAction(forKey: "animation1")
             }
             else{ //if we're moving
-                cadet.distanceMoved += 1
                 if cadet.direction == "up"{
                     cadet.position.y += cadet.marchSpeed
                 }
