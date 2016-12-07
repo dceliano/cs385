@@ -34,6 +34,9 @@ class GameScene: SKScene {
     var cadetDownSprites = Array<SKTexture>()
     var cadetLeftSprites = Array<SKTexture>()
     var cadetRightSprites = Array<SKTexture>()
+    //starting location
+    var starting_x : CGFloat = 450
+    var starting_y : CGFloat = 750
     
     var lastTouch: CGPoint? = nil
     
@@ -45,16 +48,24 @@ class GameScene: SKScene {
     }
     
     func updateFlightSize(){
-        print("updating cadet flight")
+        print("updating the cadet flight")
+        myModel.numRanks = (Int(ceil(CGFloat(CGFloat(myModel.numCadets) / CGFloat(myModel.numElements))))) //recalculate the number of ranks
+        if !(cadetArray.isEmpty){
+            //save the starting position of the upper left if we have any remnants of a flight
+            starting_x = (cadetArray.first?.position.x)!
+            starting_y = (cadetArray.first?.position.y)!
+        }
+        //get rid of the old cadetArray children - we are now building it up from scratch again.
         removeChildren(in: cadetArray)
         cadetArray = []
         for i in 0...myModel.numCadets - 1{
-            let cadet = cadetNode(inputtexture: cadetUpSprites[1], direction: "up")
+            let cadet = cadetNode(inputtexture: cadetUpSprites[1], direction: "up") //create a new cadet marching up by default
             cadet.element = i % myModel.numElements
             cadet.rank = Int(floor(Double(i / myModel.numElements))) //this makes (0,0) in the top left
-            let xoffset = cadet.element * myModel.distanceBetweenCadets // side-to-side spacing
-            let yoffset =  -(cadet.rank * myModel.distanceBetweenCadets) // back-to-front spacing
-            cadet.position = CGPoint(x: 450 + xoffset, y: 750 + Int(yoffset))
+            //a cadet is put at a certain distance to the right of or behind the cadet in the top left
+            let xoffset : CGFloat = CGFloat(cadet.element * myModel.distanceBetweenCadets) // side-to-side spacing
+            let yoffset : CGFloat =  CGFloat(-(cadet.rank * myModel.distanceBetweenCadets)) // back-to-front spacing
+            cadet.position = CGPoint(x: starting_x + xoffset, y: starting_y + yoffset)
             cadet.size.width = (cadet.size.width) / 5
             cadet.size.height = (cadet.size.height) / 5
             cadet.marchSpeed = 0.0 //make the cadet still at the beginning
