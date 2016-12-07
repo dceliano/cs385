@@ -18,6 +18,8 @@ class menuViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var numElementsLabel: UILabel!
     @IBOutlet weak var numCadetsLabel: UILabel!
     @IBOutlet weak var speedLabel: UILabel!
+    @IBOutlet weak var currentLevelLabel: UILabel!
+    @IBOutlet weak var levelProgressLabel: UILabel!
     @IBAction func speedChanged(_ sender: Any) {
         //when we change speed
         speedLabel.text = String(speedStepper.value)
@@ -47,8 +49,10 @@ class menuViewController: UIViewController, UIScrollViewDelegate {
         numCadetsStepper.value = Double(sourceVC.gameScene.myModel.numCadets)
         numElementsStepper.value = Double(sourceVC.gameScene.myModel.numElements)
         speedLabel.text = String(speedStepper.value)
+        sourceVC.commandLabel.text = ""
         numCadetsLabel.text = String(Int(numCadetsStepper.value))
         numElementsLabel.text = String(Int(numElementsStepper.value))
+        levelProgressLabel.text = String(Int(sourceVC.myModel.distanceMarched / 10))
         self.navigationController?.isNavigationBarHidden = false
     }
 

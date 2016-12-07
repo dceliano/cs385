@@ -29,6 +29,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         myModel = gameScene.myModel
         myModelOverarching.data = [myModel] //update the model data
         myModelOverarching.writeData()
+        commandLabel.text = "Game has been saved!"
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,6 +75,9 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     }
     func halfStepError(){
         commandLabel.text = "You can't do that while in half steps!"
+    }
+    func columnFormationError(){
+        commandLabel.text = "You aren't in column formation!"
     }
     @IBAction func forwardButtonPressed(_ sender: Any) {
         buttonPressed = "forwardButton"

@@ -27,6 +27,7 @@ class GameScene: SKScene {
     var numStepsToCompleteTurn : Int = 0
     let turnSpeed : Int = 5
     var speedSetting : CGFloat = 0.5
+    var flightRotationTracker : Int = 0
     //load all of the animation files
     let cadetUpAtlas = SKTextureAtlas(named:"CadetWalkUp.atlas")
     let cadetDownAtlas = SKTextureAtlas(named:"CadetWalkDown.atlas")
@@ -50,6 +51,7 @@ class GameScene: SKScene {
     
     func updateFlightSize(){
         print("updating the cadet flight")
+        flightRotationTracker = 0
         myModel.numRanks = (Int(ceil(CGFloat(CGFloat(myModel.numCadets) / CGFloat(myModel.numElements))))) //recalculate the number of ranks
         if !(cadetArray.isEmpty){
             //save the starting position of the upper left if we have any remnants of a flight
@@ -313,7 +315,7 @@ class GameScene: SKScene {
         if(inHalfSteps){
             halfStepsError()
         }
-        else{
+        else if flightRotationTracker % 4 == 0{
             //this function begins the turning sequence by resetting the turning variables and loading each cadet's turnCommandString
             turnStepCount = 0
             intermediateStepCount = 0
@@ -401,13 +403,16 @@ class GameScene: SKScene {
                 }
             }
         }
+        else{
+            viewController.columnFormationError()
+        }
     }
     
     func turnLeft(){
         if(inHalfSteps){
             halfStepsError()
         }
-        else{
+        else if flightRotationTracker % 4 == 0{
             //this function begins the turning sequence by resetting the turning variables and loading each cadet's turnCommandString
             turnStepCount = 0
             intermediateStepCount = 0
@@ -494,6 +499,9 @@ class GameScene: SKScene {
                 }
             }
         }
+        else{
+            viewController.columnFormationError()
+        }
     }
     
     func leftFlank(){
@@ -501,6 +509,7 @@ class GameScene: SKScene {
             halfStepsError()
         }
         else{
+            flightRotationTracker -= 1 //left turn is -1 on the rotation tracker
             for cadet in cadetArray{
                 cadet.marchSpeed = self.speedSetting
                 if cadet.direction == "up"{
@@ -526,6 +535,7 @@ class GameScene: SKScene {
             halfStepsError()
         }
         else{
+            flightRotationTracker += 1 //right turn is +1 on the rotation tracker
             for cadet in cadetArray{
                 cadet.marchSpeed = self.speedSetting
                 if cadet.direction == "up"{

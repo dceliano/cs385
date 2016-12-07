@@ -368,7 +368,7 @@
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <size key="shadowOffset" width="2" height="1"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Changing The Options below will make your flight face north" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ZA-LQ-hGP">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Changing any of these options will make your flight face north" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ZA-LQ-hGP">
                                 <rect key="frame" x="-24" y="419" width="420" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Palatino-BoldItalic" family="Palatino" pointSize="13"/>
@@ -381,6 +381,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="currentLevelLabel" destination="qql-aS-Odb" id="CnG-x9-gPw"/>
+                        <outlet property="levelProgressLabel" destination="IBv-On-Yze" id="Z2j-Ln-Fjk"/>
                         <outlet property="numCadetsLabel" destination="tY2-P7-zpO" id="Ima-E1-Ljv"/>
                         <outlet property="numCadetsStepper" destination="f3Q-VL-JpB" id="bgC-TN-I4g"/>
                         <outlet property="numElementsLabel" destination="Qh3-cf-Kl2" id="9YL-H4-SD6"/>
