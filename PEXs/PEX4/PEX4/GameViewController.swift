@@ -29,6 +29,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
                 gameScene = scene as! GameScene
                 // Set the scale mode to scale to fit the window
                 scene.scaleMode = .aspectFill
+                gameScene.viewController = self //so we can reference this view controller in the scene
                 // Present the scene
                 view.presentScene(scene)
             }
@@ -112,17 +113,37 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
                 gameScene.goForward()
                 commandLabel.text?.append("Harch!")
             case "rightFlankButton":
-                gameScene.rightFlank()
-                commandLabel.text?.append("Harch!")
+                if !gameScene.inHalfSteps{
+                    gameScene.rightFlank()
+                    commandLabel.text?.append("Harch!")
+                }
+                else{
+                    halfStepError()
+                }
             case "leftFlankButton":
-                gameScene.leftFlank()
-                commandLabel.text?.append("Harch!")
+                if !gameScene.inHalfSteps{
+                    gameScene.leftFlank()
+                    commandLabel.text?.append("Harch!")
+                }
+                else{
+                    halfStepError()
+                }
             case "rightTurnButton":
-                gameScene.turnRight()
-                commandLabel.text?.append("Harch!")
+                if !gameScene.inHalfSteps{
+                    gameScene.turnRight()
+                    commandLabel.text?.append("Harch!")
+                }
+                else{
+                    halfStepError()
+                }
             case "leftTurnButton":
-                gameScene.turnLeft()
-                commandLabel.text?.append("Harch!")
+                if !gameScene.inHalfSteps{
+                    gameScene.turnLeft()
+                    commandLabel.text?.append("Harch!")
+                }
+                else{
+                    halfStepError()
+                }
             case "haltButton":
                 gameScene.halt()
                 commandLabel.text?.append("Halt!")
