@@ -13,7 +13,7 @@ import GameplayKit
 class GameScene: SKScene {
     
     var viewController : GameViewController! // we need to make sure to set this when we create our GameScene
-    var myModel = gameModel()
+    var myModel = gameModel.gameModel()
     var cadetArray: Array<cadetNode> = [] //load a blank array of cadets
     var formationCenter = CGPoint(x: 0, y: 0) //load the camera
     let timePerFrame = 0.2
