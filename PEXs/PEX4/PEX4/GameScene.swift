@@ -58,8 +58,6 @@ class GameScene: SKScene {
         print("updating the cadet flight")
         flightRotationTracker = 0
         playerLevel = (myModel.distanceMarched / 4000)
-        viewController.newLevelReached()
-        viewController.commandLabel.text = ""
         oldPlayerLevel = playerLevel
         myModel.numRanks = (Int(ceil(CGFloat(CGFloat(myModel.numCadets) / CGFloat(myModel.numElements))))) //recalculate the number of ranks
         if !(cadetArray.isEmpty){

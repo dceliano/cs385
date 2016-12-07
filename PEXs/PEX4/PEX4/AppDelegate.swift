@@ -5,9 +5,12 @@
 //  Created by Dom Celiano on 11/19/16.
 //  Copyright © 2016 Dom Celiano. All rights reserved.
 //
+// DOCUMENTATION:
 // I used this website: https://www.ioscreator.com/tutorials/scenes-tutorial-spritekit-swift
 // Also, I took quite a bit of code from this tutorial: https://www.raywenderlich.com/118225/introduction-sprite-kit-scene-editor
-
+// C1C Nolan Peters pointed me towards a tutorial which explained how to get menus working with SpriteKit.
+// I used a bunch of different websites for little problems, such as Stack Overflow, Hacking with Swift, Ray Wanderlich, and Google searches.
+// Many of my friends let me use their phones to test out the app and even "tried to break it" for me.
 
 import UIKit
 

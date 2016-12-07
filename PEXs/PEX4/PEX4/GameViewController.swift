@@ -9,6 +9,7 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import Social
 
 class GameViewController: UIViewController, UIScrollViewDelegate {
     var shouldLoadData = false
@@ -68,11 +69,30 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
     override func viewDidAppear(_ animated: Bool) {
         self.navigationController?.isNavigationBarHidden = true
     }
-    func scrollViewDidZoom(_ scrollView: UIScrollView) {
-        commandLabel.text = "Scale: \(scrollView.zoomScale)"
+    func showAlertMessage(_ message: String!) {
+        let alertController = UIAlertController(title: "Congratulations!", message: message, preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "Okay", style: UIAlertActionStyle.default, handler: nil))
+        present(alertController, animated: true, completion: nil)
     }
     func newLevelReached(){
         commandLabel.text = "You have reached level \(gameScene.playerLevel)!"
+        let actionSheet = UIAlertController(title: "", message: "I just reached level \(self.gameScene.playerLevel)!", preferredStyle: UIAlertControllerStyle.actionSheet)
+        let facebookPostAction = UIAlertAction(title: "Share on Facebook", style: UIAlertActionStyle.default) { (action) -> Void in
+            if SLComposeViewController.isAvailable(forServiceType: SLServiceTypeFacebook){
+                let facebookComposeVC = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
+                facebookComposeVC?.setInitialText("I just reached level \(self.gameScene.playerLevel)!")
+                self.present(facebookComposeVC!, animated: true, completion: nil)
+            }
+            else{
+                self.showAlertMessage("Sign into facebook in settings")
+            }
+        }
+        let dismissAction = UIAlertAction(title: "Close", style: UIAlertActionStyle.cancel, handler: nil)
+        actionSheet.addAction(facebookPostAction)
+        actionSheet.addAction(dismissAction)
+        
+        gameScene.isPaused = true
+        present(actionSheet, animated: true, completion: nil)
     }
     func halfStepError(){
         commandLabel.text = "You can't do that while in half steps!"
@@ -81,6 +101,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         commandLabel.text = "You aren't in column formation!"
     }
     @IBAction func forwardButtonPressed(_ sender: Any) {
+        gameScene.isPaused = false
         buttonPressed = "forwardButton"
         commandLabel.text = "Forward..."
     }
@@ -105,6 +126,7 @@ class GameViewController: UIViewController, UIScrollViewDelegate {
         commandLabel.text = "Column Right..."
     }
     @IBAction func executeButtonPressed(_ sender: Any) {
+        gameScene.isPaused = false
         executeCommand(button: buttonPressed)
     }
     @IBAction func cancelButtonPressed(_ sender: Any) {
